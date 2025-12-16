@@ -23,6 +23,7 @@
       <div class="nav-brand">
         <img src="logo.png" alt="CU Logo" class="nav-logo">
         <span class="nav-title">University Of Embu<br>Christian Union</span>
+     
       </div>
       <div class="nav-right">
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -38,13 +39,21 @@
         <a href="#about" class="nav-link">About</a>
         <a href="#events" class="nav-link">Events</a>
         
+        
           <!-- Mobile-only actions -->
-  <div class="mobile-only">
-    <button class="btn btn-outline">Sign In</button>
-    <button class="btn btn-primary">Sign up</button>
-  </div>
+          <!-- Inside the nav-menu div, after the Events link -->
+<div class="mobile-only">
+  <a href="#signin" class="btn btn-outline">Sign In</a>
+</div>
+<div class="mobile-only">
+  <a href="#signup" class="btn btn-primary">Sign Up</a>
+</div>
       </div>
-      
+         <!-- Desktop Actions -->
+      <div class="nav-actions desktop-only">
+        <a href="#signin" class="btn btn-outline">Sign In</a>
+        <a href="#signup" class="btn btn-primary">Sign up</a>
+      </div>
   
     </div>
   </nav>
@@ -257,7 +266,7 @@
               <span>📅 Every Tuesday</span>
               <span>⏰ 7:00 PM - 8:30 PM</span>
               <span>📍 TH</span>
-            </div>
+            </div>  
             <div class="slide-actions">
               <button class="btn btn-yellow">View Event</button>
             </div>
