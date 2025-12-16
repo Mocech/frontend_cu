@@ -1,4 +1,60 @@
 // Hero Slideshow Functionality
+
+// Segmented Switch for Testimonies/Articles
+class SegmentedSwitch {
+  constructor() {
+    this.switchOptions = document.querySelectorAll('.switch-option');
+    this.indicator = document.querySelector('.switch-indicator');
+    this.contentAreas = document.querySelectorAll('.content-area');
+    
+    this.init();
+  }
+
+  init() {
+    if (!this.switchOptions.length || !this.indicator) return;
+
+    // Add click listeners
+    this.switchOptions.forEach((option, index) => {
+      option.addEventListener('click', (e) => {
+        this.handleSwitch(e.target, index);
+      });
+    });
+  }
+
+  handleSwitch(clickedOption, index) {
+    // Remove active class from all options
+    this.switchOptions.forEach(opt => opt.classList.remove('active'));
+    
+    // Add active class to clicked option
+    clickedOption.classList.add('active');
+    
+    // Move indicator (0% for first, 100% for second)
+    this.indicator.style.transform = `translateX(${index * 100}%)`;
+    
+    // Switch content
+    const contentId = clickedOption.getAttribute('data-content');
+    this.switchContent(contentId);
+  }
+
+  switchContent(contentId) {
+    // Hide all content areas
+    this.contentAreas.forEach(area => {
+      area.classList.remove('active');
+    });
+    
+    // Show selected content area
+    const targetContent = document.getElementById(contentId);
+    if (targetContent) {
+      targetContent.classList.add('active');
+    }
+  }
+}
+
+// Initialize segmented switch when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new SegmentedSwitch();
+});
+
 class Slideshow {
   constructor() {
     this.slides = document.querySelectorAll(".slide")

@@ -652,6 +652,7 @@
   background-color: var(--color-background);
 }
 
+/* Segmented Switch Container */
 .switch-container {
   display: flex;
   justify-content: center;
@@ -670,12 +671,16 @@
 .switch-option {
   position: relative;
   padding: 0.75rem 2rem;
+  border: none;
+  background: transparent;
   font-weight: 600;
   font-size: var(--font-size-base);
   color: var(--color-primary);
   border-radius: var(--border-radius-full);
   transition: color var(--transition-base);
+  cursor: pointer;
   z-index: 2;
+  white-space: nowrap;
 }
 
 .switch-option.active {
@@ -694,10 +699,7 @@
   z-index: 1;
 }
 
-.switch-option:last-child.active ~ .switch-indicator {
-  transform: translateX(100%);
-}
-
+/* Content Areas */
 .content-area {
   display: none;
   animation: fadeIn 0.4s ease-in-out;
@@ -718,7 +720,21 @@
   }
 }
 
-/* Testimonies & Articles Section */
+/* Responsive */
+@media (max-width: 768px) {
+  .switch-option {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .switch-option {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+  
+}/* Testimonies & Articles Section */
 .testimonies-grid {
   display: flex;
   flex-direction: column;
@@ -836,7 +852,82 @@
   align-items: center;
   gap: 0.375rem;
 }
+/* Testimony Date - Darker Pink */
+.testimony-date {
+  font-size: 0.75rem;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  background-color: #e06699; /* darker pink */
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-style: italic;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  white-space: nowrap;
+  max-width: fit-content;
+  transition: transform 0.2s, background 0.3s;
+}
 
+.testimony-date:hover {
+  background-color: #c75585; /* slightly darker on hover */
+  transform: translateY(-1px);
+}
+
+/* Article Author & Date - Blurred Purple Background */
+.article-meta {
+  font-size: 0.78rem;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+  background-color: rgba(63,17,78,0.85); /* blurred/deep purple */
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  white-space: nowrap;
+  max-width: fit-content;
+}
+
+.article-meta span.author {
+  font-weight: 600;
+}
+
+.article-meta span.date {
+  font-size: 0.75rem;
+  color: #ddd;
+  padding-left: 0.4rem;
+  border-left: 1px solid rgba(255,255,255,0.3);
+}
+
+/* MOBILE RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .testimony-date {
+    display: block;
+    text-align: center;
+    margin: 0.4rem auto 0.5rem auto;
+    max-width: fit-content; /* keep pill width as desktop */
+  }
+
+  .article-meta {
+    display: flex; /* keep same layout as desktop */
+    justify-content: center; /* center on mobile */
+    gap: 0.4rem;
+    margin: 0.4rem auto 0.5rem auto;
+    max-width: fit-content; /* maintain pill size like desktop */
+  }
+
+  .article-meta span.date {
+    border-left: 1px solid rgba(255,255,255,0.3); /* keep divider */
+    display: inline-block; /* stay on same line as author */
+    padding-left: 0.4rem;
+    margin-top: 0;
+  }
+}
 .testimony-card .btn-outline-purple::after {
   content: '→';
   font-size: 1rem;

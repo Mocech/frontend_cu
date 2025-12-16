@@ -353,7 +353,7 @@ p {
   object-fit: contain;
   border: 1.5px solid var(--color-primary);
   border-radius: 50%;
-  padding: 4px;
+  padding: 0;
   background-color: #ffffff;
 }
 
@@ -569,7 +569,8 @@ p {
   width: 44px;                 /* Change from 36px */
   height: 44px;
   align-self: flex-start;      /* Add this */
-  margin-top: 2px;             /* Add this */
+  margin-top: 2px;    
+  padding: 2px;         /* Add this */
 }
 
 .mobile-only:first-of-type {
@@ -607,6 +608,7 @@ p {
   .nav-logo {
     width: 36px;
     height: 36px;
+      padding: 2px;
   }
   
   .btn-signup-mobile {
@@ -614,7 +616,7 @@ p {
     font-size: 0.8rem;
   }
 }
-}
+
 /* For extra small screens */
 @media (max-width: 360px) {
   .nav-container {
@@ -666,9 +668,10 @@ p {
   gap: 0.875rem;
 }
 .footer-logo {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
+  padding: 4px;
 
   /* Match navbar badge style */
   border: 2px solid rgba(255, 255, 255, 0.85);
@@ -822,11 +825,6 @@ p {
     gap: 2rem;
   }
 
-  .footer-logo {
-    width: 48px;
-    height: 48px;
-  }
-
   .footer-brand h3 {
     font-size: 1.25rem;
   }
@@ -848,9 +846,9 @@ p {
     font-size: 0.875rem;
   }
    .footer-logo {
-    width: 64px;
-    height: 64px;
-    padding: 7px;
+    width: 72px;
+    height: 72px;
+    padding: 4px;
   }
 }
 
@@ -869,18 +867,15 @@ p {
     gap: 3rem;
   }
  .footer-logo {
-    width: 64px;
-    height: 64px;
-    padding: 7px;
+    width: 48px;
+    height: 48px;
+    padding: 3px;
   }
   .brand-header {
     gap: 1rem;
   }
 
-  .footer-logo {
-    width: 52px;
-    height: 52px;
-  }
+ 
 }
 
 /* ==========================================
