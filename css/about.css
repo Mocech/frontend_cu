@@ -1,8 +1,6 @@
 /* About Page Styles - Inherits from main.css */
 
-body {
-  background-color: var(--color-background);
-}
+
 
 /* =========================
    1. HERO SECTION
@@ -815,14 +813,21 @@ body {
     gap: 0;
   }
 
-  .vm-item:first-child {
-    padding-bottom: var(--spacing-3xl);
+  /* .vm-item:first-child {
+    padding-bottom: var(--spacing-xl);
   }
 
   .vm-item:last-child {
-    padding-top: var(--spacing-3xl);
+    padding-top: var(--spacing-xl);
+  } */
+
+   .vm-item:first-child {
+    padding-bottom: var(--spacing-lg);
   }
 
+  .vm-item:last-child {
+    padding-top: var(--spacing-lg);
+  } 
   /* Horizontal divider for mobile */
   .vm-divider {
     width: 200px;
@@ -857,8 +862,24 @@ body {
 
 @media (max-width: 768px) {
   .vision-mission-section {
-    padding: var(--spacing-3xl) var(--spacing-md);
-    margin-top: var(--spacing-3xl);
+    /* padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg) ;
+    margin-top: var(--spacing--lg);
+    padding-bottom: var(--spacing-md); */
+    padding: 0;
+    padding-bottom:0 ;
+    /* padding-top: var(--spacing-lg);    /* ↓ from 3xl */
+    /* padding-bottom: var(--spacing-md); */
+    height:86vh; 
+  }
+  .vm-header-text {
+    margin-bottom: var(--spacing-md);
+  }
+ .vm-item:first-child {
+    padding-bottom: var(--spacing-md);
+  }
+
+  .vm-item:last-child {
+    padding-top: var(--spacing-md);
   }
 
   .vision-mission-section::before {
@@ -867,20 +888,26 @@ body {
   }
 
   .vm-item {
-    padding: var(--spacing-xl) var(--spacing-md);
+    /* padding: var(--spacing-xl) var(--spacing-md); */
+     padding: var(--spacing-lg) var(--spacing-md);
   }
 
   .vm-header-text h3 {
     font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-sm);
   }
-
+  .vm-header-text {
+    margin-bottom: var(--spacing-md);
+  }
   .vm-item p {
     font-size: var(--font-size-base);
+     line-height: 1.6;
   }
 
   .vm-divider {
     width: 150px;
-    margin: var(--spacing-lg) 0;
+    /* margin: var(--spacing-lg) 0; */
+     margin: var(--spacing-md) 0;
   }
 }
 
