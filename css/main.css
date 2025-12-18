@@ -1,7 +1,9 @@
+/* Updated main.css - Pink colors replaced with purple/yellow accents */
+
 /* CSS Variables */
 :root {
   --color-primary: #3f114e;
-  --color-pink: #ff99c8;
+  --color-accent: #5a2d6b; /* Replaced pink with deeper purple */
   --color-yellow: #ffc401;
   --color-white: #ffffff;
   --color-background: #e4e3e3;
@@ -181,21 +183,22 @@ p {
   box-shadow: var(--shadow-lg);
 }
 
+/* Changed from pink to purple */
 .btn-pink {
-  background-color: var(--color-pink);
+  background-color: var(--color-primary);
   color: var(--color-white);
   padding: 0.875rem 2rem;
   font-weight: 600;
 }
 
 .btn-pink:hover {
-  background-color: #ff7db0;
+  background-color: #2d0c39;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-pink-small {
-  background-color: var(--color-pink);
+  background-color: var(--color-primary);
   color: var(--color-white);
   padding: 0.5rem 1rem;
   font-size: var(--font-size-sm);
@@ -203,7 +206,7 @@ p {
 }
 
 .btn-pink-small:hover {
-  background-color: #ff7db0;
+  background-color: #2d0c39;
 }
 
 .btn-outline-white {
@@ -241,9 +244,10 @@ p {
   white-space: nowrap;
 }
 
+/* Changed from pink to yellow */
 .pill-pink {
-  background-color: var(--color-pink);
-  color: var(--color-white);
+  background-color: var(--color-yellow);
+  color: var(--color-text);
 }
 
 .pill-purple {
@@ -268,7 +272,7 @@ p {
 }
 
 .badge-weekly {
-  background-color: rgba(255, 153, 200, 0.3);
+  background-color: rgba(90, 45, 107, 0.3); /* Changed from pink */
 }
 
 .badge-special {
@@ -311,14 +315,6 @@ p {
 }
 
 /* Navigation */
-/* =========================
-   NAVBAR
-   ========================= */
-/* Navigation */
-/* =========================
-   NAVBAR
-   ========================= */
-
 .navbar {
   position: sticky;
   top: 0;
@@ -343,13 +339,13 @@ p {
   align-items: center;
   gap: 0.75rem;
   flex: 1;
-  min-width: 0; /* Important for text truncation */
+  min-width: 0;
 }
 
 .nav-logo {
   width: 48px;
   height: 48px;
-  flex-shrink: 0; /* Prevent logo from shrinking */
+  flex-shrink: 0;
   object-fit: contain;
   border: 1.5px solid var(--color-primary);
   border-radius: 50%;
@@ -405,7 +401,7 @@ p {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  flex-shrink: 0; /* Prevent hamburger from shrinking */
+  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -431,7 +427,7 @@ p {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-shrink: 0; /* Prevent nav-right from shrinking */
+  flex-shrink: 0;
 }
 
 /* Visibility helpers */
@@ -446,7 +442,7 @@ p {
 /* Sign Up button - always visible */
 .btn-signup-mobile {
   display: none;
-  flex-shrink: 0; /* Prevent button from shrinking */
+  flex-shrink: 0;
 }
 
 /* =========================
@@ -454,15 +450,10 @@ p {
    ========================= */
 
 @media (max-width: 768px) {
- .nav-container {
-  padding: 1rem 1rem;  /* Change from 0.75rem */
-  min-height: 72px;     /* Add this */
-}
-  
-  
-  
-  /* Make title truncate with ellipsis */
-
+  .nav-container {
+    padding: 1rem 1rem;
+    min-height: 72px;
+  }
   
   .hamburger {
     display: flex;
@@ -498,8 +489,6 @@ p {
     visibility: hidden;
     transition: all 0.3s ease;
   }
-  
-
 
   .nav-menu.active {
     transform: translateY(0);
@@ -520,71 +509,70 @@ p {
     border-top: 1px solid #e5e7eb;
   }
 
-.mobile-only .btn {
-  width: 100%;
-  display: block;
-  text-align: center;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.25s ease;
-}
+  .mobile-only .btn {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+  }
 
-.mobile-only .btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-}
+  .mobile-only .btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+  }
 
-.mobile-only .btn-outline:hover {
-  background-color: rgba(var(--color-primary-rgb), 0.05);
-}
+  .mobile-only .btn-outline:hover {
+    background-color: rgba(63, 17, 78, 0.05);
+  }
 
-.mobile-only .btn-primary {
-  background-color: var(--color-primary);
-  color: #ffffff;
-  border: 2px solid var(--color-primary);
-}
+  .mobile-only .btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border: 2px solid var(--color-primary);
+  }
 
-.mobile-only .btn-primary:hover {
-  opacity: 0.9;
-}
+  .mobile-only .btn-primary:hover {
+    opacity: 0.9;
+  }
 
-.nav-brand {
-  gap: 0.65rem;                      /* Change from 0.75rem */
-  max-width: calc(100% - 80px);      /* Add this */
-}
+  .nav-brand {
+    gap: 0.65rem;
+    max-width: calc(100% - 80px);
+  }
 
-.nav-title {
-  font-size: 0.8rem;           /* Change from 0.7rem */
-  line-height: 1.25;           /* Change from 1.2 */
-  white-space: normal;         /* Add this */
-}
+  .nav-title {
+    font-size: 0.8rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
 
-.nav-title br {
-  display: block;              /* Add this to show line breaks */
-}
-.nav-logo {
-  width: 44px;                 /* Change from 36px */
-  height: 44px;
-  align-self: flex-start;      /* Add this */
-  margin-top: 2px;    
-  padding: 2px;         /* Add this */
-}
+  .nav-title br {
+    display: block;
+  }
 
-.mobile-only:first-of-type {
-  margin-top: 0.5rem;          /* Change from 1rem */
-  padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
-}
-/* Spacing between buttons */
-.mobile-only + .mobile-only {
-  margin-top: 0.5rem;
-}
-  
-    
+  .nav-logo {
+    width: 44px;
+    height: 44px;
+    align-self: flex-start;
+    margin-top: 2px;    
+    padding: 2px;
+  }
 
+  .mobile-only:first-of-type {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  /* Spacing between buttons */
+  .mobile-only + .mobile-only {
+    margin-top: 0.5rem;
+  }
 }
 
 /* For very small screens - switch to two lines */
@@ -596,7 +584,6 @@ p {
   .nav-title {
     font-size: 0.7rem;
     line-height: 1.2;
-    /* Allow wrapping on very small screens */
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
@@ -608,7 +595,7 @@ p {
   .nav-logo {
     width: 36px;
     height: 36px;
-      padding: 2px;
+    padding: 2px;
   }
   
   .btn-signup-mobile {
@@ -667,18 +654,16 @@ p {
   align-items: center;
   gap: 0.875rem;
 }
+
 .footer-logo {
   width: 64px;
   height: 64px;
   object-fit: contain;
   padding: 4px;
-
-  /* Match navbar badge style */
   border: 2px solid rgba(255, 255, 255, 0.85);
   border-radius: 50%;
   padding: 6px;
   background-color: #ffffff;
-
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -687,7 +672,6 @@ p {
   transform: scale(1.05);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
-
 
 .footer-brand h3 {
   font-size: 1.125rem;
@@ -845,7 +829,8 @@ p {
   .footer-bottom {
     font-size: 0.875rem;
   }
-   .footer-logo {
+
+  .footer-logo {
     width: 72px;
     height: 72px;
     padding: 4px;
@@ -866,16 +851,16 @@ p {
   .footer-nav {
     gap: 3rem;
   }
- .footer-logo {
+
+  .footer-logo {
     width: 48px;
     height: 48px;
     padding: 3px;
   }
+
   .brand-header {
     gap: 1rem;
   }
-
- 
 }
 
 /* ==========================================
@@ -901,11 +886,13 @@ p {
   .footer-brand h3 {
     font-size: 1rem;
   }
- .footer-logo {
+
+  .footer-logo {
     width: 64px;
     height: 64px;
     padding: 7px;
   }
+
   .footer-brand p {
     font-size: 0.75rem;
   }
