@@ -889,6 +889,271 @@ function initUpcomingCompactFilters() {
 }
 
 // ==========================================
+// COURSERA-STYLE DROPDOWN FILTER SYSTEM
+// ==========================================
+
+function initCoureraStyleFilters(tabId) {
+  const prefix = tabId === "past-content" ? "past" : "upcoming"
+
+  // Selectors
+  const filterTriggerBtn = document.getElementById(`${prefix}-filter-trigger`)
+  const filterCount = document.getElementById(`${prefix}-filter-count`)
+  const activeSummary = document.getElementById(`${prefix}-active-summary`)
+  const clearBtn = document.getElementById(`${prefix}-clear-btn`)
+
+  const typeBtn = document.getElementById(`${prefix}-type-btn`)
+  const typeMenu = document.getElementById(`${prefix}-type-menu`)
+  const durationBtn = document.getElementById(`${prefix}-duration-btn`)
+  const durationMenu = document.getElementById(`${prefix}-duration-menu`)
+
+  const activeFilters = {
+    type: "all",
+    duration: prefix === "past" ? "6months" : "1month",
+    serviceTypes: [],
+  }
+
+  // Service type filter (only for past events)
+  let serviceTypeBtn, serviceTypeMenu
+  if (prefix === "past") {
+    serviceTypeBtn = document.getElementById(`${prefix}-service-type-btn`)
+    serviceTypeMenu = document.getElementById(`${prefix}-service-type-menu`)
+    activeFilters.serviceTypes = ["sunday", "friday"]
+  }
+
+  console.log(`[v0] Initializing Coursera-style filters for ${prefix}`)
+
+  // Toggle dropdown visibility
+  function toggleDropdown(btn, menu) {
+    const isExpanded = btn.getAttribute("aria-expanded") === "true"
+
+    // Close all other dropdowns
+    closeAllDropdowns()
+
+    if (!isExpanded) {
+      btn.setAttribute("aria-expanded", "true")
+      menu.setAttribute("aria-hidden", "false")
+    }
+  }
+
+  function closeAllDropdowns() {
+    document.querySelectorAll(".filter-dropdown-btn").forEach((btn) => {
+      btn.setAttribute("aria-expanded", "false")
+    })
+    document.querySelectorAll(".filter-dropdown-menu").forEach((menu) => {
+      menu.setAttribute("aria-hidden", "true")
+    })
+  }
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".filter-dropdown-wrapper")) {
+      closeAllDropdowns()
+    }
+  })
+
+  // Type filter
+  if (typeBtn && typeMenu) {
+    typeBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      toggleDropdown(typeBtn, typeMenu)
+    })
+
+    typeMenu.querySelectorAll('input[type="radio"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        activeFilters.type = radio.value
+        updateResults()
+        updateSummary()
+        closeAllDropdowns()
+      })
+    })
+  }
+
+  // Duration filter
+  if (durationBtn && durationMenu) {
+    durationBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      toggleDropdown(durationBtn, durationMenu)
+    })
+
+    durationMenu.querySelectorAll('input[type="radio"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        activeFilters.duration = radio.value
+        updateResults()
+        updateSummary()
+        closeAllDropdowns()
+      })
+    })
+  }
+
+  // Service type filter (checkbox - multiple selection)
+  if (serviceTypeBtn && serviceTypeMenu) {
+    serviceTypeBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      toggleDropdown(serviceTypeBtn, serviceTypeMenu)
+    })
+
+    serviceTypeMenu.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+      checkbox.addEventListener("change", () => {
+        activeFilters.serviceTypes = Array.from(serviceTypeMenu.querySelectorAll('input[type="checkbox"]:checked')).map(
+          (cb) => cb.value,
+        )
+        updateResults()
+        updateSummary()
+      })
+    })
+  }
+
+  // Clear all filters
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      // Reset to defaults
+      activeFilters.type = "all"
+      activeFilters.duration = prefix === "past" ? "6months" : "1month"
+      if (prefix === "past") {
+        activeFilters.serviceTypes = ["sunday", "friday"]
+      }
+
+      // Reset UI
+      typeMenu.querySelector('input[value="all"]').checked = true
+      durationMenu.querySelector(`input[value="${activeFilters.duration}"]`).checked = true
+
+      if (serviceTypeMenu) {
+        serviceTypeMenu.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+          cb.checked = activeFilters.serviceTypes.includes(cb.value)
+        })
+      }
+
+      updateResults()
+      updateSummary()
+      closeAllDropdowns()
+    })
+  }
+
+  // Update summary text
+  function updateSummary() {
+    const durationMap = {
+      "3months": "Last 3 months",
+      "6months": "Last 6 months",
+      "1year": "Last year",
+      "1week": "Next 1 week",
+      "1month": "Next 1 month",
+      "2months": "Next 2 months",
+      semester: "This semester",
+    }
+
+    const summaryText = durationMap[activeFilters.duration] || ""
+
+    if (activeSummary) {
+      activeSummary.textContent = summaryText
+    }
+
+    // Count active filters (non-default selections)
+    let count = 0
+    if (activeFilters.type !== "all") count++
+    if (prefix === "past" && activeFilters.serviceTypes.length !== 2) count++
+    if (prefix === "upcoming" && activeFilters.duration !== "1month") count++
+    if (prefix === "past" && activeFilters.duration !== "6months") count++
+
+    if (filterCount) {
+      filterCount.textContent = `(${count})`
+    }
+  }
+
+  // Update visible results
+  function updateResults() {
+    const resultsContainer = document.getElementById(prefix === "past" ? "past-results" : "upcoming-results")
+    if (!resultsContainer) return
+
+    const cards = resultsContainer.querySelectorAll(".past-event-card")
+    const now = new Date()
+
+    // Calculate date range
+    let minDate, maxDate
+
+    if (prefix === "past") {
+      maxDate = now
+      minDate = new Date()
+
+      switch (activeFilters.duration) {
+        case "3months":
+          minDate.setMonth(minDate.getMonth() - 3)
+          break
+        case "6months":
+          minDate.setMonth(minDate.getMonth() - 6)
+          break
+        case "1year":
+          minDate.setFullYear(minDate.getFullYear() - 1)
+          break
+      }
+    } else {
+      minDate = now
+      maxDate = new Date()
+
+      switch (activeFilters.duration) {
+        case "1week":
+          maxDate.setDate(maxDate.getDate() + 7)
+          break
+        case "1month":
+          maxDate.setMonth(maxDate.getMonth() + 1)
+          break
+        case "2months":
+          maxDate.setMonth(maxDate.getMonth() + 2)
+          break
+        case "semester":
+          maxDate.setMonth(maxDate.getMonth() + 4)
+          break
+      }
+    }
+
+    console.log(`[v0] Filtering ${prefix}:`, activeFilters)
+
+    cards.forEach((card) => {
+      const cardType = card.getAttribute("data-type")
+      const cardDateStr = card.getAttribute("data-date")
+      const cardDate = cardDateStr ? new Date(cardDateStr) : new Date()
+      const serviceType = card.getAttribute("data-service-type")
+
+      let isVisible = true
+
+      // Filter by type
+      if (activeFilters.type === "services" && cardType !== "service") {
+        isVisible = false
+      }
+      if (activeFilters.type === "events" && cardType !== "event") {
+        isVisible = false
+      }
+
+      // Filter by date range
+      if (prefix === "past") {
+        if (cardDate < minDate || cardDate > maxDate) {
+          isVisible = false
+        }
+      } else {
+        if (cardDate < minDate || cardDate > maxDate) {
+          isVisible = false
+        }
+      }
+
+      // Filter by service type (past only)
+      if (prefix === "past" && cardType === "service" && serviceType) {
+        if (activeFilters.serviceTypes.length > 0 && !activeFilters.serviceTypes.includes(serviceType)) {
+          isVisible = false
+        }
+      }
+
+      card.style.display = isVisible ? "flex" : "none"
+    })
+
+    const visibleCount = Array.from(cards).filter((card) => card.style.display !== "none").length
+    console.log(`[v0] ${prefix} visible cards:`, visibleCount)
+  }
+
+  // Initialize
+  updateSummary()
+  updateResults()
+}
+
+// ==========================================
 // INITIALIZE ON DOM READY
 // ==========================================
 
@@ -906,6 +1171,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initPastCompactFilters()
   initUpcomingCompactFilters()
+
+  // Initialize Coursera-style filters for Past and Upcoming tabs
+  initCoureraStyleFilters("past-content")
+  initCoureraStyleFilters("upcoming-content")
 })
 
 // ==========================================

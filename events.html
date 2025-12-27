@@ -9,47 +9,39 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-<!-- Navigation -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <div class="nav-brand">
-      <img src="logo.png" alt="CU Logo" class="nav-logo">
-      <span class="nav-title">University Of Embu<br>Christian Union</span>
-   
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="logo.png" alt="University of Embu" class="nav-logo">
+        <span class="nav-title">University Of Embu<br>Christian Union</span>
+      </div>
+      <div class="nav-right">
+        <button class="btn btn-outline-purple btn-signup-mobile">Sign up</button>
+        <div class="desktop-only">
+          <button class="btn btn-outline-purple">Sign up</button>
+          <button class="btn btn-primary">Sign in</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#ministries" class="nav-link">Ministries</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="events.html" class="nav-link active">Events</a>
+        <div class="mobile-only">
+          <a href="#signin" class="btn btn-outline">Sign In</a>
+        </div>
+        <div class="mobile-only">
+          <a href="#signup" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
     </div>
-    <div class="nav-right">
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-    
-    <div class="nav-menu" id="navMenu">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="ministries.html" class="nav-link">Ministries</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="events.html" class="nav-link">Events</a>
-      
-      
-        <!-- Mobile-only actions -->
-        <!-- Inside the nav-menu div, after the Events link -->
-<div class="mobile-only">
-<a href="#signin" class="btn btn-outline">Sign In</a>
-</div>
-<div class="mobile-only">
-<a href="#signup" class="btn btn-primary">Sign Up</a>
-</div>
-    </div>
-       <!-- Desktop Actions -->
-    <div class="nav-actions desktop-only">
-      <a href="#signin" class="btn btn-outline">Sign In</a>
-      <a href="#signup" class="btn btn-primary">Sign up</a>
-    </div>
-
-  </div>
-</nav>
-
+  </nav>
 
   <!-- Hero Section (LOCKED - DO NOT CHANGE) -->
   <section class="events-hero">
@@ -614,177 +606,360 @@
 
       <!-- PAST TAB -->
       <div class="tab-content" id="past-content">
-        <div class="container">
-          <!-- Compact horizontal filter layout -->
-          <div class="compact-filter-container">
-            <!-- Primary filter row: Content type + More filters button -->
-            <div class="primary-filter-row">
-              <div class="filter-group-inline">
-                <label class="filter-label-inline">Type:</label>
-                <div class="chips-container-inline">
-                  <button class="chip-inline active" data-type="all" data-section="past">All</button>
-                  <button class="chip-inline" data-type="services" data-section="past">Services</button>
-                  <button class="chip-inline" data-type="events" data-section="past">Events</button>
-                </div>
-              </div>
-              
-              <button class="btn-more-filters" id="past-more-filters-btn">
-                <span>More filters</span>
-                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
+        <div class="section-header">
+          <h2>Past Events</h2>
+          <p class="section-subtitle">Review and evaluate recent services and special events</p>
+        </div>
+
+        <!-- New Coursera-style dropdown filter system -->
+        <div class="filters-container">
+          <!-- Filter Summary Bar -->
+          <div class="filter-summary-bar">
+            <span class="filter-summary-text">
+              <strong>All results</strong>
+            </span>
+            <span class="filter-summary-divider">•</span>
+            <span class="filter-summary-text" id="past-active-summary">Last 6 months</span>
+          </div>
+
+          <!-- Filter Buttons Row -->
+          <div class="filter-buttons-row">
+            <!-- Filter & Sort Trigger Button -->
+            <button class="filter-trigger-btn" id="past-filter-trigger" aria-expanded="false">
+              <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="6" x2="20" y2="6"/>
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <line x1="4" y1="18" x2="20" y2="18"/>
+                <circle cx="8" cy="6" r="2" fill="currentColor"/>
+                <circle cx="16" cy="12" r="2" fill="currentColor"/>
+                <circle cx="12" cy="18" r="2" fill="currentColor"/>
+              </svg>
+              <span>Filter & Sort</span>
+              <span class="filter-count" id="past-filter-count">(0)</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+
+            <!-- Individual Filter Dropdowns -->
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="past-type-btn" aria-expanded="false">
+                <span>Type</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
                 </svg>
               </button>
-            </div>
-
-            <!-- Advanced filters (hidden by default) -->
-            <div class="advanced-filters-panel" id="past-advanced-filters">
-              <div class="filter-row-advanced">
-                <label class="filter-label-advanced">Time Period:</label>
-                <div class="chips-container-advanced">
-                  <button class="chip-advanced" data-period="3months" data-section="past">Last 3 months</button>
-                  <button class="chip-advanced active" data-period="6months" data-section="past">Last 6 months</button>
-                  <button class="chip-advanced" data-period="1year" data-section="past">Last year</button>
-                  <button class="chip-advanced" data-period="all" data-section="past">All time</button>
-                </div>
+              <div class="filter-dropdown-menu" id="past-type-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="radio" name="past-type" value="all" checked>
+                  <span>All</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-type" value="services">
+                  <span>Services</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-type" value="events">
+                  <span>Events</span>
+                </label>
               </div>
             </div>
 
-            <!-- Active filters summary -->
-            <div class="active-filters-summary" id="past-filters-summary" style="display: none;">
-              <span class="summary-label">Showing:</span>
-              <span class="summary-value" id="past-summary-text">All • Last 6 months</span>
-              <button class="btn-clear-filters" id="past-clear-filters">Clear filters</button>
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="past-duration-btn" aria-expanded="false">
+                <span>Duration</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="filter-dropdown-menu" id="past-duration-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="radio" name="past-duration" value="3months">
+                  <span>Last 3 months</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-duration" value="6months" checked>
+                  <span>Last 6 months</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-duration" value="1year">
+                  <span>Last year</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="past-service-type-btn" aria-expanded="false">
+                <span>Service Type</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="filter-dropdown-menu" id="past-service-type-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="checkbox" name="past-service" value="sunday" checked>
+                  <span>Sunday Service</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="past-service" value="friday" checked>
+                  <span>Friday Service</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="past-service" value="midweek">
+                  <span>Midweek Service</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Clear All Button -->
+            <button class="clear-filters-btn" id="past-clear-btn">
+              Clear all
+            </button>
+          </div>
+        </div>
+
+        <!-- Evaluation notice -->
+        <div class="evaluation-notice">
+          Only services/events within the last 3 months are eligible for evaluation.
+        </div>
+
+        <!-- Grouped content by type: SERVICES section -->
+        <div class="content-group" data-group-type="services">
+          <h3 class="content-group-heading">SERVICES</h3>
+          <div class="past-events-grid">
+            <!-- Service Card 1: Recent Sunday Service (Eligible, Single Day) -->
+            <div class="past-event-card" data-date="2025-11-20" data-type="service">
+              <div class="card-badges">
+                <span class="badge badge-duration">Single Day</span>
+              </div>
+              <h3 class="event-title">The Power of Purpose</h3>
+              <div class="event-meta">
+                <span class="meta-item"><i class="far fa-calendar"></i> Nov 23, 2025</span>
+                <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
+              </div>
+              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+              
+              <div class="card-actions">
+                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+              </div>
+              
+              <div class="card-footer">
+                <button class="btn-evaluate">Evaluate Service</button>
+              </div>
+            </div>
+
+            <!-- Service Card 2: Friday Service (Eligible) -->
+            <div class="past-event-card" data-date="2025-10-17" data-type="service">
+              <div class="card-badges">
+                <span class="badge badge-duration">Single Day</span>
+              </div>
+              <h3 class="event-title">Encounter with Christ</h3>
+              <div class="event-meta">
+                <span class="meta-item"><i class="far fa-calendar"></i> Oct 17, 2025</span>
+                <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
+              </div>
+              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+              
+              <div class="card-actions">
+                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+              </div>
+              
+              <div class="card-footer">
+                <button class="btn-evaluate">Evaluate Service</button>
+              </div>
+            </div>
+
+            <!-- Service Card 3: Sunday Service (NOT Eligible - Older) -->
+            <div class="past-event-card" data-date="2025-08-10" data-type="service">
+              <div class="card-badges">
+                <span class="badge badge-duration">Single Day</span>
+              </div>
+              <h3 class="event-title">Living in Purpose</h3>
+              <div class="event-meta">
+                <span class="meta-item"><i class="far fa-calendar"></i> Aug 10, 2025</span>
+                <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
+              </div>
+              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+              
+              <div class="card-actions">
+                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+              </div>
+              
+              <div class="card-footer">
+                <div class="status-message">
+                  <strong>Evaluation Closed</strong>
+                  <p>Available for events within the last 3 months</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Evaluation notice -->
-          <div class="evaluation-notice">
-            Only services/events within the last 3 months are eligible for evaluation.
-          </div>
-
-          <!-- Grouped content by type: SERVICES section -->
-          <div class="content-group" data-group-type="services">
-            <h3 class="content-group-heading">SERVICES</h3>
-            <div class="past-events-grid">
-              <!-- Service Card 1: Recent Sunday Service (Eligible, Single Day) -->
-              <div class="past-event-card" data-date="2025-11-20" data-type="service">
-                <div class="card-badges">
-                  <span class="badge badge-duration">Single Day</span>
-                </div>
-                <h3 class="event-title">The Power of Purpose</h3>
-                <div class="event-meta">
-                  <span class="meta-item"><i class="far fa-calendar"></i> Nov 23, 2025</span>
-                  <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
-                </div>
-                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-                
-                <div class="card-actions">
-                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-                </div>
-                
-                <div class="card-footer">
-                  <button class="btn-evaluate">Evaluate Service</button>
-                </div>
+        <!-- Grouped content by type: EVENTS section -->
+        <div class="content-group" data-group-type="events">
+          <h3 class="content-group-heading">EVENTS</h3>
+          <div class="past-events-grid">
+            <!-- Event Card 1: Special Event (Eligible) -->
+            <div class="past-event-card" data-date="2025-11-02" data-type="event">
+              <div class="card-badges">
+                <span class="badge badge-duration badge-multiday">Multi-Day</span>
               </div>
-
-              <!-- Service Card 2: Friday Service (Eligible) -->
-              <div class="past-event-card" data-date="2025-10-17" data-type="service">
-                <div class="card-badges">
-                  <span class="badge badge-duration">Single Day</span>
-                </div>
-                <h3 class="event-title">Encounter with Christ</h3>
-                <div class="event-meta">
-                  <span class="meta-item"><i class="far fa-calendar"></i> Oct 17, 2025</span>
-                  <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
-                </div>
-                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-                
-                <div class="card-actions">
-                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-                </div>
-                
-                <div class="card-footer">
-                  <button class="btn-evaluate">Evaluate Service</button>
-                </div>
+              <h3 class="event-title">Spiritual Awakening Conference</h3>
+              <div class="event-meta">
+                <span class="meta-item"><i class="far fa-calendar"></i> Nov 2-4, 2025</span>
+                <span class="meta-item"><i class="fas fa-users"></i> Special Event</span>
               </div>
+              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+              
+              <div class="card-actions">
+                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+              </div>
+              
+              <div class="card-footer">
+                <button class="btn-evaluate">Evaluate Event</button>
+              </div>
+            </div>
 
-              <!-- Service Card 3: Sunday Service (NOT Eligible - Older) -->
-              <div class="past-event-card" data-date="2025-08-10" data-type="service">
-                <div class="card-badges">
-                  <span class="badge badge-duration">Single Day</span>
-                </div>
-                <h3 class="event-title">Living in Purpose</h3>
-                <div class="event-meta">
-                  <span class="meta-item"><i class="far fa-calendar"></i> Aug 10, 2025</span>
-                  <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
-                </div>
-                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-                
-                <div class="card-actions">
-                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-                </div>
-                
-                <div class="card-footer">
-                  <div class="status-message">
-                    <strong>Evaluation Closed</strong>
-                    <p>Available for events within the last 3 months</p>
-                  </div>
-                </div>
+            <!-- Event Card 2: Youth Retreat (Eligible) -->
+            <div class="past-event-card" data-date="2025-10-25" data-type="event">
+              <div class="card-badges">
+                <span class="badge badge-duration badge-multiday">Multi-Day</span>
+              </div>
+              <h3 class="event-title">Youth Spiritual Retreat</h3>
+              <div class="event-meta">
+                <span class="meta-item"><i class="far fa-calendar"></i> Oct 25-27, 2025</span>
+                <span class="meta-item"><i class="fas fa-mountain"></i> Retreat</span>
+              </div>
+              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+              
+              <div class="card-actions">
+                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+              </div>
+              
+              <div class="card-footer">
+                <button class="btn-evaluate">Evaluate Event</button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <!-- Grouped content by type: EVENTS section -->
-          <div class="content-group" data-group-type="events">
-            <h3 class="content-group-heading">EVENTS</h3>
-            <div class="past-events-grid">
-              <!-- Event Card 1: Special Event (Eligible) -->
-              <div class="past-event-card" data-date="2025-11-02" data-type="event">
-                <div class="card-badges">
-                  <span class="badge badge-duration badge-multiday">Multi-Day</span>
-                </div>
-                <h3 class="event-title">Spiritual Awakening Conference</h3>
-                <div class="event-meta">
-                  <span class="meta-item"><i class="far fa-calendar"></i> Nov 2-4, 2025</span>
-                  <span class="meta-item"><i class="fas fa-users"></i> Special Event</span>
-                </div>
-                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-                
-                <div class="card-actions">
-                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-                </div>
-                
-                <div class="card-footer">
-                  <button class="btn-evaluate">Evaluate Event</button>
-                </div>
-              </div>
+      <!-- PAST TAB -->
+      <div class="tab-content" id="past-content">
+        <div class="section-header">
+          <h2>Past Events</h2>
+          <p class="section-subtitle">Review and evaluate recent services and special events</p>
+        </div>
 
-              <!-- Event Card 2: Youth Retreat (Eligible) -->
-              <div class="past-event-card" data-date="2025-10-25" data-type="event">
-                <div class="card-badges">
-                  <span class="badge badge-duration badge-multiday">Multi-Day</span>
-                </div>
-                <h3 class="event-title">Youth Spiritual Retreat</h3>
-                <div class="event-meta">
-                  <span class="meta-item"><i class="far fa-calendar"></i> Oct 25-27, 2025</span>
-                  <span class="meta-item"><i class="fas fa-mountain"></i> Retreat</span>
-                </div>
-                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-                
-                <div class="card-actions">
-                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-                </div>
-                
-                <div class="card-footer">
-                  <button class="btn-evaluate">Evaluate Event</button>
-                </div>
+        <!-- New Coursera-style dropdown filter system -->
+        <div class="filters-container">
+          <!-- Filter Summary Bar -->
+          <div class="filter-summary-bar">
+            <span class="filter-summary-text">
+              <strong>All results</strong>
+            </span>
+            <span class="filter-summary-divider">•</span>
+            <span class="filter-summary-text" id="past-active-summary">Last 6 months</span>
+          </div>
+
+          <!-- Filter Buttons Row -->
+          <div class="filter-buttons-row">
+            <!-- Filter & Sort Trigger Button -->
+            <button class="filter-trigger-btn" id="past-filter-trigger" aria-expanded="false">
+              <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="6" x2="20" y2="6"/>
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <line x1="4" y1="18" x2="20" y2="18"/>
+                <circle cx="8" cy="6" r="2" fill="currentColor"/>
+                <circle cx="16" cy="12" r="2" fill="currentColor"/>
+                <circle cx="12" cy="18" r="2" fill="currentColor"/>
+              </svg>
+              <span>Filter & Sort</span>
+              <span class="filter-count" id="past-filter-count">(0)</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+
+            <!-- Individual Filter Dropdowns -->
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="past-type-btn" aria-expanded="false">
+                <span>Type</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="filter-dropdown-menu" id="past-type-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="radio" name="past-type" value="all" checked>
+                  <span>All</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-type" value="services">
+                  <span>Services</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-type" value="events">
+                  <span>Events</span>
+                </label>
               </div>
             </div>
+
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="past-duration-btn" aria-expanded="false">
+                <span>Duration</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="filter-dropdown-menu" id="past-duration-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="radio" name="past-duration" value="3months">
+                  <span>Last 3 months</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-duration" value="6months" checked>
+                  <span>Last 6 months</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="past-duration" value="1year">
+                  <span>Last year</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="past-service-type-btn" aria-expanded="false">
+                <span>Service Type</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="filter-dropdown-menu" id="past-service-type-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="checkbox" name="past-service" value="sunday" checked>
+                  <span>Sunday Service</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="past-service" value="friday" checked>
+                  <span>Friday Service</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="past-service" value="midweek">
+                  <span>Midweek Service</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Clear All Button -->
+            <button class="clear-filters-btn" id="past-clear-btn">
+              Clear all
+            </button>
           </div>
         </div>
 
@@ -825,48 +1000,98 @@
 
       <!-- UPCOMING TAB -->
       <div class="tab-content" id="upcoming-content">
-        <div class="container">
-          <!-- Compact horizontal filter layout for upcoming -->
-          <div class="compact-filter-container">
-            <!-- Primary filter row: Content type + More filters button -->
-            <div class="primary-filter-row">
-              <div class="filter-group-inline">
-                <label class="filter-label-inline">Type:</label>
-                <div class="chips-container-inline">
-                  <button class="chip-inline active" data-type="all" data-section="upcoming">All</button>
-                  <button class="chip-inline" data-type="services" data-section="upcoming">Services</button>
-                  <button class="chip-inline" data-type="events" data-section="upcoming">Events</button>
-                </div>
-              </div>
-              
-              <button class="btn-more-filters" id="upcoming-more-filters-btn">
-                <span>More filters</span>
-                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
+        <div class="section-header">
+          <h2>Upcoming Events</h2>
+          <p class="section-subtitle">Plan ahead and register for our future gatherings</p>
+        </div>
+
+        <!-- New Coursera-style dropdown filter system for upcoming -->
+        <div class="filters-container">
+          <!-- Filter Summary Bar -->
+          <div class="filter-summary-bar">
+            <span class="filter-summary-text">
+              <strong>All results</strong>
+            </span>
+            <span class="filter-summary-divider">•</span>
+            <span class="filter-summary-text" id="upcoming-active-summary">Next 1 month</span>
+          </div>
+
+          <!-- Filter Buttons Row -->
+          <div class="filter-buttons-row">
+            <!-- Filter & Sort Trigger Button -->
+            <button class="filter-trigger-btn" id="upcoming-filter-trigger" aria-expanded="false">
+              <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="6" x2="20" y2="6"/>
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <line x1="4" y1="18" x2="20" y2="18"/>
+                <circle cx="8" cy="6" r="2" fill="currentColor"/>
+                <circle cx="16" cy="12" r="2" fill="currentColor"/>
+                <circle cx="12" cy="18" r="2" fill="currentColor"/>
+              </svg>
+              <span>Filter & Sort</span>
+              <span class="filter-count" id="upcoming-filter-count">(0)</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+
+            <!-- Individual Filter Dropdowns -->
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="upcoming-type-btn" aria-expanded="false">
+                <span>Type</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
                 </svg>
               </button>
-            </div>
-
-            <!-- Advanced filters (hidden by default) -->
-            <div class="advanced-filters-panel" id="upcoming-advanced-filters">
-              <div class="filter-row-advanced">
-                <label class="filter-label-advanced">Time Period:</label>
-                <div class="chips-container-advanced">
-                  <button class="chip-advanced active" data-period="1week" data-section="upcoming">Next week</button>
-                  <button class="chip-advanced" data-period="2weeks" data-section="upcoming">Next 2 weeks</button>
-                  <button class="chip-advanced" data-period="1month" data-section="upcoming">Next month</button>
-                  <button class="chip-advanced" data-period="all" data-section="upcoming">All upcoming</button>
-                </div>
+              <div class="filter-dropdown-menu" id="upcoming-type-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-type" value="all" checked>
+                  <span>All</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-type" value="services">
+                  <span>Services</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-type" value="events">
+                  <span>Events</span>
+                </label>
               </div>
             </div>
 
-            <!-- Active filters summary -->
-            <div class="active-filters-summary" id="upcoming-filters-summary" style="display: none;">
-              <span class="summary-label">Showing:</span>
-              <span class="summary-value" id="upcoming-summary-text">All • Next week</span>
-              <button class="btn-clear-filters" id="upcoming-clear-filters">Clear filters</button>
+            <div class="filter-dropdown-wrapper">
+              <button class="filter-dropdown-btn" id="upcoming-duration-btn" aria-expanded="false">
+                <span>Duration</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="filter-dropdown-menu" id="upcoming-duration-menu" aria-hidden="true">
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-duration" value="1week">
+                  <span>Next 1 week</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-duration" value="1month" checked>
+                  <span>Next 1 month</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-duration" value="2months">
+                  <span>Next 2 months</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="upcoming-duration" value="semester">
+                  <span>This semester</span>
+                </label>
+              </div>
             </div>
+
+            <!-- Clear All Button -->
+            <button class="clear-filters-btn" id="upcoming-clear-btn">
+              Clear all
+            </button>
           </div>
+        </div>
 
           <!-- Current Semester Badge -->
           <div class="current-semester-badge">
