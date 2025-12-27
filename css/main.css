@@ -321,6 +321,7 @@ p {
   z-index: 1000;
   background-color: #ffffff;
   box-shadow: var(--shadow-sm);
+  
 }
 
 .nav-container {

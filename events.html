@@ -9,39 +9,47 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-brand">
-        <img src="logo.png" alt="University of Embu" class="nav-logo">
-        <span class="nav-title">University Of Embu<br>Christian Union</span>
-      </div>
-      <div class="nav-right">
-        <button class="btn btn-outline-purple btn-signup-mobile">Sign up</button>
-        <div class="desktop-only">
-          <button class="btn btn-outline-purple">Sign up</button>
-          <button class="btn btn-primary">Sign in</button>
-        </div>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-      <div class="nav-menu" id="navMenu">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="#ministries" class="nav-link">Ministries</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="events.html" class="nav-link active">Events</a>
-        <div class="mobile-only">
-          <a href="#signin" class="btn btn-outline">Sign In</a>
-        </div>
-        <div class="mobile-only">
-          <a href="#signup" class="btn btn-primary">Sign Up</a>
-        </div>
-      </div>
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <img src="logo.png" alt="CU Logo" class="nav-logo">
+      <span class="nav-title">University Of Embu<br>Christian Union</span>
+   
     </div>
-  </nav>
+    <div class="nav-right">
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+    
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="ministries.html" class="nav-link">Ministries</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="events.html" class="nav-link">Events</a>
+      
+      
+        <!-- Mobile-only actions -->
+        <!-- Inside the nav-menu div, after the Events link -->
+<div class="mobile-only">
+<a href="#signin" class="btn btn-outline">Sign In</a>
+</div>
+<div class="mobile-only">
+<a href="#signup" class="btn btn-primary">Sign Up</a>
+</div>
+    </div>
+       <!-- Desktop Actions -->
+    <div class="nav-actions desktop-only">
+      <a href="#signin" class="btn btn-outline">Sign In</a>
+      <a href="#signup" class="btn btn-primary">Sign up</a>
+    </div>
+
+  </div>
+</nav>
+
 
   <!-- Hero Section (LOCKED - DO NOT CHANGE) -->
   <section class="events-hero">

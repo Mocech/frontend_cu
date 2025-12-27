@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: var(--spacing-lg);
 }
 
 .about-hero-bg {
@@ -1217,7 +1218,7 @@
 
 /* Yellow reduced to icon accent only */
 .member-benefits li i {
-  color: #ffc401;
+  color: #3f114e;
   font-size: 1rem;
   flex-shrink: 0;
 }
