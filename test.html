@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunday Service - University of Embu Christian Union</title>
+  <meta name="description" content="Join us for our weekly Sunday Service - worship, fellowship, and growing together in faith">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="test.css">
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="logo.png" alt="CU Logo" class="nav-logo">
+        <span class="nav-title">University Of Embu<br>Christian Union</span>
+      </div>
+      <div class="nav-right">
+        <button class="btn btn-primary btn-signup-mobile" aria-label="Sign Up">Sign Up</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#ministries" class="nav-link">Ministries</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="events.html" class="nav-link">Events</a>
+        
+        <!-- Mobile-only actions -->
+        <div class="mobile-only">
+          <a href="#signin" class="btn btn-outline">Sign In</a>
+        </div>
+        <div class="mobile-only">
+          <a href="#signup" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+      
+      <!-- Desktop Actions -->
+      <div class="nav-actions desktop-only">
+        <a href="#signin" class="btn btn-outline">Sign In</a>
+        <a href="#signup" class="btn btn-primary">Sign up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="event-hero">
+    <!-- Updated hero with background image and semi-transparent purple overlay -->
+    <div class="event-hero-overlay"></div>
+    <div class="container">
+      <div class="event-hero-content">
+        <div class="event-hero-header">
+          <!-- Badge now uses yellow gradient with drop shadow -->
+          <span class="event-type-badge">Service</span>
+          <h1 class="event-title">Sunday Service</h1>
+        </div>
+        
+        <div class="event-hero-details">
+          <div class="event-detail-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Every Sunday</span>
+          </div>
+          <div class="event-detail-item">
+            <i class="fas fa-clock"></i>
+            <span>9:00 AM – 12:00 PM</span>
+          </div>
+          <div class="event-detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Main Campus Hall + Online</span>
+          </div>
+        </div>
+        
+        <div class="event-hero-actions">
+          <!-- Changed primary button to "Add to Calendar" with calendar-check icon -->
+          <a href="#calendar" class="btn btn-yellow-large">
+            <i class="fas fa-calendar-check"></i>
+            Add to Calendar
+          </a>
+          <!-- Secondary button now dynamic - shows countdown or Watch Live based on event status -->
+          <div id="secondaryCTA" class="secondary-cta">
+            <!-- Dynamic content: either countdown or Watch Live button -->
+            <div id="countdownTimer" class="countdown-display">
+              <span class="countdown-text">Starts in <span id="countdownValue">calculating...</span></span>
+            </div>
+            <a href="#livestream" id="watchLiveBtn" class="btn btn-outline-white" style="display: none;">
+              <i class="fas fa-play-circle"></i>
+              Watch Live
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Snapshot Section -->
+  <section class="event-snapshot">
+    <div class="container">
+      <div class="snapshot-grid">
+        <!-- Topic/Theme Card -->
+        <div class="snapshot-card">
+          <div class="snapshot-card-header">
+            <i class="fas fa-book-open"></i>
+            <h3>This Week's Topic</h3>
+          </div>
+          <p class="snapshot-value">Walking in Faith: Trusting God's Plan</p>
+          <p class="snapshot-description">Join us as we explore what it means to trust God completely in every area of our lives.</p>
+        </div>
+        
+        <!-- Speaker Card -->
+        <div class="snapshot-card">
+          <div class="snapshot-card-header">
+            <i class="fas fa-user"></i>
+            <h3>Speaker</h3>
+          </div>
+          <p class="snapshot-value">Pastor David Mwangi</p>
+          <p class="snapshot-description">Senior Pastor & CU Patron</p>
+        </div>
+        
+        <!-- Audience Card -->
+        <div class="snapshot-card">
+          <div class="snapshot-card-header">
+            <i class="fas fa-users"></i>
+            <h3>Who Should Attend</h3>
+          </div>
+          <p class="snapshot-value">Open to All Students</p>
+          <p class="snapshot-description">Everyone is welcome to join us for worship and fellowship regardless of your background.</p>
+        </div>
+        
+        <!-- Frequency Card -->
+        <div class="snapshot-card">
+          <div class="snapshot-card-header">
+            <i class="fas fa-sync-alt"></i>
+            <h3>Frequency</h3>
+          </div>
+          <p class="snapshot-value">Weekly Event</p>
+          <p class="snapshot-description">Occurs every Sunday morning throughout the semester</p>
+        </div>
+        
+        <!-- Online Availability Card -->
+        <div class="snapshot-card highlight-card">
+          <div class="snapshot-card-header">
+            <i class="fas fa-wifi"></i>
+            <h3>Available Online</h3>
+          </div>
+          <p class="snapshot-value">YouTube Livestream</p>
+          <p class="snapshot-description">Can't make it in person? Join us online via our YouTube channel</p>
+        </div>
+        
+        <!-- What to Expect Card -->
+        <div class="snapshot-card highlight-card">
+          <div class="snapshot-card-header">
+            <i class="fas fa-heart"></i>
+            <h3>What to Expect</h3>
+          </div>
+          <p class="snapshot-value">Worship & Teaching</p>
+          <p class="snapshot-description">Experience powerful worship, biblical teaching, and meaningful fellowship</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program/Schedule Section -->
+  <section class="event-program">
+    <div class="container">
+      <div class="section-header">
+        <h2>Service Program</h2>
+        <p class="section-subtitle">Here's what to expect during our Sunday Service</p>
+      </div>
+      
+      <div class="program-timeline">
+        <div class="program-item">
+          <div class="program-time">
+            <i class="fas fa-clock"></i>
+            <span>9:00 AM</span>
+          </div>
+          <div class="program-content">
+            <h3>Praise & Worship</h3>
+            <p>Open our hearts in worship and praise as we prepare to receive God's word</p>
+          </div>
+        </div>
+        
+        <div class="program-item">
+          <div class="program-time">
+            <i class="fas fa-clock"></i>
+            <span>9:30 AM</span>
+          </div>
+          <div class="program-content">
+            <h3>Scripture Reading</h3>
+            <p>Meditation on God's Word through responsive reading and reflection</p>
+          </div>
+        </div>
+        
+        <div class="program-item highlighted">
+          <div class="program-time">
+            <i class="fas fa-clock"></i>
+            <span>9:45 AM</span>
+          </div>
+          <div class="program-content">
+            <h3>Sermon & Teaching</h3>
+            <p>Biblical teaching and practical application for our daily lives</p>
+          </div>
+        </div>
+        
+        <div class="program-item">
+          <div class="program-time">
+            <i class="fas fa-clock"></i>
+            <span>11:00 AM</span>
+          </div>
+          <div class="program-content">
+            <h3>Offering & Announcements</h3>
+            <p>Time for giving and sharing important updates</p>
+          </div>
+        </div>
+        
+        <div class="program-item">
+          <div class="program-time">
+            <i class="fas fa-clock"></i>
+            <span>11:30 AM</span>
+          </div>
+          <div class="program-content">
+            <h3>Closing Prayer & Fellowship</h3>
+            <p>End with prayer and connect with fellow believers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Livestream Section -->
+  <section class="event-livestream">
+    <div class="container">
+      <div class="livestream-card">
+        <div class="livestream-content">
+          <div class="livestream-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="livestream-info">
+            <h3>Join the Livestream</h3>
+            <p>Watch the service live on YouTube every Sunday at 9:00 AM</p>
+            <div class="livestream-status">
+              <span class="status-dot"></span>
+              <span>Next livestream: Sunday, 9:00 AM</span>
+            </div>
+          </div>
+          <a href="#media-player" class="btn btn-yellow">
+            <i class="fas fa-play"></i>
+            Watch Live
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Events Section -->
+  <section class="related-events">
+    <div class="container">
+      <div class="section-header">
+        <h2>More Events</h2>
+        <p class="section-subtitle">Explore other ways to connect and grow</p>
+      </div>
+      
+      <div class="related-events-grid">
+        <!-- Friday Service -->
+        <div class="related-event-card">
+          <div class="related-event-image">
+            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&h=250&fit=crop" alt="Friday Service">
+            <span class="related-event-badge">Service</span>
+          </div>
+          <div class="related-event-content">
+            <h3>Friday Service</h3>
+            <div class="related-event-meta">
+              <span><i class="fas fa-calendar"></i> Every Friday</span>
+              <span><i class="fas fa-clock"></i> 5:00 PM</span>
+            </div>
+            <a href="#" class="btn btn-pink-small">Learn More</a>
+          </div>
+        </div>
+        
+        <!-- BEST-P -->
+        <div class="related-event-card">
+          <div class="related-event-image">
+            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=250&fit=crop" alt="BEST-P">
+            <span class="related-event-badge weekly">Weekly Event</span>
+          </div>
+          <div class="related-event-content">
+            <h3>BEST-P Fellowship</h3>
+            <div class="related-event-meta">
+              <span><i class="fas fa-calendar"></i> Every Tuesday</span>
+              <span><i class="fas fa-clock"></i> 6:30 PM</span>
+            </div>
+            <a href="#" class="btn btn-pink-small">Learn More</a>
+          </div>
+        </div>
+        
+        <!-- Special Event -->
+        <div class="related-event-card">
+          <div class="related-event-image">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=250&fit=crop" alt="Easter Celebration">
+            <span class="related-event-badge special">Special Event</span>
+          </div>
+          <div class="related-event-content">
+            <h3>Easter Celebration</h3>
+            <div class="related-event-meta">
+              <span><i class="fas fa-calendar"></i> 20 April 2025</span>
+              <span><i class="fas fa-clock"></i> 9:00 AM</span>
+            </div>
+            <a href="#" class="btn btn-pink-small">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <!-- Main Footer Content -->
+      <div class="footer-main">
+        <!-- Compact Brand -->
+        <div class="footer-brand">
+          <div class="brand-header">
+            <img src="logo.png" alt="CU Logo" class="footer-logo">
+            <div>
+              <h3>UoEm CU</h3>
+              <p>Transforming lives through Christ</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Compact Navigation -->
+        <nav class="footer-nav">
+          <div class="nav-group">
+            <h4>Explore</h4>
+            <a href="#about">About</a>
+            <a href="#ministries">Ministries</a>
+            <a href="#events">Events</a>
+          </div>
+          
+          <div class="nav-group">
+            <h4>Connect</h4>
+            <a href="#join">Join Us</a>
+            <a href="#donate">Give</a>
+            <a href="mailto:info@uoemcu.ac.ke">Contact</a>
+          </div>
+        </nav>
+        
+        <!-- Social Links -->
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Minimal Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 UoEm CU</p>
+        <span class="separator">•</span>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script src="test.js"></script>
+</body>
+</html>

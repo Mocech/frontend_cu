@@ -1,0 +1,700 @@
+/* ============================================
+   SINGLE EVENT PAGE STYLES
+   ============================================ */
+
+/* Event Hero Section */
+.event-hero {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  /* Removed static gradient, will use background image with overlay */
+  background-color: var(--color-primary);
+  padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  overflow: hidden;
+}
+
+/* Background image layer */
+.event-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&h=600&fit=crop");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+/* Semi-transparent purple overlay - 0.8 opacity on desktop, 0.6 on mobile */
+.event-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(63, 17, 78, 0.8) 0%, rgba(90, 45, 107, 0.8) 100%);
+  z-index: 2;
+}
+
+.event-hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.event-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.event-hero-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Updated badge to use yellow gradient with drop shadow */
+.event-type-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-yellow) 0%, #ffeb3b 100%);
+  color: var(--color-primary);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 4px 12px rgba(255, 196, 1, 0.4);
+}
+
+.event-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-hero-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-md) 0;
+}
+
+.event-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius-full);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.event-detail-item i {
+  color: var(--color-yellow);
+  font-size: 1.125rem;
+}
+
+.event-hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.event-hero-actions .btn {
+  padding: 1rem 2rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-base);
+}
+
+.event-hero-actions .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Secondary CTA container for dynamic countdown/button */
+.secondary-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Countdown display styles */
+.countdown-display {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-full);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.countdown-text {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#countdownValue {
+  color: var(--color-yellow);
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+}
+
+/* Watch Live button when event is live */
+.btn-outline-white {
+  background: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  padding: 1rem 2rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-base);
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+.btn-outline-white:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Event Snapshot Section */
+.event-snapshot {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--color-background);
+}
+
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.snapshot-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.snapshot-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-yellow);
+}
+
+.snapshot-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.snapshot-card-header i {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.snapshot-card-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.snapshot-value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.3;
+}
+
+.snapshot-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.snapshot-card.highlight-card {
+  background: linear-gradient(135deg, rgba(255, 196, 1, 0.1) 0%, rgba(255, 235, 59, 0.05) 100%);
+  border-color: rgba(255, 196, 1, 0.3);
+}
+
+.snapshot-card.highlight-card .snapshot-card-header i {
+  color: var(--color-yellow);
+}
+
+/* Event Program Section */
+.event-program {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--color-white);
+}
+
+.program-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.program-timeline::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-yellow) 100%);
+  border-radius: 2px;
+}
+
+.program-item {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.program-item::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-white);
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.program-item.highlighted::before {
+  background-color: var(--color-yellow);
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 4px rgba(255, 196, 1, 0.2);
+}
+
+.program-time {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding-left: 60px;
+}
+
+.program-time i {
+  color: var(--color-yellow);
+}
+
+.program-content {
+  flex: 1;
+  background-color: var(--color-gray-light);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-base);
+}
+
+.program-item.highlighted .program-content {
+  background: linear-gradient(135deg, rgba(255, 196, 1, 0.15) 0%, rgba(255, 235, 59, 0.1) 100%);
+  border: 2px solid var(--color-yellow);
+}
+
+.program-content h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.program-content p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Livestream Section */
+.event-livestream {
+  padding: var(--spacing-xl) 0;
+  background: linear-gradient(135deg, rgba(63, 17, 78, 0.05) 0%, rgba(255, 196, 1, 0.05) 100%);
+}
+
+.livestream-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  max-width: 900px;
+  margin: 0 auto;
+  border: 2px solid var(--color-yellow);
+}
+
+.livestream-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.livestream-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #5a2d6b 100%);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 2rem;
+}
+
+.livestream-info {
+  flex: 1;
+}
+
+.livestream-info h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.livestream-info p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.livestream-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.livestream-content .btn {
+  flex-shrink: 0;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Related Events Section */
+.related-events {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--color-background);
+}
+
+.related-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.related-event-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.related-event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.related-event-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.related-event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.related-event-card:hover .related-event-image img {
+  transform: scale(1.1);
+}
+
+.related-event-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.related-event-badge.weekly {
+  background: linear-gradient(135deg, var(--color-yellow) 0%, #ffeb3b 100%);
+  color: var(--color-primary);
+}
+
+.related-event-badge.special {
+  background: linear-gradient(135deg, #5a2d6b 0%, var(--color-primary) 100%);
+}
+
+.related-event-content {
+  padding: var(--spacing-md);
+}
+
+.related-event-content h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.related-event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.related-event-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.related-event-meta i {
+  color: var(--color-yellow);
+  width: 16px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Hero Section */
+  .event-hero {
+    min-height: 400px;
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+  }
+
+  /* Reduce overlay opacity on mobile to 0.6 */
+  .event-hero-overlay {
+    background: linear-gradient(135deg, rgba(63, 17, 78, 0.6) 0%, rgba(90, 45, 107, 0.6) 100%);
+  }
+
+  .event-title {
+    font-size: 2rem;
+  }
+
+  .event-hero-details {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .event-detail-item {
+    width: 100%;
+    justify-content: center;
+    font-size: var(--font-size-base);
+  }
+
+  .event-hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .event-hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Make secondary CTA full width on mobile */
+  .secondary-cta {
+    width: 100%;
+  }
+
+  .countdown-display {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .countdown-text {
+    font-size: var(--font-size-base);
+    flex-direction: column;
+    text-align: center;
+    gap: 0.25rem;
+  }
+
+  #countdownValue {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Snapshot Section */
+  .snapshot-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  /* Program Section */
+  .program-timeline::before {
+    left: 15px;
+  }
+
+  .program-item {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .program-item::before {
+    left: 6px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .program-time {
+    width: 100%;
+    padding-left: 40px;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Livestream Section */
+  .livestream-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .livestream-content .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Related Events */
+  .related-events-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-hero {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .event-type-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+  }
+
+  .event-title {
+    font-size: 1.75rem;
+  }
+
+  /* Adjust countdown for small screens */
+  .countdown-display {
+    padding: 0.75rem 1rem;
+  }
+
+  .countdown-text {
+    font-size: var(--font-size-sm);
+  }
+
+  #countdownValue {
+    font-size: var(--font-size-base);
+  }
+
+  .snapshot-card {
+    padding: var(--spacing-md);
+  }
+
+  .program-content {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .livestream-card {
+    padding: var(--spacing-md);
+  }
+
+  .livestream-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .livestream-info h3 {
+    font-size: var(--font-size-xl);
+  }
+}

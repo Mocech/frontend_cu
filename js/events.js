@@ -363,6 +363,532 @@ function initUpcomingFilterSystem() {
 }
 
 // ==========================================
+// REDESIGNED PAST EVENTS FILTERING SYSTEM
+// Following progressive disclosure UX principles
+// ==========================================
+
+function initRedesignedPastArchiveSystem() {
+  const filterTriggerBtn = document.getElementById("filterTriggerBtn")
+  const filtersPanel = document.getElementById("filtersPanel")
+  const moreFiltersToggle = document.getElementById("moreFiltersToggle")
+  const advancedFiltersContent = document.getElementById("advancedFiltersContent")
+  const clearFiltersBtn = document.getElementById("clearFiltersBtn")
+  const activeFiltersBar = document.getElementById("activeFiltersBar")
+  const filtersSummary = document.getElementById("filtersSummary")
+
+  const filterChips = document.querySelectorAll(".filter-chip")
+  const filterSelects = document.querySelectorAll(".filter-select")
+
+  let activeFilters = {
+    contentType: "all",
+    timeRange: "6months",
+    serviceType: ["sunday", "friday"],
+    spiritualYear: "",
+    semester: "",
+    eventYear: "",
+    eventSemester: "",
+  }
+
+  console.log("[v0] Initializing Redesigned Past Archive System")
+
+  // Toggle main filters panel
+  if (filterTriggerBtn && filtersPanel) {
+    filterTriggerBtn.addEventListener("click", () => {
+      const isExpanded = filterTriggerBtn.getAttribute("aria-expanded") === "true"
+      filterTriggerBtn.setAttribute("aria-expanded", !isExpanded)
+      filtersPanel.setAttribute("aria-hidden", isExpanded)
+    })
+  }
+
+  // Toggle advanced filters
+  if (moreFiltersToggle && advancedFiltersContent) {
+    moreFiltersToggle.addEventListener("click", () => {
+      const isExpanded = moreFiltersToggle.getAttribute("aria-expanded") === "true"
+      moreFiltersToggle.setAttribute("aria-expanded", !isExpanded)
+      advancedFiltersContent.setAttribute("aria-hidden", isExpanded)
+    })
+  }
+
+  // Handle filter chip clicks
+  filterChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const filterType = chip.getAttribute("data-filter")
+      const filterValue = chip.getAttribute("data-value")
+      const isMultiSelect = chip.classList.contains("multi-select")
+
+      if (isMultiSelect) {
+        // Multi-select behavior (for service types)
+        chip.classList.toggle("active")
+        updateServiceTypeFilter()
+      } else {
+        // Single-select behavior (for content type and time range)
+        const siblings = chip.parentElement.querySelectorAll(".filter-chip")
+        siblings.forEach((s) => s.classList.remove("active"))
+        chip.classList.add("active")
+
+        if (filterType === "content-type") {
+          activeFilters.contentType = filterValue
+          // Update filters panel data attribute to show/hide relevant advanced filters
+          if (filtersPanel) {
+            filtersPanel.setAttribute("data-content-type", filterValue)
+          }
+        } else if (filterType === "time-range") {
+          activeFilters.timeRange = filterValue
+        }
+      }
+
+      updateResults()
+      updateFiltersSummary()
+    })
+  })
+
+  // Handle select dropdowns
+  filterSelects.forEach((select) => {
+    select.addEventListener("change", (e) => {
+      const selectId = e.target.id
+      const value = e.target.value
+
+      switch (selectId) {
+        case "spiritualYear":
+          activeFilters.spiritualYear = value
+          break
+        case "semester":
+          activeFilters.semester = value
+          break
+        case "eventYear":
+          activeFilters.eventYear = value
+          break
+        case "eventSemester":
+          activeFilters.eventSemester = value
+          break
+      }
+
+      updateResults()
+      updateFiltersSummary()
+    })
+  })
+
+  // Clear all filters
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener("click", () => {
+      // Reset to defaults
+      activeFilters = {
+        contentType: "all",
+        timeRange: "6months",
+        serviceType: ["sunday", "friday"],
+        spiritualYear: "",
+        semester: "",
+        eventYear: "",
+        eventSemester: "",
+      }
+
+      // Reset UI
+      filterChips.forEach((chip) => {
+        const filterType = chip.getAttribute("data-filter")
+        const filterValue = chip.getAttribute("data-value")
+
+        if (filterType === "content-type" && filterValue === "all") {
+          chip.classList.add("active")
+        } else if (filterType === "time-range" && filterValue === "6months") {
+          chip.classList.add("active")
+        } else if (chip.classList.contains("multi-select")) {
+          chip.classList.add("active")
+        } else {
+          chip.classList.remove("active")
+        }
+      })
+
+      filterSelects.forEach((select) => {
+        select.value = ""
+      })
+
+      if (filtersPanel) {
+        filtersPanel.setAttribute("data-content-type", "all")
+      }
+
+      updateResults()
+      updateFiltersSummary()
+    })
+  }
+
+  function updateServiceTypeFilter() {
+    const serviceTypeChips = document.querySelectorAll('.filter-chip[data-filter="service-type"]')
+    activeFilters.serviceType = []
+
+    serviceTypeChips.forEach((chip) => {
+      if (chip.classList.contains("active")) {
+        activeFilters.serviceType.push(chip.getAttribute("data-value"))
+      }
+    })
+  }
+
+  function updateFiltersSummary() {
+    if (!filtersSummary || !activeFiltersBar) return
+
+    const parts = []
+
+    // Content type
+    if (activeFilters.contentType !== "all") {
+      const contentText = activeFilters.contentType.charAt(0).toUpperCase() + activeFilters.contentType.slice(1)
+      parts.push(contentText)
+    }
+
+    // Time range
+    const timeRangeMap = {
+      "3months": "Last 3 months",
+      "6months": "Last 6 months",
+      "1year": "Last year",
+    }
+    if (activeFilters.timeRange) {
+      parts.push(timeRangeMap[activeFilters.timeRange])
+    }
+
+    // Show active filters bar if filters are applied
+    const hasActiveFilters =
+      activeFilters.contentType !== "all" ||
+      activeFilters.spiritualYear ||
+      activeFilters.semester ||
+      activeFilters.eventYear ||
+      activeFilters.eventSemester
+
+    if (hasActiveFilters || parts.length > 0) {
+      activeFiltersBar.style.display = "flex"
+      filtersSummary.textContent = parts.length > 0 ? parts.join(" • ") : "All items"
+    } else {
+      activeFiltersBar.style.display = "none"
+    }
+  }
+
+  function updateResults() {
+    const results = document.querySelectorAll("#past-results .past-event-card")
+    const now = new Date()
+    const threeMonthsAgo = new Date()
+    threeMonthsAgo.setMonth(now.getMonth() - 3)
+
+    // Calculate time range
+    const minDate = new Date()
+    if (activeFilters.timeRange === "3months") {
+      minDate.setMonth(minDate.getMonth() - 3)
+    } else if (activeFilters.timeRange === "6months") {
+      minDate.setMonth(minDate.getMonth() - 6)
+    } else if (activeFilters.timeRange === "1year") {
+      minDate.setFullYear(minDate.getFullYear() - 1)
+    }
+
+    console.log("[v0] Updating results:", activeFilters)
+
+    results.forEach((card) => {
+      const cardType = card.getAttribute("data-type")
+      const cardDateStr = card.getAttribute("data-date")
+      const cardDate = cardDateStr ? new Date(cardDateStr) : new Date()
+
+      let isVisible = true
+
+      // Filter by content type
+      if (activeFilters.contentType === "services" && cardType !== "service") {
+        isVisible = false
+      }
+      if (activeFilters.contentType === "events" && cardType !== "event") {
+        isVisible = false
+      }
+
+      // Filter by time range
+      if (isVisible && cardDate < minDate) {
+        isVisible = false
+      }
+
+      // Service-specific filters
+      if (isVisible && cardType === "service" && activeFilters.serviceType.length > 0) {
+        const serviceType = card.getAttribute("data-service-type")
+        if (serviceType && !activeFilters.serviceType.includes(serviceType)) {
+          isVisible = false
+        }
+      }
+
+      card.style.display = isVisible ? "flex" : "none"
+
+      // Evaluation eligibility
+      const isEligible = cardDate >= threeMonthsAgo
+      const footer = card.querySelector(".card-footer")
+
+      if (isEligible) {
+        card.classList.remove("evaluation-closed")
+        if (footer && !footer.innerHTML.includes("btn-evaluate")) {
+          footer.innerHTML = `<button class="btn-evaluate">Evaluate ${cardType === "service" ? "Service" : "Event"}</button>`
+        }
+      } else {
+        card.classList.add("evaluation-closed")
+        if (footer) {
+          footer.innerHTML = `
+            <div class="status-message">
+              <strong>Evaluation Closed</strong>
+              <p>Available for events within the last 3 months</p>
+            </div>
+          `
+        }
+      }
+    })
+
+    // Log visible count
+    const visibleCount = Array.from(results).filter((card) => card.style.display !== "none").length
+    console.log("[v0] Visible cards:", visibleCount)
+  }
+}
+
+// ==========================================
+// COMPACT FILTER SYSTEM - PAST EVENTS
+// ==========================================
+
+function initPastCompactFilters() {
+  const moreFiltersBtn = document.getElementById("past-more-filters-btn")
+  const advancedFiltersPanel = document.getElementById("past-advanced-filters")
+  const clearFiltersBtn = document.getElementById("past-clear-filters")
+  const filtersSummary = document.getElementById("past-filters-summary")
+
+  if (moreFiltersBtn && advancedFiltersPanel) {
+    moreFiltersBtn.addEventListener("click", () => {
+      const isOpen = advancedFiltersPanel.classList.contains("open")
+
+      if (isOpen) {
+        advancedFiltersPanel.classList.remove("open")
+        moreFiltersBtn.classList.remove("expanded")
+      } else {
+        advancedFiltersPanel.classList.add("open")
+        moreFiltersBtn.classList.add("expanded")
+      }
+    })
+  }
+
+  const typeChips = document.querySelectorAll("#past-content .chip-inline")
+  const periodChips = document.querySelectorAll("#past-advanced-filters .chip-advanced")
+
+  typeChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      typeChips.forEach((c) => c.classList.remove("active"))
+      chip.classList.add("active")
+
+      const selectedType = chip.getAttribute("data-type")
+      const contentGroups = document.querySelectorAll("#past-content .content-group")
+
+      contentGroups.forEach((group) => {
+        const groupType = group.getAttribute("data-group-type")
+
+        if (selectedType === "all") {
+          group.style.display = "block"
+        } else if (selectedType === groupType) {
+          group.style.display = "block"
+        } else {
+          group.style.display = "none"
+        }
+      })
+
+      updatePastFilterSummary()
+    })
+  })
+
+  periodChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      periodChips.forEach((c) => c.classList.remove("active"))
+      chip.classList.add("active")
+      updatePastFilterSummary()
+    })
+  })
+
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener("click", () => {
+      typeChips.forEach((chip) => {
+        if (chip.getAttribute("data-type") === "all") {
+          chip.classList.add("active")
+        } else {
+          chip.classList.remove("active")
+        }
+      })
+
+      periodChips.forEach((chip) => {
+        if (chip.getAttribute("data-period") === "6months") {
+          chip.classList.add("active")
+        } else {
+          chip.classList.remove("active")
+        }
+      })
+
+      // Show all content groups
+      const contentGroups = document.querySelectorAll("#past-content .content-group")
+      contentGroups.forEach((group) => {
+        group.style.display = "block"
+      })
+
+      updatePastFilterSummary()
+    })
+  }
+
+  function updatePastFilterSummary() {
+    const activeType = document.querySelector("#past-content .chip-inline.active")?.getAttribute("data-type") || "all"
+    const activePeriod =
+      document.querySelector("#past-advanced-filters .chip-advanced.active")?.getAttribute("data-period") || "6months"
+
+    const parts = []
+
+    if (activeType !== "all") {
+      parts.push(activeType.charAt(0).toUpperCase() + activeType.slice(1))
+    } else {
+      parts.push("All")
+    }
+
+    const periodLabels = {
+      "3months": "Last 3 months",
+      "6months": "Last 6 months",
+      "1year": "Last year",
+      all: "All time",
+    }
+
+    if (activePeriod) {
+      parts.push(periodLabels[activePeriod])
+    }
+
+    const summaryText = document.getElementById("past-summary-text")
+    if (summaryText) {
+      summaryText.textContent = parts.join(" • ")
+    }
+
+    // Show/hide summary
+    const hasFilters = activeType !== "all" || activePeriod !== "6months"
+    if (filtersSummary) {
+      filtersSummary.style.display = hasFilters ? "flex" : "none"
+    }
+  }
+
+  updatePastFilterSummary()
+}
+
+// ==========================================
+// COMPACT FILTER SYSTEM - UPCOMING EVENTS
+// ==========================================
+
+function initUpcomingCompactFilters() {
+  const moreFiltersBtn = document.getElementById("upcoming-more-filters-btn")
+  const advancedFiltersPanel = document.getElementById("upcoming-advanced-filters")
+  const clearFiltersBtn = document.getElementById("upcoming-clear-filters")
+  const filtersSummary = document.getElementById("upcoming-filters-summary")
+
+  if (moreFiltersBtn && advancedFiltersPanel) {
+    moreFiltersBtn.addEventListener("click", () => {
+      const isOpen = advancedFiltersPanel.classList.contains("open")
+
+      if (isOpen) {
+        advancedFiltersPanel.classList.remove("open")
+        moreFiltersBtn.classList.remove("expanded")
+      } else {
+        advancedFiltersPanel.classList.add("open")
+        moreFiltersBtn.classList.add("expanded")
+      }
+    })
+  }
+
+  const typeChips = document.querySelectorAll("#upcoming-content .chip-inline")
+  const periodChips = document.querySelectorAll("#upcoming-advanced-filters .chip-advanced")
+
+  typeChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      typeChips.forEach((c) => c.classList.remove("active"))
+      chip.classList.add("active")
+
+      const selectedType = chip.getAttribute("data-type")
+      const contentGroups = document.querySelectorAll("#upcoming-content .content-group")
+
+      contentGroups.forEach((group) => {
+        const groupType = group.getAttribute("data-group-type")
+
+        if (selectedType === "all") {
+          group.style.display = "block"
+        } else if (selectedType === groupType) {
+          group.style.display = "block"
+        } else {
+          group.style.display = "none"
+        }
+      })
+
+      updateUpcomingFilterSummary()
+    })
+  })
+
+  periodChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      periodChips.forEach((c) => c.classList.remove("active"))
+      chip.classList.add("active")
+      updateUpcomingFilterSummary()
+    })
+  })
+
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener("click", () => {
+      typeChips.forEach((chip) => {
+        if (chip.getAttribute("data-type") === "all") {
+          chip.classList.add("active")
+        } else {
+          chip.classList.remove("active")
+        }
+      })
+
+      periodChips.forEach((chip) => {
+        if (chip.getAttribute("data-period") === "1week") {
+          chip.classList.add("active")
+        } else {
+          chip.classList.remove("active")
+        }
+      })
+
+      // Show all content groups
+      const contentGroups = document.querySelectorAll("#upcoming-content .content-group")
+      contentGroups.forEach((group) => {
+        group.style.display = "block"
+      })
+
+      updateUpcomingFilterSummary()
+    })
+  }
+
+  function updateUpcomingFilterSummary() {
+    const activeType =
+      document.querySelector("#upcoming-content .chip-inline.active")?.getAttribute("data-type") || "all"
+    const activePeriod =
+      document.querySelector("#upcoming-advanced-filters .chip-advanced.active")?.getAttribute("data-period") || "1week"
+
+    const parts = []
+
+    if (activeType !== "all") {
+      parts.push(activeType.charAt(0).toUpperCase() + activeType.slice(1))
+    } else {
+      parts.push("All")
+    }
+
+    const periodLabels = {
+      "1week": "Next week",
+      "2weeks": "Next 2 weeks",
+      "1month": "Next month",
+      all: "All upcoming",
+    }
+
+    if (activePeriod) {
+      parts.push(periodLabels[activePeriod])
+    }
+
+    const summaryText = document.getElementById("upcoming-summary-text")
+    if (summaryText) {
+      summaryText.textContent = parts.join(" • ")
+    }
+
+    // Show/hide summary
+    const hasFilters = activeType !== "all" || activePeriod !== "1week"
+    if (filtersSummary) {
+      filtersSummary.style.display = hasFilters ? "flex" : "none"
+    }
+  }
+
+  updateUpcomingFilterSummary()
+}
+
+// ==========================================
 // INITIALIZE ON DOM READY
 // ==========================================
 
@@ -374,28 +900,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize all functionality
   initTimeTabs()
   initDaySelector()
+  autoSelectCurrentDay()
   initHamburger()
   initExpandableEventCards()
-  autoSelectCurrentDay()
-  initPastArchiveSystem()
-  initUpcomingFilterSystem()
 
-  // Initialize Upcoming tab with default results
-  updateUpcomingResults()
+  initPastCompactFilters()
+  initUpcomingCompactFilters()
 })
-
-function autoSelectCurrentDay() {
-  const dayButtons = document.querySelectorAll(".day-btn")
-  const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
-  const today = new Date().getDay()
-  const todayName = days[today]
-
-  dayButtons.forEach((btn) => {
-    if (btn.getAttribute("data-day") === todayName) {
-      btn.click()
-    }
-  })
-}
 
 // ==========================================
 // TIME TABS - Past, Weekly, Upcoming
@@ -550,122 +1061,6 @@ function initHamburger() {
 }
 
 // ==========================================
-// PAST EVENTS ARCHIVE SYSTEM
-// ==========================================
-function initPastArchiveSystem() {
-  const segmentedBtns = document.querySelectorAll(".segmented-btn")
-  const filterGroups = document.querySelectorAll(".filter-group")
-  const chips = document.querySelectorAll(".chip")
-
-  // Selects
-  const serviceYearSelect = document.getElementById("spiritual-year")
-  const serviceSemesterSelect = document.getElementById("semester")
-  const eventYearSelect = document.getElementById("event-year")
-  const eventSemesterSelect = document.getElementById("event-semester")
-  const eventSemesterLabel = document.getElementById("event-semester-label")
-
-  console.log("[v0] Initializing Past Archive System")
-
-  function updateResults() {
-    const activeMode = document.querySelector(".segmented-btn.active")?.getAttribute("data-target") || "services"
-    const results = document.querySelectorAll(".past-event-card")
-    const now = new Date()
-    const threeMonthsAgo = new Date()
-    threeMonthsAgo.setMonth(now.getMonth() - 3)
-
-    console.log("[v0] Updating results for mode:", activeMode)
-
-    results.forEach((card) => {
-      const cardType = card.getAttribute("data-type")
-      const cardDateStr = card.getAttribute("data-date")
-      const cardDate = cardDateStr ? new Date(cardDateStr) : new Date()
-
-      let isVisible = true
-      if (activeMode === "services" && cardType !== "service") isVisible = false
-      if (activeMode === "events" && cardType !== "event") isVisible = false
-
-      card.style.display = isVisible ? "flex" : "none"
-
-      // Evaluation Window Logic
-      const isEligible = cardDate >= threeMonthsAgo
-      const footer = card.querySelector(".card-footer")
-
-      if (isEligible) {
-        card.classList.remove("evaluation-closed")
-        if (footer && !footer.innerHTML.includes("btn-evaluate")) {
-          footer.innerHTML = `<button class="btn-evaluate">Evaluate ${cardType === "service" ? "Service" : "Event"}</button>`
-        }
-      } else {
-        card.classList.add("evaluation-closed")
-        if (footer && !footer.classList.contains("status-message")) {
-          footer.innerHTML = `
-            <div class="status-message">
-              <strong>Evaluation Closed</strong>
-              <p>Available for events within the last 3 months</p>
-            </div>
-          `
-        }
-      }
-    })
-  }
-
-  // Segmented Control
-  segmentedBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      segmentedBtns.forEach((b) => b.classList.remove("active"))
-      btn.classList.add("active")
-
-      const target = btn.getAttribute("data-target")
-      filterGroups.forEach((group) => {
-        group.classList.remove("active")
-        if (group.id === `${target}-filters`) {
-          group.classList.add("active")
-        }
-      })
-
-      updateResults()
-    })
-  })
-
-  // Chip Selection
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      const parent = chip.parentElement
-      if (parent.classList.contains("single-select")) {
-        parent.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"))
-        chip.classList.add("active")
-      } else {
-        chip.classList.toggle("active")
-      }
-      updateResults()
-    })
-  })
-
-  // Select Listeners
-  const allSelects = [serviceYearSelect, serviceSemesterSelect, eventYearSelect, eventSemesterSelect].filter(Boolean)
-  allSelects.forEach((select) => {
-    select.addEventListener("change", updateResults)
-  })
-
-  // Event-specific semester dependency
-  if (eventYearSelect && eventSemesterSelect && eventSemesterLabel) {
-    eventYearSelect.addEventListener("change", () => {
-      const hasValue = eventYearSelect.value !== ""
-      eventSemesterSelect.disabled = !hasValue
-      eventSemesterLabel.classList.toggle("disabled", !hasValue)
-    })
-  }
-
-  // Initial update
-  updateResults()
-}
-
-function updateUpcomingResults() {
-  console.log("[v0] Upcoming results initialized")
-  // The actual filtering is now handled by initUpcomingFilterSystem
-}
-
-// ==========================================
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -692,5 +1087,24 @@ window.jumpToPast = () => {
     if (container) {
       container.scrollIntoView({ behavior: "smooth", block: "start" })
     }
+  }
+}
+
+function autoSelectCurrentDay() {
+  const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+  const today = new Date().getDay() // 0 = Sunday, 1 = Monday, etc.
+  const currentDay = days[today]
+
+  const currentDayButton = document.querySelector(`.day-btn[data-day="${currentDay}"]`)
+  const currentDayEvents = document.querySelector(`.day-events[data-day="${currentDay}"]`)
+
+  if (currentDayButton && currentDayEvents) {
+    // Remove any existing active states
+    document.querySelectorAll(".day-btn").forEach((btn) => btn.classList.remove("active"))
+    document.querySelectorAll(".day-events").forEach((events) => events.classList.remove("active"))
+
+    // Set current day as active
+    currentDayButton.classList.add("active")
+    currentDayEvents.classList.add("active")
   }
 }

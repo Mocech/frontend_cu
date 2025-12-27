@@ -605,184 +605,182 @@
       </div>
 
       <!-- PAST TAB -->
-      <section id="past-content" class="tab-content">
+      <div class="tab-content" id="past-content">
         <div class="container">
-          <!-- Segmented Control -->
-          <div class="past-toggle-container">
-            <div class="segmented-control">
-              <button class="segmented-btn active" data-target="services">Services</button>
-              <button class="segmented-btn" data-target="events">Events</button>
+          <!-- Compact horizontal filter layout -->
+          <div class="compact-filter-container">
+            <!-- Primary filter row: Content type + More filters button -->
+            <div class="primary-filter-row">
+              <div class="filter-group-inline">
+                <label class="filter-label-inline">Type:</label>
+                <div class="chips-container-inline">
+                  <button class="chip-inline active" data-type="all" data-section="past">All</button>
+                  <button class="chip-inline" data-type="services" data-section="past">Services</button>
+                  <button class="chip-inline" data-type="events" data-section="past">Events</button>
+                </div>
+              </div>
+              
+              <button class="btn-more-filters" id="past-more-filters-btn">
+                <span>More filters</span>
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Advanced filters (hidden by default) -->
+            <div class="advanced-filters-panel" id="past-advanced-filters">
+              <div class="filter-row-advanced">
+                <label class="filter-label-advanced">Time Period:</label>
+                <div class="chips-container-advanced">
+                  <button class="chip-advanced" data-period="3months" data-section="past">Last 3 months</button>
+                  <button class="chip-advanced active" data-period="6months" data-section="past">Last 6 months</button>
+                  <button class="chip-advanced" data-period="1year" data-section="past">Last year</button>
+                  <button class="chip-advanced" data-period="all" data-section="past">All time</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active filters summary -->
+            <div class="active-filters-summary" id="past-filters-summary" style="display: none;">
+              <span class="summary-label">Showing:</span>
+              <span class="summary-value" id="past-summary-text">All • Last 6 months</span>
+              <button class="btn-clear-filters" id="past-clear-filters">Clear filters</button>
             </div>
           </div>
 
-          <!-- Filters Section -->
-          <div id="past-filters" class="filters-card">
-            <!-- Services Filters -->
-            <div id="services-filters" class="filter-group active">
-              <div class="filter-row">
-                <label>Service Type</label>
-                <div class="chips-container multi-select" id="service-type-chips">
-                  <button class="chip active" data-value="sunday">Sunday Service</button>
-                  <button class="chip active" data-value="friday">Friday Service</button>
-                </div>
-              </div>
-
-              <div class="filter-row grid-2">
-                <div class="select-field">
-                  <label for="spiritual-year">Spiritual Year</label>
-                  <select id="spiritual-year">
-                    <option value="2024-2025">2024 / 2025</option>
-                    <option value="2023-2024">2023 / 2024</option>
-                  </select>
-                </div>
-                <div class="select-field">
-                  <label for="semester">Semester</label>
-                  <select id="semester">
-                    <option value="">Select Semester</option>
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="tri">Trisemester</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Events Filters -->
-            <div id="events-filters" class="filter-group">
-              <div class="filter-row">
-                <label>Event Period</label>
-                <div class="chips-container single-select" id="event-period-chips">
-                  <button class="chip" data-value="1">1 Month</button>
-                  <button class="chip active" data-value="3">3 Months</button>
-                  <button class="chip" data-value="6">6 Months</button>
-                  <button class="chip" data-value="12">1 Year</button>
-                </div>
-              </div>
-
-              <div class="filter-row grid-2">
-                <div class="select-field">
-                  <label for="event-year">Spiritual Year</label>
-                  <select id="event-year">
-                    <option value="2024-2025">2024 / 2025</option>
-                    <option value="2023-2024">2023 / 2024</option>
-                  </select>
-                </div>
-                <div class="select-field">
-                  <label for="event-semester" id="event-semester-label" class="disabled">Semester</label>
-                  <select id="event-semester" disabled>
-                    <option value="">Select Semester</option>
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="tri">Trisemester</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Results Section -->
+          <!-- Evaluation notice -->
           <div class="evaluation-notice">
             Only services/events within the last 3 months are eligible for evaluation.
           </div>
 
-          <!-- Redesigned compact past event cards with badges and no expansion -->
-          <div id="past-results" class="past-results-container">
-            
-            <!-- Sample Card 1: Recent Sunday Service (Eligible, Single Day) -->
-            <div class="past-event-card" data-date="2025-11-20" data-type="service">
-              <div class="card-badges">
-                <!-- Added faint yellow duration badge -->
-                <span class="badge badge-duration">Single Day</span>
-              </div>
-              <h3 class="event-title">The Power of Purpose</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Nov 23, 2025</span>
-                <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                <!-- Renamed 'View Details' to 'View More' and simplified to a link -->
-                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">Evaluate Service</button>
-              </div>
-            </div>
-
-            <!-- Sample Card 2: Friday Service (Eligible) -->
-            <div class="past-event-card" data-date="2025-10-17" data-type="service">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-              </div>
-              <h3 class="event-title">Encounter with Christ</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Oct 17, 2025</span>
-                <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">Evaluate Service</button>
-              </div>
-            </div>
-
-            <!-- Sample Card 3: Sunday Service (NOT Eligible - Older) -->
-            <div class="past-event-card" data-date="2025-08-10" data-type="service">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-              </div>
-              <h3 class="event-title">Living in Purpose</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Aug 10, 2025</span>
-                <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-              </div>
-              
-              <div class="card-footer">
-                <div class="status-message">
-                  <strong>Evaluation Closed</strong>
-                  <p>Available for events within the last 3 months</p>
+          <!-- Grouped content by type: SERVICES section -->
+          <div class="content-group" data-group-type="services">
+            <h3 class="content-group-heading">SERVICES</h3>
+            <div class="past-events-grid">
+              <!-- Service Card 1: Recent Sunday Service (Eligible, Single Day) -->
+              <div class="past-event-card" data-date="2025-11-20" data-type="service">
+                <div class="card-badges">
+                  <span class="badge badge-duration">Single Day</span>
+                </div>
+                <h3 class="event-title">The Power of Purpose</h3>
+                <div class="event-meta">
+                  <span class="meta-item"><i class="far fa-calendar"></i> Nov 23, 2025</span>
+                  <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
+                </div>
+                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                
+                <div class="card-actions">
+                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+                </div>
+                
+                <div class="card-footer">
+                  <button class="btn-evaluate">Evaluate Service</button>
                 </div>
               </div>
-            </div>
 
-            <!-- Sample Card 4: Special Event (Eligible) -->
-            <div class="past-event-card" data-date="2025-11-02" data-type="event">
-              <div class="card-badges">
-                <span class="badge badge-duration badge-multiday">Multi-Day</span>
+              <!-- Service Card 2: Friday Service (Eligible) -->
+              <div class="past-event-card" data-date="2025-10-17" data-type="service">
+                <div class="card-badges">
+                  <span class="badge badge-duration">Single Day</span>
+                </div>
+                <h3 class="event-title">Encounter with Christ</h3>
+                <div class="event-meta">
+                  <span class="meta-item"><i class="far fa-calendar"></i> Oct 17, 2025</span>
+                  <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
+                </div>
+                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                
+                <div class="card-actions">
+                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+                </div>
+                
+                <div class="card-footer">
+                  <button class="btn-evaluate">Evaluate Service</button>
+                </div>
               </div>
-              <h3 class="event-title">Spiritual Awakening Conference</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Nov 2-4, 2025</span>
-                <span class="meta-item"><i class="fas fa-users"></i> Special Event</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
-                <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">Evaluate Event</button>
+
+              <!-- Service Card 3: Sunday Service (NOT Eligible - Older) -->
+              <div class="past-event-card" data-date="2025-08-10" data-type="service">
+                <div class="card-badges">
+                  <span class="badge badge-duration">Single Day</span>
+                </div>
+                <h3 class="event-title">Living in Purpose</h3>
+                <div class="event-meta">
+                  <span class="meta-item"><i class="far fa-calendar"></i> Aug 10, 2025</span>
+                  <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
+                </div>
+                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                
+                <div class="card-actions">
+                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+                </div>
+                
+                <div class="card-footer">
+                  <div class="status-message">
+                    <strong>Evaluation Closed</strong>
+                    <p>Available for events within the last 3 months</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Past Tab Slideshow with Header -->
+          <!-- Grouped content by type: EVENTS section -->
+          <div class="content-group" data-group-type="events">
+            <h3 class="content-group-heading">EVENTS</h3>
+            <div class="past-events-grid">
+              <!-- Event Card 1: Special Event (Eligible) -->
+              <div class="past-event-card" data-date="2025-11-02" data-type="event">
+                <div class="card-badges">
+                  <span class="badge badge-duration badge-multiday">Multi-Day</span>
+                </div>
+                <h3 class="event-title">Spiritual Awakening Conference</h3>
+                <div class="event-meta">
+                  <span class="meta-item"><i class="far fa-calendar"></i> Nov 2-4, 2025</span>
+                  <span class="meta-item"><i class="fas fa-users"></i> Special Event</span>
+                </div>
+                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                
+                <div class="card-actions">
+                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+                </div>
+                
+                <div class="card-footer">
+                  <button class="btn-evaluate">Evaluate Event</button>
+                </div>
+              </div>
+
+              <!-- Event Card 2: Youth Retreat (Eligible) -->
+              <div class="past-event-card" data-date="2025-10-25" data-type="event">
+                <div class="card-badges">
+                  <span class="badge badge-duration badge-multiday">Multi-Day</span>
+                </div>
+                <h3 class="event-title">Youth Spiritual Retreat</h3>
+                <div class="event-meta">
+                  <span class="meta-item"><i class="far fa-calendar"></i> Oct 25-27, 2025</span>
+                  <span class="meta-item"><i class="fas fa-mountain"></i> Retreat</span>
+                </div>
+                <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                
+                <div class="card-actions">
+                  <a href="#" class="action-badge badge-purple"><i class="fas fa-images"></i> Gallery</a>
+                  <a href="event-details.html" class="action-badge badge-purple"><i class="fas fa-arrow-right"></i> View More</a>
+                </div>
+                
+                <div class="card-footer">
+                  <button class="btn-evaluate">Evaluate Event</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Past Tab Slideshow with Header -->
 <section class="slideshow-section">
   <div class="container">
     <div class="slideshow-header">
@@ -815,16 +813,50 @@
   </div>
 </section>
         </div>
-      </section>
+      </div>
 
       <!-- UPCOMING TAB -->
       <div class="tab-content" id="upcoming-content">
         <div class="container">
-          <!-- Segmented Control -->
-          <div class="past-toggle-container">
-            <div class="segmented-control">
-              <button class="segmented-btn active" data-target="upcoming-services">Services</button>
-              <button class="segmented-btn" data-target="upcoming-events">Events</button>
+          <!-- Compact horizontal filter layout for upcoming -->
+          <div class="compact-filter-container">
+            <!-- Primary filter row: Content type + More filters button -->
+            <div class="primary-filter-row">
+              <div class="filter-group-inline">
+                <label class="filter-label-inline">Type:</label>
+                <div class="chips-container-inline">
+                  <button class="chip-inline active" data-type="all" data-section="upcoming">All</button>
+                  <button class="chip-inline" data-type="services" data-section="upcoming">Services</button>
+                  <button class="chip-inline" data-type="events" data-section="upcoming">Events</button>
+                </div>
+              </div>
+              
+              <button class="btn-more-filters" id="upcoming-more-filters-btn">
+                <span>More filters</span>
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Advanced filters (hidden by default) -->
+            <div class="advanced-filters-panel" id="upcoming-advanced-filters">
+              <div class="filter-row-advanced">
+                <label class="filter-label-advanced">Time Period:</label>
+                <div class="chips-container-advanced">
+                  <button class="chip-advanced active" data-period="1week" data-section="upcoming">Next week</button>
+                  <button class="chip-advanced" data-period="2weeks" data-section="upcoming">Next 2 weeks</button>
+                  <button class="chip-advanced" data-period="1month" data-section="upcoming">Next month</button>
+                  <button class="chip-advanced" data-period="all" data-section="upcoming">All upcoming</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active filters summary -->
+            <div class="active-filters-summary" id="upcoming-filters-summary" style="display: none;">
+              <span class="summary-label">Showing:</span>
+              <span class="summary-value" id="upcoming-summary-text">All • Next week</span>
+              <button class="btn-clear-filters" id="upcoming-clear-filters">Clear filters</button>
             </div>
           </div>
 
@@ -839,35 +871,6 @@
             <span>Current Period: <strong>Semester 1, Spiritual Year 2024/2025</strong></span>
           </div>
 
-          <!-- Filters Section -->
-          <div id="upcoming-filters" class="filters-card">
-            <!-- Services Filters -->
-            <div id="upcoming-services-filters" class="filter-group active">
-              <div class="filter-row">
-                <label>Time Period</label>
-                <div class="chips-container single-select" id="upcoming-service-period-chips">
-                  <button class="chip" data-value="1week">1 Week Ahead</button>
-                  <button class="chip active" data-value="1month">1 Month</button>
-                  <button class="chip" data-value="2month">2 Months</button>
-                  <button class="chip" data-value="semester">Entire Semester</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Events Filters -->
-            <div id="upcoming-events-filters" class="filter-group">
-              <div class="filter-row">
-                <label>Time Period</label>
-                <div class="chips-container single-select" id="upcoming-event-period-chips">
-                  <button class="chip" data-value="1week">1 Week Ahead</button>
-                  <button class="chip active" data-value="1month">1 Month</button>
-                  <button class="chip" data-value="2month">2 Months</button>
-                  <button class="chip" data-value="semester">Entire Semester</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <!-- Results Section -->
           <div class="evaluation-notice">
             Showing upcoming activities based on your selected filters.
@@ -876,182 +879,171 @@
           <!-- Upcoming Results Container -->
           <div id="upcoming-results" class="past-results-container">
             
-            <!-- Sample Service Card 1: Friday Service (1 week ahead) -->
-            <div class="past-event-card" data-date="2025-12-27" data-type="service" data-weeks-ahead="0">
-              <div class="card-badges">
-                <span class="badge badge-service-type">Friday Service</span>
-                <span class="badge badge-upcoming">This Week</span>
-              </div>
-              <h3 class="event-title">Encounter with Christ</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Dec 27, 2025</span>
-                <span class="meta-item"><i class="fas fa-clock"></i> 6:00 PM</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
+            <!-- Grouped content by type: SERVICES section -->
+            <div class="content-group" data-group-type="services">
+              <h3 class="content-group-heading">SERVICES</h3>
+              <div class="past-events-grid">
+                <!-- Service Card 1: Upcoming Sunday Service -->
+                <div class="past-event-card" data-date="2025-12-28" data-type="service" data-weeks-ahead="0">
+                  <div class="card-badges">
+                    <span class="badge badge-duration">Single Day</span>
+                    <span class="badge badge-upcoming">This Week</span>
+                  </div>
+                  <h3 class="event-title">End of Year Celebration</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Dec 28, 2025</span>
+                    <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
+
+                <!-- Service Card 2: Friday Service -->
+                <div class="past-event-card" data-date="2026-01-03" data-type="service" data-weeks-ahead="1">
+                  <div class="card-badges">
+                    <span class="badge badge-duration">Single Day</span>
+                  </div>
+                  <h3 class="event-title">New Year Revival</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Jan 3, 2026</span>
+                    <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 1 • Spiritual Year 2025/2026</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
+
+                <!-- Service Card 3: Special Service (1 month ahead) -->
+                <div class="past-event-card" data-date="2026-01-24" data-type="service" data-weeks-ahead="4">
+                  <div class="card-badges">
+                    <span class="badge badge-duration">Single Day</span>
+                  </div>
+                  <h3 class="event-title">Midterm Prayer Service</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Jan 24, 2026</span>
+                    <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 2 • Spiritual Year 2025/2026</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Sample Service Card 2: Sunday Service (1 week ahead) -->
-            <div class="past-event-card" data-date="2025-12-29" data-type="service" data-weeks-ahead="0">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-                <span class="badge badge-upcoming">This Week</span>
-              </div>
-              <h3 class="event-title">Living in Purpose</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Dec 29, 2025</span>
-                <span class="meta-item"><i class="fas fa-church"></i> Sunday Service</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
-              </div>
-            </div>
+            <!-- Grouped content by type: EVENTS section -->
+            <div class="content-group" data-group-type="events">
+              <h3 class="content-group-heading">EVENTS</h3>
+              <div class="past-events-grid">
+                <!-- Event Card 1: Bible Study (1 week ahead) -->
+                <div class="past-event-card" data-date="2025-12-28" data-type="event" data-weeks-ahead="0">
+                  <div class="card-badges">
+                    <span class="badge badge-duration">Single Day</span>
+                    <span class="badge badge-upcoming">This Week</span>
+                  </div>
+                  <h3 class="event-title">Bible Study & Discussion</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Dec 28, 2025</span>
+                    <span class="meta-item"><i class="fas fa-book-open"></i> Special Event</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Charter Hall (CH)</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
 
-            <!-- Sample Service Card 3: Friday Service (2 weeks ahead) -->
-            <div class="past-event-card" data-date="2026-01-03" data-type="service" data-weeks-ahead="1">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-              </div>
-              <h3 class="event-title">New Year Revival</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Jan 3, 2026</span>
-                <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2025/2026</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
-              </div>
-            </div>
+                <!-- Event Card 2: Prayer Meeting (2 weeks ahead) -->
+                <div class="past-event-card" data-date="2025-12-31" data-type="event" data-weeks-ahead="1">
+                  <div class="card-badges">
+                    <span class="badge badge-duration">Single Day</span>
+                  </div>
+                  <h3 class="event-title">Youth Prayer Meeting</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Dec 31, 2025</span>
+                    <span class="meta-item"><i class="fas fa-hands-praying"></i> Special Event</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Mt. Zion</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
 
-            <!-- Sample Event Card 1: Bible Study (1 week ahead) -->
-            <div class="past-event-card" data-date="2025-12-28" data-type="event" data-weeks-ahead="0">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-                <span class="badge badge-upcoming">This Week</span>
-              </div>
-              <h3 class="event-title">Bible Study & Discussion</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Dec 28, 2025</span>
-                <span class="meta-item"><i class="fas fa-book-open"></i> Special Event</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Charter Hall (CH)</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
-              </div>
-            </div>
+                <!-- Event Card 3: Fellowship (3 weeks ahead, Multi-Day) -->
+                <div class="past-event-card" data-date="2026-01-03" data-type="event" data-weeks-ahead="1">
+                  <div class="card-badges">
+                    <span class="badge badge-duration badge-multiday">Multi-Day</span>
+                  </div>
+                  <h3 class="event-title">New Year Fellowship</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Jan 3-5, 2026</span>
+                    <span class="meta-item"><i class="fas fa-users"></i> Special Event</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Tentarium Hall (TH)</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 1 • Spiritual Year 2025/2026</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
 
-            <!-- Sample Event Card 2: Prayer Meeting (2 weeks ahead) -->
-            <div class="past-event-card" data-date="2025-12-31" data-type="event" data-weeks-ahead="1">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-              </div>
-              <h3 class="event-title">Youth Prayer Meeting</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Dec 31, 2025</span>
-                <span class="meta-item"><i class="fas fa-hands-praying"></i> Special Event</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Mt. Zion</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2024/2025</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
-              </div>
-            </div>
-
-            <!-- Sample Event Card 3: Fellowship (3 weeks ahead, Multi-Day) -->
-            <div class="past-event-card" data-date="2026-01-03" data-type="event" data-weeks-ahead="1">
-              <div class="card-badges">
-                <span class="badge badge-duration badge-multiday">Multi-Day</span>
-              </div>
-              <h3 class="event-title">New Year Fellowship</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Jan 3-5, 2026</span>
-                <span class="meta-item"><i class="fas fa-users"></i> Special Event</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Tentarium Hall (TH)</span>
-              </div>
-              <div class="event-meta-secondary">Semester 1 • Spiritual Year 2025/2026</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
-              </div>
-            </div>
-
-            <!-- Sample Event Card 4: Retreat (1 month ahead, Multi-Day) -->
-            <div class="past-event-card" data-date="2026-01-15" data-type="event" data-weeks-ahead="3">
-              <div class="card-badges">
-                <span class="badge badge-duration badge-multiday">Multi-Day</span>
-              </div>
-              <h3 class="event-title">Winter Spiritual Retreat</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Jan 15-17, 2026</span>
-                <span class="meta-item"><i class="fas fa-mountain"></i> Major Event</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Camp Grounds</span>
-              </div>
-              <div class="event-meta-secondary">Semester 2 • Spiritual Year 2025/2026</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
-              </div>
-            </div>
-
-            <!-- Sample Service Card 4: Special Service (1 month ahead) -->
-            <div class="past-event-card" data-date="2026-01-24" data-type="service" data-weeks-ahead="4">
-              <div class="card-badges">
-                <span class="badge badge-duration">Single Day</span>
-              </div>
-              <h3 class="event-title">Midterm Prayer Service</h3>
-              <div class="event-meta">
-                <span class="meta-item"><i class="far fa-calendar"></i> Jan 24, 2026</span>
-                <span class="meta-item"><i class="fas fa-church"></i> Friday Service</span>
-                <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Chapel</span>
-              </div>
-              <div class="event-meta-secondary">Semester 2 • Spiritual Year 2025/2026</div>
-              
-              <div class="card-actions">
-                <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
-              </div>
-              
-              <div class="card-footer">
-                <button class="btn-evaluate">View More</button>
+                <!-- Event Card 4: Retreat (1 month ahead, Multi-Day) -->
+                <div class="past-event-card" data-date="2026-01-15" data-type="event" data-weeks-ahead="3">
+                  <div class="card-badges">
+                    <span class="badge badge-duration badge-multiday">Multi-Day</span>
+                  </div>
+                  <h3 class="event-title">Winter Spiritual Retreat</h3>
+                  <div class="event-meta">
+                    <span class="meta-item"><i class="far fa-calendar"></i> Jan 15-17, 2026</span>
+                    <span class="meta-item"><i class="fas fa-mountain"></i> Major Event</span>
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Camp Grounds</span>
+                  </div>
+                  <div class="event-meta-secondary">Semester 2 • Spiritual Year 2025/2026</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="action-badge badge-purple"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button class="btn-evaluate">View More</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
