@@ -222,7 +222,7 @@ body {
   transform: translateX(6px);
 }
 
-/* Removed .hero-image and .hero-img styles - image now in background */
+
 
 /* What We Do Section */
 .what-we-do {
@@ -303,7 +303,7 @@ body {
 .card-icon-box {
   width: 60px;
   height: 60px;
-  background: var(--primary-purple-medium);
+  background: linear-gradient(135deg, var(--primary-deep-purple), var(--accent-yellow));
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -317,7 +317,7 @@ body {
 .activity-card:hover .card-icon-box {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(58, 20, 82, 0.2);
-  background: var(--primary-deep-purple);
+  background: linear-gradient(135deg, var(--accent-yellow), var(--primary-deep-purple));
 }
 
 .activity-title {
@@ -474,13 +474,13 @@ body {
 .value-card:hover {
   transform: translateY(-12px);
   border-color: var(--primary-deep-purple);
-  box-shadow: 0 15px 50px rgba(58, 20, 82, 0.2);
+  box-shadow: 0 15px 50px rgba(253, 252, 253, 0.2);
 }
 
 .value-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--primary-deep-purple), var(--primary-purple-light));
+  background: linear-gradient(135deg, var(--primary-deep-purple), var(--accent-yellow));
   border-radius: 15px;
   display: flex;
   align-items: center;
