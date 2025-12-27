@@ -1,134 +1,940 @@
-<section class="roles-section">
-  <div class="container">
-    <h2 class="section-title">Membership Roles & Privileges</h2>
-    <p class="section-subtitle">Each membership role defines your access, responsibilities, and level of participation within our community.</p>
-    
-    <div class="roles-grid">
-      <!-- Full Member Card -->
-      <div class="role-card-new">
-        <div class="role-card-header-new">
-          <div class="role-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-          </div>
-          <h3>Full Member</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events - University of Embu Christian Union</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/events.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="logo.png" alt="University of Embu" class="nav-logo">
+        <span class="nav-title">University Of Embu<br>Christian Union</span>
+      </div>
+      <div class="nav-right">
+        <button class="btn btn-outline-purple btn-signup-mobile">Sign up</button>
+        <div class="desktop-only">
+          <button class="btn btn-outline-purple">Sign up</button>
+          <button class="btn btn-primary">Sign in</button>
         </div>
-        <div class="role-card-body">
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-vote-yea"></i></span>
-            <span class="privilege-text">Voting Rights</span>
-            <span class="privilege-badge available">Available</span>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#ministries" class="nav-link">Ministries</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="events.html" class="nav-link active">Events</a>
+        <div class="mobile-only">
+          <a href="#signin" class="btn btn-outline">Sign In</a>
+        </div>
+        <div class="mobile-only">
+          <a href="#signup" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section (LOCKED - DO NOT CHANGE) -->
+  <section class="events-hero">
+    <img src="crowd.JPG" alt="Events Background" class="hero-bg-image">
+    <div class="hero-purple-overlay"></div>
+    <div class="container">
+      <div class="hero-content-wrapper">
+        <div class="hero-badge">Explore | Be Informed | Evaluate</div>
+        <h1 class="hero-title">Events</h1>
+        <p class="hero-description">Explore our past events, participate in weekly activities, and plan for upcoming gatherings as we grow together in faith.</p>
+        <div class="hero-actions">
+          <a href="#weekly" class="btn btn-yellow">Explore</a>
+          <button class="btn btn-outline-white" onclick="jumpToPast()">Evaluate</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section - ALWAYS VISIBLE -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>This Week's Services</h2>
+        <p class="section-subtitle">Our main worship gatherings - the spiritual foundation of our community</p>
+      </div>
+      <div class="services-grid">
+        <!-- Friday Service -->
+        <div class="service-panel">
+          <div class="service-header">
+            <div class="service-label-icon">
+              <div class="service-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <span class="service-label">Friday Service</span>
+            </div>
+            <span class="service-status">Upcoming</span>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-crown"></i></span>
-            <span class="privilege-text">Leadership Roles</span>
-            <span class="privilege-badge available">Available</span>
+          <h3 class="service-theme">Encounter with Christ</h3>
+          <div class="service-meta-row">
+            <span class="service-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              </svg>
+              Friday, Dec 27
+            </span>
+            <span class="service-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              6:00 PM
+            </span>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-calendar-check"></i></span>
-            <span class="privilege-text">Event Access</span>
-            <span class="privilege-badge available">Available</span>
+          <div class="service-speaker">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            Speaker: Pastor James Mwangi
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-hands-helping"></i></span>
-            <span class="privilege-text">Spiritual Mentorship</span>
-            <span class="privilege-badge available">Available</span>
+          <a href="#" class="service-cta">View Service Details</a>
+        </div>
+
+        <!-- Sunday Service -->
+        <div class="service-panel">
+          <div class="service-header">
+            <div class="service-label-icon">
+              <div class="service-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <span class="service-label">Sunday Service</span>
+            </div>
+            <span class="service-status">Upcoming</span>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-heart"></i></span>
-            <span class="privilege-text">Community Belonging</span>
-            <span class="privilege-badge included">Included</span>
+          <h3 class="service-theme">Living in Purpose</h3>
+          <div class="service-meta-row">
+            <span class="service-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              </svg>
+              Sunday, Dec 29
+            </span>
+            <span class="service-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              9:00 AM
+            </span>
+          </div>
+          <div class="service-speaker">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            Scripture: Romans 8:28-30
+          </div>
+          <a href="#" class="service-cta">View Service Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Time Context Section -->
+  <section class="time-context-section">
+    <div class="container">
+      <!-- Improved time tabs with better visual hierarchy and accessibility -->
+      <div class="time-tabs-container">
+        <div class="time-tabs">
+          <button class="time-tab" data-tab="past">
+            <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+            Past Events
+          </button>
+          <button class="time-tab active" data-tab="weekly">
+            <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Weekly Schedule
+          </button>
+          <button class="time-tab" data-tab="upcoming">
+            <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 7.64l-5.39 5.39c-.2.2-.45.3-.71.3-.26 0-.51-.1-.71-.29l-2.83-2.83c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l2.12 2.12 4.68-4.68c.39-.39 1.02-.39 1.41 0 .4.39.4 1.02.01 1.41z"/>
+            </svg>
+            Upcoming
+          </button>
+        </div>
+      </div>
+
+      <!-- WEEKLY TAB (DEFAULT/ACTIVE) -->
+      <div class="tab-content active" id="weekly-content">
+        <div class="section-header">
+          <h2>Weekly Schedule</h2>
+          <p class="section-subtitle">Select a day to explore our weekly activities and spiritual gatherings</p>
+        </div>
+
+        <div class="weekly-events-container">
+          <!-- Enhanced day selector with better styling and spacing -->
+          <div class="day-selector">
+            <div class="day-selector-inner">
+              <button class="day-btn" data-day="monday">Mon</button>
+              <button class="day-btn" data-day="tuesday">Tue</button>
+              <button class="day-btn" data-day="wednesday">Wed</button>
+              <button class="day-btn" data-day="thursday">Thu</button>
+              <button class="day-btn" data-day="friday">Fri</button>
+              <button class="day-btn" data-day="saturday">Sat</button>
+              <button class="day-btn" data-day="sunday">Sun</button>
+            </div>
+          </div>
+
+          <!-- MONDAY -->
+          <div class="day-events" data-day="monday">
+            <div class="events-stack">
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="one.JPG" alt="Nurture Class">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">7:00pm - 9:00pm</div>
+                    <h3 class="event-card-title">Nurture Class</h3>
+                    <div class="event-card-location">844 Buildings</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Join us for a nurturing class focused on spiritual growth and community building. Open to all members.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Worship and Praise</span>
+                    <span class="highlight-item">Prayer Sessions</span>
+                    <span class="highlight-item">Bible Reading</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TUESDAY -->
+          <div class="day-events" data-day="tuesday">
+            <div class="events-stack">
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="crowd.JPG" alt="Bible Study">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">6:30pm - 8:00pm</div>
+                    <h3 class="event-card-title">Bible Study Groups</h3>
+                    <div class="event-card-location">Various Locations</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">In-depth Bible study session focusing on weekly themes with group discussions and scripture analysis.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Group Discussions</span>
+                    <span class="highlight-item">Scripture Analysis</span>
+                    <span class="highlight-item">Q&A Session</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="one.JPG" alt="Night Prayer">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">8:30pm - 9:30pm</div>
+                    <h3 class="event-card-title">Night Prayer</h3>
+                    <div class="event-card-location">Mt. Zion</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Evening prayer session for personal reflection and intercession for campus, nation, and personal needs.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Prayer for Campus</span>
+                    <span class="highlight-item">Intercession</span>
+                    <span class="highlight-item">Personal Reflection</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WEDNESDAY -->
+          <div class="day-events" data-day="wednesday">
+            <div class="events-stack">
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="crowd.JPG" alt="Best-P Class">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">7:00pm - 8:30pm</div>
+                    <h3 class="event-card-title">Best-P Class</h3>
+                    <div class="event-card-location">Tentarium Hall (TH)</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Biblical studies and spiritual growth session focusing on apologetics and defending the faith.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Biblical Teaching</span>
+                    <span class="highlight-item">Apologetics</span>
+                    <span class="highlight-item">Discussion</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THURSDAY -->
+          <div class="day-events" data-day="thursday">
+            <div class="events-stack">
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="one.JPG" alt="Praise & Worship">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">6:30pm - 7:30pm</div>
+                    <h3 class="event-card-title">Praise & Worship</h3>
+                    <div class="event-card-location">Main Chapel</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Evening worship session with the praise team and congregation celebrating together in faith.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Praise Music</span>
+                    <span class="highlight-item">Worship</span>
+                    <span class="highlight-item">Fellowship</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="crowd.JPG" alt="Anza-fyt Class">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">8:00pm - 9:30pm</div>
+                    <h3 class="event-card-title">Anza-fyt Class</h3>
+                    <div class="event-card-location">Charter Hall (CH)</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Discipleship program for first-year students establishing strong spiritual foundations and community.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Discipleship Teaching</span>
+                    <span class="highlight-item">Mentorship</span>
+                    <span class="highlight-item">Community Building</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FRIDAY -->
+          <div class="day-events active" data-day="friday">
+            <div class="events-stack">
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="one.JPG" alt="Daily Prayer">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">5:00pm - 6:00pm</div>
+                    <h3 class="event-card-title">Daily Prayer</h3>
+                    <div class="event-card-location">Mt. Zion</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Corporate prayer session for campus, nation, and personal needs in a peaceful mountain setting.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Worship and Praise</span>
+                    <span class="highlight-item">Prayer Sessions</span>
+                    <span class="highlight-item">Bible Reading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="crowd.JPG" alt="KUCU Connect">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">7:00pm - 9:00pm</div>
+                    <h3 class="event-card-title">KUCU Connect</h3>
+                    <div class="event-card-location">SZ39</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Connect with the KUCU community for fellowship, sharing testimonies, and strengthening relationships.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Group Discussions</span>
+                    <span class="highlight-item">Testimonies</span>
+                    <span class="highlight-item">Q&A Session</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SATURDAY -->
+          <div class="day-events" data-day="saturday">
+            <div class="events-stack">
+              <div class="event-card-expandable">
+                <div class="event-card-compact">
+                  <div class="event-card-image">
+                    <img src="one.JPG" alt="Outreach Ministry">
+                  </div>
+                  <div class="event-card-info">
+                    <div class="event-time-badge">2:00pm - 5:00pm</div>
+                    <h3 class="event-card-title">Outreach Ministry</h3>
+                    <div class="event-card-location">Campus Grounds</div>
+                  </div>
+                  <button class="event-expand-btn" aria-label="Expand event details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="event-card-expanded">
+                  <p class="event-description">Evangelism and community outreach activities reaching out to campus and surrounding areas in service.</p>
+                  <div class="event-highlights">
+                    <span class="highlight-item">Evangelism</span>
+                    <span class="highlight-item">Community Service</span>
+                    <span class="highlight-item">Outreach Activities</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUNDAY -->
+          <div class="day-events" data-day="sunday">
+            <div class="empty-state">
+              <p>No scheduled events for Sunday</p>
+              <p class="empty-state-subtitle">Rest and recharge for the week ahead</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Special Member Card -->
-      <div class="role-card-new">
-        <div class="role-card-header-new">
-          <div class="role-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg>
-          </div>
-          <h3>Special Member</h3>
+      <!-- PAST TAB -->
+      <div class="tab-content" id="past-content">
+        <div class="section-header">
+          <h2>Past Events & Services</h2>
+          <p class="section-subtitle">Explore our history and reflect on past gatherings</p>
         </div>
-        <div class="role-card-body">
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-vote-yea"></i></span>
-            <span class="privilege-text">Voting Rights</span>
-            <span class="privilege-badge limited">Limited</span>
+
+        <!-- Past Events Grid -->
+        <div class="past-events-grid">
+          <!-- Past Service Card 1 -->
+          <div class="event-history-card">
+            <div class="event-history-badge">Service</div>
+            <h3 class="event-history-title">Encounter with Christ</h3>
+            <div class="event-history-meta">
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Dec 20, 2024
+              </span>
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                6:00 PM
+              </span>
+            </div>
+            <div class="event-history-details">
+              <p class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Speaker: Pastor James Mwangi
+              </p>
+            </div>
+            <button class="history-btn">View Details</button>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-crown"></i></span>
-            <span class="privilege-text">Leadership Roles</span>
-            <span class="privilege-badge available">Available</span>
+
+          <!-- Past Service Card 2 -->
+          <div class="event-history-card">
+            <div class="event-history-badge">Service</div>
+            <h3 class="event-history-title">Living in Purpose</h3>
+            <div class="event-history-meta">
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Dec 22, 2024
+              </span>
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                9:00 AM
+              </span>
+            </div>
+            <div class="event-history-details">
+              <p class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+                Scripture: Romans 8:28-30
+              </p>
+            </div>
+            <button class="history-btn">View Details</button>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-calendar-check"></i></span>
-            <span class="privilege-text">Event Access</span>
-            <span class="privilege-badge available">Available</span>
+
+          <!-- Past Event Card 1 -->
+          <div class="event-history-card">
+            <div class="event-history-badge event-type">Event</div>
+            <h3 class="event-history-title">Bible Study Session</h3>
+            <div class="event-history-meta">
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Dec 15, 2024
+              </span>
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                6:30 PM
+              </span>
+            </div>
+            <div class="event-history-details">
+              <p class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Various Locations
+              </p>
+            </div>
+            <div class="card-actions">
+              <button class="history-btn">View Details</button>
+              <button class="history-btn evaluate">Evaluate</button>
+            </div>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-hands-helping"></i></span>
-            <span class="privilege-text">Spiritual Mentorship</span>
-            <span class="privilege-badge available">Available</span>
+
+          <!-- Past Event Card 2 -->
+          <div class="event-history-card">
+            <div class="event-history-badge event-type">Event</div>
+            <h3 class="event-history-title">Praise & Worship Night</h3>
+            <div class="event-history-meta">
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Dec 12, 2024
+              </span>
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                6:30 PM
+              </span>
+            </div>
+            <div class="event-history-details">
+              <p class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Main Chapel
+              </p>
+            </div>
+            <div class="card-actions">
+              <button class="history-btn">View Details</button>
+              <button class="history-btn evaluate">Evaluate</button>
+            </div>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-heart"></i></span>
-            <span class="privilege-text">Community Belonging</span>
-            <span class="privilege-badge included">Included</span>
+
+          <!-- Past Event Card 3 -->
+          <div class="event-history-card">
+            <div class="event-history-badge event-type">Event</div>
+            <h3 class="event-history-title">Nurture Class Gathering</h3>
+            <div class="event-history-meta">
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Dec 8, 2024
+              </span>
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                7:00 PM
+              </span>
+            </div>
+            <div class="event-history-details">
+              <p class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                844 Buildings
+              </p>
+            </div>
+            <div class="card-actions">
+              <button class="history-btn">View Details</button>
+              <button class="history-btn evaluate">Evaluate</button>
+            </div>
+          </div>
+
+          <!-- Past Event Card 4 -->
+          <div class="event-history-card">
+            <div class="event-history-badge event-type">Event</div>
+            <h3 class="event-history-title">Night Prayer Session</h3>
+            <div class="event-history-meta">
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Dec 5, 2024
+              </span>
+              <span class="meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                8:30 PM
+              </span>
+            </div>
+            <div class="event-history-details">
+              <p class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Mt. Zion
+              </p>
+            </div>
+            <div class="card-actions">
+              <button class="history-btn">View Details</button>
+              <button class="history-btn evaluate">Evaluate</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Associates Card -->
-      <div class="role-card-new">
-        <div class="role-card-header-new">
-          <div class="role-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <circle cx="12" cy="12" r="4"></circle>
-              <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
-              <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
-              <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
-              <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
-              <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
-            </svg>
-          </div>
-          <h3>Associates</h3>
+      <!-- UPCOMING TAB -->
+      <div class="tab-content" id="upcoming-content">
+        <div class="section-header">
+          <h2>Upcoming Events & Services</h2>
+          <p class="section-subtitle">Plan ahead and don't miss our upcoming activities</p>
         </div>
-        <div class="role-card-body">
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-vote-yea"></i></span>
-            <span class="privilege-text">Voting Rights</span>
-            <span class="privilege-badge unavailable">Unavailable</span>
+
+        <!-- Upcoming Events Timeline -->
+        <div class="upcoming-timeline">
+          <!-- Upcoming Service 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="6"/>
+              </svg>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge">Service</div>
+              <h3 class="timeline-title">Encounter with Christ</h3>
+              <div class="timeline-meta">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Friday, Dec 27, 2024
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  6:00 PM
+                </span>
+              </div>
+              <p class="timeline-description">Join us for an encounter with Christ. A time of worship, prayer, and spiritual growth.</p>
+              <a href="#" class="timeline-btn">Learn More</a>
+            </div>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-crown"></i></span>
-            <span class="privilege-text">Leadership Roles</span>
-            <span class="privilege-badge unavailable">Unavailable</span>
+
+          <!-- Upcoming Service 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="6"/>
+              </svg>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge">Service</div>
+              <h3 class="timeline-title">Living in Purpose</h3>
+              <div class="timeline-meta">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Sunday, Dec 29, 2024
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  9:00 AM
+                </span>
+              </div>
+              <p class="timeline-description">Discover how to live with purpose and direction. Scripture focus: Romans 8:28-30.</p>
+              <a href="#" class="timeline-btn">Learn More</a>
+            </div>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-calendar-check"></i></span>
-            <span class="privilege-text">Event Access</span>
-            <span class="privilege-badge available">Available</span>
+
+          <!-- Upcoming Event 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="6"/>
+              </svg>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge event-type">Event</div>
+              <h3 class="timeline-title">Bible Study & Discussion</h3>
+              <div class="timeline-meta">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Tuesday, Dec 28, 2024
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  6:30 PM
+                </span>
+              </div>
+              <p class="timeline-description">In-depth study of weekly scripture with group discussions and Q&A sessions.</p>
+              <a href="#" class="timeline-btn">Learn More</a>
+            </div>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-hands-helping"></i></span>
-            <span class="privilege-text">Spiritual Mentorship</span>
-            <span class="privilege-badge upon-request">Upon Request</span>
+
+          <!-- Upcoming Event 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="6"/>
+              </svg>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge event-type">Event</div>
+              <h3 class="timeline-title">Youth Prayer Meeting</h3>
+              <div class="timeline-meta">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Thursday, Dec 31, 2024
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  7:00 PM
+                </span>
+              </div>
+              <p class="timeline-description">Year-end prayer and intercession for campus, nation and personal needs.</p>
+              <a href="#" class="timeline-btn">Learn More</a>
+            </div>
           </div>
-          <div class="privilege-item">
-            <span class="privilege-icon"><i class="fas fa-heart"></i></span>
-            <span class="privilege-text">Community Belonging</span>
-            <span class="privilege-badge included">Included</span>
+
+          <!-- Upcoming Event 3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="6"/>
+              </svg>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge event-type">Event</div>
+              <h3 class="timeline-title">New Year Fellowship</h3>
+              <div class="timeline-meta">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Friday, Jan 3, 2025
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  6:00 PM
+                </span>
+              </div>
+              <p class="timeline-description">Celebrate the new year together in fellowship, worship and community building.</p>
+              <a href="#" class="timeline-btn">Learn More</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section> 
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="brand-header">
+            <img src="logo.png" alt="CU Logo" class="footer-logo">
+            <div>
+              <h3>UoEm CU</h3>
+              <p>Transforming lives through Christ</p>
+            </div>
+          </div>
+        </div>
+        
+        <nav class="footer-nav">
+          <div class="nav-group">
+            <h4>Explore</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+          </div>
+          
+          <div class="nav-group">
+            <h4>Connect</h4>
+            <a href="#join">Join Us</a>
+            <a href="#donate">Give</a>
+            <a href="mailto:info@uoemcu.ac.ke">Contact</a>
+          </div>
+        </nav>
+        
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 UoEm CU</p>
+        <span class="separator">•</span>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/events.js"></script>
+</body>
+</html>

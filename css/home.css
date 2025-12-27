@@ -1029,7 +1029,7 @@
 }
 
 .testimony-card:hover .testimony-avatar {
-  border-color: var(--color-pink);
+  border-color: var( --color-primary);
   transform: scale(1.05);
 }
 
@@ -1363,7 +1363,7 @@
   gap: 0.5rem;
   background-color: transparent;
   color: var(--color-white);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--color-yellow);
   padding: 0.875rem 1.75rem;
   font-size: var(--font-size-base);
   font-weight: 600;
@@ -1379,8 +1379,9 @@
 }
 
 .watch-story-btn:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.6);
+  background-color: var( --color-yellow);
+  color: #3f114e;
+  /* border-color: rgba(255, 255, 255, 0.6); */
   transform: translateY(-2px);
 }
 
