@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Embu Christian Union</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ministries.css">
+  </head>
+
+  <body>
+    <header class="header">
+      <!-- Navigation -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+          <div class="nav-brand">
+            <img src="logo.png" alt="CU Logo" class="nav-logo">
+            <span class="nav-title">
+              University Of Embu<br>
+              Christian Union
+            </span>
+          </div>
+
+          <div class="nav-right">
+            <button
+              class="hamburger"
+              id="hamburger"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+          <div class="nav-menu" id="navMenu">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#ministries" class="nav-link">Ministries</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="events.html" class="nav-link">Events</a>
+
+            <!-- Mobile-only actions -->
+            <div class="mobile-only">
+              <a href="#signin" class="btn btn-outline">Sign In</a>
+            </div>
+
+            <div class="mobile-only">
+              <a href="#signup" class="btn btn-primary">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Desktop Actions -->
+          <div class="nav-actions desktop-only">
+            <a href="#signin" class="btn btn-outline">Sign In</a>
+            <a href="#signup" class="btn btn-primary">Sign up</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            One Lord, One Faith, One baptism (Eph 4:5)
+          </div>
+
+          <h1 class="hero-title">
+            University of Embu<br>
+            Christian Union
+          </h1>
+
+          <p class="hero-description">
+            A Christ-centered student movement at UoEm, dedicated to
+            discipleship, service, and transforming lives through the power
+            of the Gospel
+          </p>
+
+          <button class="hero-button">
+            Learn more
+            <span class="arrow">→</span>
+          </button>
+        </div>
+
+        <div class="hero-image-section">
+          <div class="yellow-accent"></div>
+
+          <div class="hero-image-container">
+            <img
+              src="images/image1.JPG"
+              alt="Christian Union gathering"
+              class="hero-image"
+            >
+          </div>
+
+          <div class="stats-card">
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">
+                Ministry<br>
+                Members
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">
+                Total<br>
+                Ministries
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tabs-section" id="ministries">
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab active ministries" data-tab="ministries">
+            MINISTRIES
+          </button>
+          <button class="tab inactive ministries" data-tab="my-ministries">
+            MY MINISTRIES
+          </button>
+          <button class="tab inactive dockets" data-tab="dockets">
+            DOCKETS
+          </button>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-container">
+            <div class="filter-label">Filter By:</div>
+
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="evangelical">
+                Evangelical
+              </button>
+              <button class="filter-btn" data-filter="musical">
+                Musical
+              </button>
+              <button class="filter-btn" data-filter="skill-based">
+                Skill Based
+              </button>
+              <button class="filter-btn" data-filter="evangelical">
+                Evangelical
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-grid" id="cards-container">
+          <div
+            class="ministry-card"
+            data-type="ministry"
+            data-category="skill-based"
+          >
+            <img
+              src="images/image2.JPG"
+              alt="Catering Ministry"
+              class="card-image"
+            >
+
+            <div class="card-content">
+              <span class="card-tag">Ministry Docket</span>
+              <h3 class="card-title">Catering Ministry</h3>
+              <p class="card-description">
+                Serving with excellence, nourishing the body as we grow in
+                fellowship.
+              </p>
+              <div class="card-divider"></div>
+              <a href="#" class="card-link">
+                Learn More
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="docket-card"
+            data-type="docket"
+            data-category="evangelical"
+          >
+            <div class="docket-layer-yellow"></div>
+            <div class="docket-layer-purple"></div>
+
+            <div class="docket-layer-white">
+              <img
+                src="images/img3.JPG"
+                alt="Evangelism Docket"
+                class="card-image"
+              >
+
+              <div class="card-content">
+                <span class="card-tag">Evangelism Docket</span>
+                <h3 class="card-title">Evangelism Docket</h3>
+                <p class="card-description">
+                  Serving with excellence, nourishing the body as we grow in
+                  fellowship.
+                </p>
+                <div class="card-divider"></div>
+                <a href="#" class="card-link">
+                  Learn More
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="ministry-card"
+            data-type="ministry"
+            data-category="skill-based"
+          >
+            <img
+              src="images/img4.JPG"
+              alt="Technical Ministry"
+              class="card-image"
+            >
+
+            <div class="card-content">
+              <span class="card-tag">Ministry Docket</span>
+              <h3 class="card-title">Technical Ministry</h3>
+              <p class="card-description">
+                Serving with excellence, nourishing the body as we grow in
+                fellowship.
+              </p>
+              <div class="card-divider"></div>
+              <a href="#" class="card-link">
+                Learn More
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="docket-card"
+            data-type="docket"
+            data-category="evangelical"
+          >
+            <div class="docket-layer-yellow"></div>
+            <div class="docket-layer-purple"></div>
+
+            <div class="docket-layer-white">
+              <img
+                src="images/image2.JPG"
+                alt="Discipleship Docket"
+                class="card-image"
+              >
+
+              <div class="card-content">
+                <span class="card-tag">Discipleship Docket</span>
+                <h3 class="card-title">Discipleship Docket</h3>
+                <p class="card-description">
+                  Serving with excellence, nourishing the body as we grow in
+                  fellowship.
+                </p>
+                <div class="card-divider"></div>
+                <a href="#" class="card-link">
+                  Learn More
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="ministry-card"
+            data-type="ministry"
+            data-category="skill-based"
+          >
+            <img
+              src="images/image1.JPG"
+              alt="Prayer Ministry"
+              class="card-image"
+            >
+
+            <div class="card-content">
+              <span class="card-tag">Ministry Docket</span>
+              <h3 class="card-title">Prayer Ministry</h3>
+              <p class="card-description">
+                Serving with excellence, nourishing the body as we grow in
+                fellowship.
+              </p>
+              <div class="card-divider"></div>
+              <a href="#" class="card-link">
+                Learn More
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="ministry-card"
+            data-type="ministry"
+            data-category="skill-based"
+          >
+            <img
+              src="images/image2.JPG"
+              alt="Ushering Ministry"
+              class="card-image"
+            >
+
+            <div class="card-content">
+              <span class="card-tag">Ministry Docket</span>
+              <h3 class="card-title">Ushering Ministry</h3>
+              <p class="card-description">
+                Serving with excellence, nourishing the body as we grow in
+                fellowship.
+              </p>
+              <div class="card-divider"></div>
+              <a href="#" class="card-link">
+                Learn More
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="brand-header">
+              <img src="logo.png" alt="CU Logo" class="footer-logo">
+              <div>
+                <h3>UoEm CU</h3>
+                <p>Transforming lives through Christ</p>
+              </div>
+            </div>
+          </div>
+
+          <nav class="footer-nav">
+            <div class="nav-group">
+              <h4>Explore</h4>
+              <a href="#about">About</a>
+              <a href="#ministries">Ministries</a>
+              <a href="#events">Events</a>
+            </div>
+
+            <div class="nav-group">
+              <h4>Connect</h4>
+              <a href="#join">Join Us</a>
+              <a href="#donate">Give</a>
+              <a href="mailto:info@uoemcu.ac.ke">Contact</a>
+            </div>
+          </nav>
+
+          <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 UoEm CU</p>
+          <span class="separator">•</span>
+          <a href="#privacy">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/ministries.js"></script>
+  </body>
+</html>
