@@ -1,16 +1,4 @@
-:root {
-  --primary-deep-purple: hsl(285, 64%, 19%);
-  --primary-purple-medium: #570f6e;
-  --primary-purple-light: #741892;
-  --accent-yellow: #ffd700;
-  --dark-navy: #1a1a2e;
-  --text-dark: #333333;
-  --text-gray: #666666;
-  --border-gray: #dddddd;
-  --divider-gray: #e0e0e0;
-  --background-light: #f5f5f5;
-  --white: #ffffff;
-}
+/* Ministry Single Page Styles - Inherits from main.css */
 
 /* Enhanced animations with spiritual theme - added new keyframes for smooth, purposeful effects */
 @keyframes fadeInUp {
@@ -113,16 +101,14 @@ body {
 
 /* Hero Section */
 .hero-ministry {
-  /* Updated gradient to keep the left side solid and reveal the image only on the far right */
   background: linear-gradient(
       to right,
-      rgba(63, 17, 78, 1) 0%,    /* Solid purple at the start */
-      rgba(58, 20, 82, 1) 20%,   /* Stays solid purple until 40% of the width */
+      rgba(63, 17, 78, 1) 0%,
+      rgba(58, 20, 82, 1) 20%,
       rgba(58, 20, 82, 0.95) 50%,
-      rgba(58, 20, 82, 0.8) 70%, /* Begins to fade slightly */
-      rgba(58, 20, 82, 0) 95%    /* Becomes fully transparent only at the very edge (95%) */
-    ), 
-    url("../images/technical.jpg") center / cover no-repeat;
+      rgba(58, 20, 82, 0.8) 70%,
+      rgba(58, 20, 82, 0) 95%
+    ), url("../images/technical.jpg") center / cover no-repeat;
   padding: 80px 40px;
   position: relative;
   overflow: hidden;
@@ -144,9 +130,8 @@ body {
 }
 
 .hero-content {
-  color: white;
+  color: var(--color-white);
   animation: slideInLeft 0.8s ease-out;
-  /* Added max-width to contain content on left side */
   max-width: 500px;
 }
 
@@ -159,7 +144,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 24px;
-  border: 1px solid rgba(63, 17, 78,0.2);
+  border: 1px solid rgba(63, 17, 78, 0.2);
   animation: fadeInUp 0.6s ease-out;
   transition: all 0.3s ease;
 }
@@ -187,10 +172,9 @@ body {
 }
 
 .hero-button {
-  background: var(--primary-deep-purple);
-  /* The yellow line surrounding the button */
-  border: 2px solid var(--accent-yellow); 
-  color: white;
+  background: var(--color-primary);
+  border: 2px solid var(--color-yellow);
+  color: var(--color-white);
   padding: 14px 36px;
   border-radius: 30px;
   font-size: 16px;
@@ -202,15 +186,14 @@ body {
   transition: all 0.3s ease;
   animation: fadeInUp 1.2s ease-out 0.6s both;
   box-shadow: 0 8px 25px rgba(58, 20, 82, 0.3);
-  box-sizing: border-box; 
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-
 .hero-button:hover {
-  background: var(--accent-yellow);
-  color: var(--primary-deep-purple);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+  background: var(--color-yellow);
+  color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(var(--color-yellow-rgb), 0.4);
   transform: translateY(-2px);
 }
 
@@ -222,12 +205,10 @@ body {
   transform: translateX(6px);
 }
 
-
-
 /* What We Do Section */
 .what-we-do {
   padding: 80px 40px;
-  background: var(--background-light);
+  background: var(--color-gray-light);
 }
 
 .section-header {
@@ -239,7 +220,7 @@ body {
 .section-title {
   font-size: 48px;
   font-weight: 800;
-  color: var(--primary-deep-purple);
+  color: var(--color-primary);
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -253,14 +234,13 @@ body {
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  
-  background: linear-gradient(to right, var(--primary-deep-purple), var(--accent-yellow));
+  background: linear-gradient(to right, var(--color-primary), var(--color-yellow));
   border-radius: 2px;
 }
 
 .section-description {
   font-size: 16px;
-  color: var(--text-gray);
+  color: var(--color-text-light);
   line-height: 1.7;
   max-width: 800px;
   margin: 30px auto 0;
@@ -273,12 +253,10 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0;
- 
-  
 }
 
 .activity-card {
-  background: white;
+  background: var(--color-white);
   padding: 15px;
   border-radius: 20px;
   max-height: 550px;
@@ -286,30 +264,30 @@ body {
   animation: fadeInUp 0.6s ease-out;
   transition: all 0.3s ease;
   position: relative;
-  border-left: 5px solid var(--primary-deep-purple);
+  border-left: 5px solid var(--color-primary);
 }
 
 .activity-card:nth-child(2) {
   animation-delay: 0.2s;
-  border-left-color: var(--primary-purple-medium);
+  border-left-color: var(--color-primary-medium);
 }
 
 .activity-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(58, 20, 82, 0.2);
-  border-left-color: var(--primary-purple-light);
+  border-left-color: var(--color-primary-light);
 }
 
 .card-icon-box {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--primary-deep-purple), var(--accent-yellow));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-yellow));
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  color: white;
+  color: var(--color-white);
   margin-bottom: 20px;
   transition: all 0.3s ease;
 }
@@ -317,13 +295,13 @@ body {
 .activity-card:hover .card-icon-box {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(58, 20, 82, 0.2);
-  background: linear-gradient(135deg, var(--accent-yellow), var(--primary-deep-purple));
+  background: linear-gradient(135deg, var(--color-yellow), var(--color-primary));
 }
 
 .activity-title {
   font-size: 24px;
   font-weight: 700;
-  color: var(--primary-deep-purple);
+  color: var(--color-primary);
   margin-bottom: 24px;
 }
 
@@ -333,7 +311,7 @@ body {
 
 .activity-list li {
   font-size: 16px;
-  color: var(--text-dark);
+  color: var(--color-text);
   padding: 12px 0;
   display: flex;
   align-items: center;
@@ -342,8 +320,7 @@ body {
 }
 
 .activity-list li i {
-  /* Changed checkmark color from yellow to purple */
-  color: var(--primary-purple-medium);
+  color: var(--color-primary-medium);
   font-weight: 700;
   transition: transform 0.3s ease;
 }
@@ -354,12 +331,12 @@ body {
 
 .activity-list li:hover i {
   transform: scale(1.3);
-  color: var(--primary-deep-purple);
+  color: var(--color-primary);
 }
 
 /* Schedule Card Specific */
 .schedule-card {
-  border-left-color: var(--primary-purple-light);
+  border-left-color: var(--color-primary-light);
 }
 
 .schedule-table {
@@ -372,7 +349,7 @@ body {
   display: flex;
   gap: 15px;
   padding: 10px;
-  background: var(--background-light);
+  background: var(--color-gray-light);
   border-radius: 12px;
   transition: all 0.3s ease;
   border-left: 3px solid transparent;
@@ -380,12 +357,12 @@ body {
 
 .schedule-row:hover {
   background: rgba(58, 20, 82, 0.08);
-  border-left-color: var(--primary-deep-purple);
+  border-left-color: var(--color-primary);
 }
 
 .schedule-label {
   font-weight: 700;
-  color: var(--primary-deep-purple);
+  color: var(--color-primary);
   min-width: 70px;
 }
 
@@ -400,20 +377,19 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-dark);
+  color: var(--color-text);
   font-size: 14px;
 }
 
 .check i {
-  /* Changed checkmark color from yellow to purple */
-  color: var(--primary-purple-medium);
+  color: var(--color-primary-medium);
   font-weight: 700;
 }
 
 /* Ministry Values Section */
 .values-section {
   padding: 80px 40px;
-  background: var(--white);
+  background: var(--color-white);
   position: relative;
 }
 
@@ -425,11 +401,10 @@ body {
 }
 
 .value-card {
-  background: white;
+  background: var(--color-white);
   padding: 30px 24px;
   border-radius: 20px;
-  /* Changed border color from gray to purple for purple dominance */
-  border: 2px solid var(--primary-purple-light);
+  border: 2px solid var(--color-primary-light);
   text-align: center;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   animation: fadeInUp 0.6s ease-out both;
@@ -445,7 +420,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--primary-deep-purple);
+  background: var(--color-primary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -473,20 +448,20 @@ body {
 
 .value-card:hover {
   transform: translateY(-12px);
-  border-color: var(--primary-deep-purple);
+  border-color: var(--color-primary);
   box-shadow: 0 15px 50px rgba(253, 252, 253, 0.2);
 }
 
 .value-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--primary-deep-purple), var(--accent-yellow));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-yellow));
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32px;
-  color: white;
+  color: var(--color-white);
   margin: 0 auto 20px;
   transition: all 0.3s ease;
 }
@@ -498,25 +473,25 @@ body {
 .value-title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--primary-deep-purple);
+  color: var(--color-primary);
   margin-bottom: 12px;
   transition: color 0.3s ease;
 }
 
 .value-card:hover .value-title {
-  color: var(--primary-purple-light);
+  color: var(--color-primary-light);
 }
 
 .value-text {
   font-size: 14px;
-  color: var(--text-gray);
+  color: var(--color-text-light);
   line-height: 1.6;
 }
 
 /* Dedicated Leaders Section */
 .leaders-section {
   padding: 80px 40px;
-  background: var(--background-light);
+  background: var(--color-gray-light);
 }
 
 .leaders-grid {
@@ -595,7 +570,6 @@ body {
   transition: all 0.4s ease;
 }
 
-
 .leader-info {
   width: 100%;
   display: flex;
@@ -605,7 +579,7 @@ body {
 }
 
 .leader-name {
-  color: white;
+  color: var(--color-white);
   font-weight: 800;
   font-size: 16px;
   opacity: 0;
@@ -620,13 +594,13 @@ body {
 }
 
 .leader-role {
-  color: white;
+  color: var(--color-white);
   font-weight: 700;
   font-size: 14px;
   background: rgba(58, 20, 82, 0.5);
   padding: 8px 16px;
   border-radius: 20px;
-  border: 1px solid var(--accent-yellow);
+  border: 1px solid var(--color-yellow);
   display: inline-block;
   transition: all 0.3s ease;
   align-self: flex-start;
@@ -641,11 +615,11 @@ body {
 /* Ministry Call-to-Action */
 .ministry-cta {
   padding: 60px 40px;
-  background: white;
+  background: var(--color-white);
 }
 
 .cta-card {
-  background: linear-gradient(135deg, var(--primary-deep-purple) 0%, var(--primary-purple-light) 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   padding: 40px;
   border-radius: 20px;
   display: flex;
@@ -671,7 +645,7 @@ body {
 }
 
 .cta-content {
-  color: white;
+  color: var(--color-white);
   flex: 1;
   position: relative;
   z-index: 2;
@@ -681,7 +655,7 @@ body {
   font-size: 28px;
   font-weight: 800;
   margin-bottom: 12px;
-  color: white;
+  color: var(--color-white);
 }
 
 .cta-text {
@@ -692,8 +666,8 @@ body {
 }
 
 .cta-button {
-  background: var(--accent-yellow);
-  color: var(--primary-deep-purple);
+  background: var(--color-yellow);
+  color: var(--color-primary);
   border: none;
   padding: 14px 36px;
   border-radius: 30px;
@@ -727,8 +701,8 @@ body {
 
 /* Footer */
 .footer {
-  background: var(--primary-deep-purple);
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 60px 40px 20px;
 }
 
@@ -774,12 +748,12 @@ body {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 16px;
-  color: white;
+  color: var(--color-white);
 }
 
 .nav-group a {
   display: block;
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 10px;
@@ -789,7 +763,7 @@ body {
 
 .nav-group a:hover {
   opacity: 1;
-  color: white;
+  color: var(--color-white);
   transform: translateX(4px);
 }
 
@@ -797,7 +771,7 @@ body {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 16px;
-  color: white;
+  color: var(--color-white);
 }
 
 .social-icons {
@@ -813,7 +787,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -821,7 +795,7 @@ body {
 
 .social-icons a:hover {
   background: rgba(255, 255, 255, 0.2);
-  color: white;
+  color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-4px);
 }
@@ -838,7 +812,7 @@ body {
 }
 
 .footer-bottom a {
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -862,8 +836,6 @@ body {
   .hero-title {
     font-size: 44px;
   }
-
-  /* Removed hero-image order change since it no longer exists */
 
   .activities-grid {
     grid-template-columns: 1fr;
@@ -923,8 +895,6 @@ body {
   .hero-subtitle {
     font-size: 14px;
   }
-
-  /* Removed hero-image height adjustment */
 
   .section-title {
     font-size: 36px;
@@ -999,6 +969,10 @@ body {
     font-size: 26px;
   }
 
+  .hero-subtitle {
+    font-size: 13px;
+  }
+
   .hero-button {
     padding: 12px 24px;
     font-size: 14px;
@@ -1008,70 +982,48 @@ body {
     font-size: 28px;
   }
 
-  .section-title::after {
-    width: 60px;
-  }
-
-  .section-description {
-    font-size: 13px;
-  }
-
   .activity-card {
     padding: 20px;
   }
 
-  .activity-list li {
-    font-size: 14px;
-    padding: 8px 0;
-  }
-
-  .schedule-row {
-    flex-direction: column;
-    gap: 12px;
+  .activity-title {
+    font-size: 18px;
   }
 
   .value-card {
-    padding: 20px 12px;
+    padding: 20px 16px;
   }
 
   .value-icon {
     width: 50px;
     height: 50px;
     font-size: 24px;
-    margin-bottom: 16px;
-  }
-
-  .value-title {
-    font-size: 18px;
-  }
-
-  .value-text {
-    font-size: 13px;
   }
 
   .leaders-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .leader-card.center {
-    grid-column: auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .cta-card {
-    padding: 20px 16px;
+    padding: 20px;
   }
 
   .cta-title {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .cta-text {
     font-size: 13px;
-    margin-bottom: 16px;
   }
 
   .cta-button {
-    padding: 12px 24px;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-left: 0;
+  }
+
+  .container {
+    padding: 0 16px;
   }
 }
