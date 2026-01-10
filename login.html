@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Christian Union</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-light">
+    <div class="container navbar-content">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">✨</span>
+        <span>Christian Union</span>
+      </a>
+      <a href="signup.html" class="nav-link auth-toggle">Don't have an account? Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="auth-container premium">
+    <!-- Updated blob backgrounds with darker opacity for better contrast with new layered background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    
+    <div class="auth-card premium-card">
+      <!-- Added layered background with image and gradient overlay to left side -->
+      <div class="card-left premium-left">
+        <!-- Layered background with image and gradient -->
+        <div class="background-layer"></div>
+        
+        <!-- Decorative Circle -->
+        <div class="circle-decoration"></div>
+        
+        <div class="content-header premium-header">
+          <!-- Added yellow accent line above welcome text -->
+          <div class="accent-line"></div>
+          <div class="header-badge">Welcome Back</div>
+          <!-- Added yellow highlight to key word "Spiritual" -->
+          <h2>Continue Your<br><span class="highlight-yellow">Spiritual</span><br>Journey</h2>
+          <p>Reconnect with your faith community</p>
+        </div>
+
+        <!-- Illustration Placeholder -->
+        <div class="illustration-container">
+          <svg class="faith-illustration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Hands Together -->
+            <ellipse cx="100" cy="100" rx="35" ry="50" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+            <!-- Light Ray -->
+            <line x1="100" y1="30" x2="100" y2="60" stroke="rgba(255,196,1,0.4)" stroke-width="2"/>
+            <line x1="85" y1="45" x2="100" y2="60" stroke="rgba(255,196,1,0.3)" stroke-width="1.5"/>
+            <line x1="115" y1="45" x2="100" y2="60" stroke="rgba(255,196,1,0.3)" stroke-width="1.5"/>
+            <!-- Hearts -->
+            <circle cx="65" cy="80" r="3" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="135" cy="80" r="3" fill="rgba(255,255,255,0.3)"/>
+          </svg>
+        </div>
+
+        <!-- Testimonials Carousel -->
+        <div class="testimonials-carousel">
+          <div class="testimonial-slide active">
+            <div class="testimonial-quote">"This community transformed my faith and gave me lifelong brothers and sisters in Christ."</div>
+            <div class="testimonial-author">
+              <div class="author-circle">JW</div>
+              <div>
+                <p class="author-name">John Wekesa</p>
+                <p class="author-role">CU Member</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-quote">"The discipleship programs have strengthened my walk with God immensely. Highly recommended!"</div>
+            <div class="testimonial-author">
+              <div class="author-circle">AM</div>
+              <div>
+                <p class="author-name">Alice Munene</p>
+                <p class="author-role">CU Member</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-quote">"Service through CU missions changed my perspective on faith and purpose. Glory be to God!"</div>
+            <div class="testimonial-author">
+              <div class="author-circle">DK</div>
+              <div>
+                <p class="author-name">David Kipchoge</p>
+                <p class="author-role">CU Leader</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Updated carousel dots with yellow active state -->
+        <!-- Carousel Dots -->
+        <div class="carousel-nav premium-nav">
+          <button class="carousel-dot active" data-slide="0"></button>
+          <button class="carousel-dot" data-slide="1"></button>
+          <button class="carousel-dot" data-slide="2"></button>
+        </div>
+
+        <!-- Enhanced faith verse card with glassmorphism effect -->
+        <!-- Faith Verse -->
+        <div class="faith-section premium-verse">
+          <p class="verse-text">"But those who hope in the Lord will renew their strength..."</p>
+          <span class="verse-ref">Isaiah 40:31</span>
+        </div>
+      </div>
+
+      <!-- Right Side: Form -->
+      <div class="card-right premium-right">
+        <div class="form-header premium-form-header">
+          <h1>Welcome<br><span class="gradient-text">Back Home</span></h1>
+          <p>Sign in to continue</p>
+        </div>
+
+        <form id="loginForm" class="auth-form premium-form">
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@student.ac.ke" class="form-input">
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input">
+              <input type="password" id="password" name="password" required placeholder="••••••••" class="form-input">
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility">👁️</button>
+            </div>
+          </div>
+
+          <!-- Remember Me & Forgot Password -->
+          <div class="form-group checkbox-group remember-me">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Remember me</label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-lg premium-btn">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-loader"></span>
+          </button>
+
+          <!-- Sign Up Link -->
+          <p class="auth-footer">New to Christian Union? <a href="signup.html" class="link">Create an account</a></p>
+
+          <!-- Divider -->
+          <div class="divider">or</div>
+
+          <!-- Social Login -->
+          <button type="button" class="btn btn-secondary btn-lg premium-btn-secondary">
+            <span>Continue with Google</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loader-container premium-loader">
+        <div class="loader-circle premium-spinner"></div>
+        <p>Signing you in...</p>
+        <span class="loader-faith">Faith awaits</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Christian Union. One Lord, One Faith, One Baptism. <span class="faith-icon">✨</span></p>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
