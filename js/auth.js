@@ -1,22 +1,27 @@
 // Authentication Forms Handler
 class AuthHandler {
   constructor() {
-    this.signupForm = document.getElementById("signupForm")
-    this.loginForm = document.getElementById("loginForm")
+    this.studentForm = document.getElementById("studentForm")
+    this.associateForm = document.getElementById("associateForm")
     this.loadingOverlay = document.getElementById("loadingOverlay")
     this.currentSlide = 0
+    this.currentFormType = "student"
     this.init()
   }
 
   init() {
-    // Signup form
-    if (this.signupForm) {
-      this.signupForm.addEventListener("submit", (e) => this.handleSignup(e))
+    // Signup forms
+    if (this.studentForm) {
+      this.studentForm.addEventListener("submit", (e) => this.handleSignup(e, "student"))
+    }
+    if (this.associateForm) {
+      this.associateForm.addEventListener("submit", (e) => this.handleSignup(e, "associate"))
     }
 
     // Login form
-    if (this.loginForm) {
-      this.loginForm.addEventListener("submit", (e) => this.handleLogin(e))
+    const loginForm = document.getElementById("loginForm")
+    if (loginForm) {
+      loginForm.addEventListener("submit", (e) => this.handleLogin(e))
     }
 
     // Password visibility toggle
@@ -27,11 +32,57 @@ class AuthHandler {
 
     // Add faith-based animations on load
     this.animateOnLoad()
+
+    // Form toggle functionality
+    this.setupFormToggle()
+  }
+
+  setupFormToggle() {
+    const toggleButtons = document.querySelectorAll(".form-toggle")
+    const contentPanels = document.querySelectorAll(".content-panel")
+    const forms = document.querySelectorAll(".auth-form")
+    const backgroundLayer = document.getElementById("backgroundLayer")
+
+    toggleButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const formType = btn.getAttribute("data-form")
+
+        toggleButtons.forEach((b) => b.classList.remove("active"))
+        btn.classList.add("active")
+
+        contentPanels.forEach((panel) => {
+          panel.classList.remove("active")
+        })
+
+        const activePanel = document.querySelector(`.${formType}-panel`)
+        if (activePanel) {
+          activePanel.classList.add("active")
+        }
+
+        forms.forEach((form) => {
+          form.classList.remove("active-form")
+        })
+        const activeForm = document.getElementById(`${formType}Form`)
+        if (activeForm) {
+          activeForm.classList.add("active-form")
+        }
+
+        if (backgroundLayer) {
+          if (formType === "student") {
+            backgroundLayer.style.backgroundImage = "url('../images/technical.jpg')"
+          } else if (formType === "associate") {
+            backgroundLayer.style.backgroundImage = "url('../images/associates.JPG')"
+          }
+        }
+
+        this.currentFormType = formType
+      })
+    })
   }
 
   setupCarousel() {
     const dots = document.querySelectorAll(".carousel-dot")
-    const slides = document.querySelectorAll(".benefit-slide, .testimonial-slide")
+    const slides = document.querySelectorAll(".benefit-slide")
 
     // Auto-rotate carousel
     this.autoRotateCarousel(dots, slides)
@@ -66,16 +117,28 @@ class AuthHandler {
     }, 5000)
   }
 
-  handleSignup(e) {
+  handleSignup(e, formType) {
     e.preventDefault()
 
-    const formData = {
-      firstName: document.getElementById("firstName").value,
-      lastName: document.getElementById("lastName").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      password: document.getElementById("password").value,
-      confirmPassword: document.getElementById("confirmPassword").value,
+    let formData = {}
+    if (formType === "student") {
+      formData = {
+        regNo: document.getElementById("studentRegNo").value,
+        firstName: document.getElementById("studentFirstName").value,
+        lastName: document.getElementById("studentLastName").value,
+        phone: document.getElementById("studentPhone").value,
+        password: document.getElementById("studentPassword").value,
+        confirmPassword: document.getElementById("studentConfirmPassword").value,
+      }
+    } else {
+      formData = {
+        email: document.getElementById("associateEmail").value,
+        firstName: document.getElementById("associateFirstName").value,
+        lastName: document.getElementById("associateLastName").value,
+        phone: document.getElementById("associatePhone").value,
+        password: document.getElementById("associatePassword").value,
+        confirmPassword: document.getElementById("associateConfirmPassword").value,
+      }
     }
 
     // Validate passwords match
@@ -90,12 +153,13 @@ class AuthHandler {
       return
     }
 
-    this.showLoading("Creating your account...")
+    const typeLabel = formType === "student" ? "Student" : "Associate"
+    this.showLoading(`Creating your ${typeLabel} account...`)
 
     // Simulate API call
     setTimeout(() => {
       this.hideLoading()
-      this.showSuccess("Account created! Welcome to the journey.")
+      this.showSuccess(`${typeLabel} account created! Welcome to the journey.`)
       setTimeout(() => {
         window.location.href = "index.html"
       }, 2000)

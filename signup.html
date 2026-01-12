@@ -6,13 +6,15 @@
   <title>Join Our Community - Christian Union</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/auth.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-light">
     <div class="container navbar-content">
       <a href="index.html" class="navbar-brand">
-        <span class="brand-icon">✨</span>
+         <span class="brand-icon"><i class="fas fa-cross"></i></span> <!--WEKA LOGO HAPA -->
         <span>Christian Union</span>
       </a>
       <a href="login.html" class="nav-link auth-toggle">Already have an account? Sign In</a>
@@ -30,70 +32,127 @@
       <!-- Added layered background with image and gradient overlay to left side -->
       <div class="card-left premium-left">
         <!-- Layered background with image and gradient -->
-        <div class="background-layer"></div>
+        <div class="background-layer" id="backgroundLayer"></div>
         
         <!-- Decorative Circle -->
         <div class="circle-decoration"></div>
         
-        <div class="content-header premium-header">
-          <!-- Added yellow accent line above welcome text -->
-          <div class="accent-line"></div>
-          <div class="header-badge">Welcome to the Journey</div>
-          <!-- Added yellow highlight to key word "Spiritual" -->
-          <h2>Join Our<br><span class="highlight-yellow">Spiritual</span><br>Community</h2>
-          <p>Transform your faith and connect with 3000+ believers</p>
-        </div>
-
-        <!-- Illustration Placeholder -->
-        <div class="illustration-container">
-          <svg class="faith-illustration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Tree of Faith -->
-            <circle cx="100" cy="160" r="30" fill="rgba(255,255,255,0.1)"/>
-            <path d="M 100 160 Q 80 120 100 60 Q 120 120 100 160" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-            <!-- Leaves -->
-            <circle cx="70" cy="100" r="8" fill="rgba(255,255,255,0.2)"/>
-            <circle cx="130" cy="100" r="8" fill="rgba(255,255,255,0.2)"/>
-            <circle cx="75" cy="75" r="6" fill="rgba(255,255,255,0.25)"/>
-            <circle cx="125" cy="75" r="6" fill="rgba(255,255,255,0.25)"/>
-            <!-- Stars -->
-            <circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.4)"/>
-            <circle cx="150" cy="50" r="2" fill="rgba(255,255,255,0.4)"/>
-            <circle cx="100" cy="30" r="3" fill="rgba(255,255,255,0.5)"/>
-          </svg>
-        </div>
-
-        <!-- Benefits Grid -->
-        <div class="benefits-carousel">
-          <div class="benefit-slide active">
-            <div class="benefit-icon">⛪</div>
-            <h3>Spiritual Growth</h3>
-            <p>Discipleship programs & weekly teachings</p>
+        <!-- STUDENT CONTENT PANEL -->
+        <div class="content-panel student-panel active" style="display: flex;">
+          <div class="content-header premium-header">
+            <!-- Added yellow accent line above welcome text -->
+            <div class="accent-line"></div>
+            <div class="header-badge">Welcome to the UoEmCU family</div>
+            <!-- Added yellow highlight to key word "Spiritual" -->
+            <h2>Join Our<br><span class="highlight-yellow">Spiritual</span><br>Community</h2>
+            <p>Transform your faith and connect with 3000+ believers</p>
           </div>
-          <div class="benefit-slide">
-            <div class="benefit-icon">🤝</div>
-            <h3>Community & Fellowship</h3>
-            <p>Build lasting friendships in Christ</p>
+
+          <!-- Illustration Placeholder -->
+          <!-- <div class="illustration-container">
+            <svg class="faith-illustration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> -->
+              <!-- Tree of Faith - Now in Yellow -->
+              <!-- <circle cx="100" cy="160" r="30" fill="rgba(255, 196, 1, 0.2)"/>
+              <path d="M 100 160 Q 80 120 100 60 Q 120 120 100 160" fill="rgba(255, 196, 1, 0.3)" stroke="rgba(255, 196, 1, 0.6)" stroke-width="2"/> -->
+              <!-- Leaves -->
+              <!-- <circle cx="70" cy="100" r="8" fill="rgba(255, 196, 1, 0.5)"/>
+              <circle cx="130" cy="100" r="8" fill="rgba(255, 196, 1, 0.5)"/>
+              <circle cx="75" cy="75" r="6" fill="rgba(255, 196, 1, 0.6)"/>
+              <circle cx="125" cy="75" r="6" fill="rgba(255, 196, 1, 0.6)"/> -->
+              <!-- Stars -->
+              <!-- <circle cx="50" cy="50" r="2" fill="rgba(255, 196, 1, 0.8)"/>
+              <circle cx="150" cy="50" r="2" fill="rgba(255, 196, 1, 0.8)"/>
+              <circle cx="100" cy="30" r="3" fill="rgba(255, 196, 1, 1)"/>
+            </svg>
+          </div> -->
+
+          <!-- Benefits Grid -->
+          <div class="benefits-carousel">
+            <div class="benefit-slide active">
+              <div class="benefit-icon"><i class="fas fa-church"></i></div>
+              <h3>Spiritual Growth</h3>
+              <p>Discipleship programs & weekly teachings</p>
+            </div>
+            <div class="benefit-slide">
+              <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+              <h3>Community & Fellowship</h3>
+              <p>Build lasting friendships in Christ</p>
+            </div>
+            <div class="benefit-slide">
+              <div class="benefit-icon"><i class="fas fa-cross"></i></div>
+              <h3>Purpose & Service</h3>
+              <p>Make eternal impact through missions</p>
+            </div>
           </div>
-          <div class="benefit-slide">
-            <div class="benefit-icon">✝️</div>
-            <h3>Purpose & Service</h3>
-            <p>Make eternal impact through missions</p>
+
+          <!-- Updated carousel dots with yellow active state -->
+          <!-- Carousel Dots -->
+          <div class="carousel-nav premium-nav">
+            <button class="carousel-dot active" data-slide="0"></button>
+            <button class="carousel-dot" data-slide="1"></button>
+            <button class="carousel-dot" data-slide="2"></button>
+          </div>
+
+          <!-- Enhanced faith verse card with glassmorphism effect -->
+          <!-- Faith Verse -->
+          <div class="faith-section premium-verse">
+            <p class="verse-text">"For God so loved the world..."</p>
+            <span class="verse-ref">John 3:16</span>
           </div>
         </div>
 
-        <!-- Updated carousel dots with yellow active state -->
-        <!-- Carousel Dots -->
-        <div class="carousel-nav premium-nav">
-          <button class="carousel-dot active" data-slide="0"></button>
-          <button class="carousel-dot" data-slide="1"></button>
-          <button class="carousel-dot" data-slide="2"></button>
-        </div>
+        <!-- ASSOCIATE CONTENT PANEL -->
+        <div class="content-panel associate-panel" style="display: none;">
+          <div class="content-header premium-header">
+            <div class="accent-line"></div>
+            <div class="header-badge">Professional Fellowship</div>
+            <h2>Join Our<br><span class="highlight-yellow">Alumni</span><br>Network</h2>
+            <p>Connect, mentor, and grow with seasoned believers</p>
+          </div>
 
-        <!-- Enhanced faith verse card with glassmorphism effect -->
-        <!-- Faith Verse -->
-        <div class="faith-section premium-verse">
-          <p class="verse-text">"For God so loved the world..."</p>
-          <span class="verse-ref">John 3:16</span>
+          <!-- Associate Illustration -->
+          <!-- <div class="illustration-container">
+            <svg class="faith-illustration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> -->
+              <!-- Hands in Fellowship - Yellow Version -->
+              <!-- <circle cx="100" cy="100" r="60" fill="rgba(255, 196, 1, 0.08)" stroke="rgba(255, 196, 1, 0.3)" stroke-width="2"/>
+              <path d="M 60 100 Q 70 80 85 75" stroke="rgba(255, 196, 1, 0.5)" stroke-width="3" fill="none"/>
+              <path d="M 140 100 Q 130 80 115 75" stroke="rgba(255, 196, 1, 0.5)" stroke-width="3" fill="none"/>
+              <circle cx="75" cy="110" r="8" fill="rgba(255, 196, 1, 0.6)"/>
+              <circle cx="125" cy="110" r="8" fill="rgba(255, 196, 1, 0.6)"/>
+            </svg>
+          </div> -->
+
+          <!-- Associate Benefits -->
+          <div class="benefits-carousel">
+            <div class="benefit-slide active">
+              <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
+              <h3>Mentorship</h3>
+              <p>Guide and support current students</p>
+            </div>
+            <div class="benefit-slide">
+              <div class="benefit-icon"><i class="fas fa-briefcase"></i></div>
+              <h3>Professional Network</h3>
+              <p>Connect with accomplished alumni</p>
+            </div>
+            <div class="benefit-slide">
+              <div class="benefit-icon"><i class="fas fa-hands-praying"></i></div>
+              <h3>Give Back</h3>
+              <p>Impact the next generation of leaders</p>
+            </div>
+          </div>
+
+          <!-- Carousel Dots -->
+          <div class="carousel-nav premium-nav">
+            <button class="carousel-dot active" data-slide="0"></button>
+            <button class="carousel-dot" data-slide="1"></button>
+            <button class="carousel-dot" data-slide="2"></button>
+          </div>
+
+          <!-- Associate Verse -->
+          <div class="faith-section premium-verse">
+            <p class="verse-text">"Let the wise listen and add to their learning..."</p>
+            <span class="verse-ref">Proverbs 1:5</span>
+          </div>
         </div>
       </div>
 
@@ -104,55 +163,184 @@
           <p>Start your faith journey today</p>
         </div>
 
-        <form id="signupForm" class="auth-form premium-form">
+        <!-- Added toggle button to switch between student and associate forms -->
+        <div class="form-toggle-container">
+          <button class="form-toggle active" data-form="student">Register as Student</button>
+          <button class="form-toggle" data-form="associate">Register as Associate</button>
+        </div>
+
+        <!-- STUDENT FORM -->
+        <form id="studentForm" class="auth-form premium-form active-form">
+          <!-- Styled Google button with proper SVG icon -->
+          <button type="button" class="btn btn-google google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span>Continue with Google</span>
+          </button>
+
+          <div class="divider">Or sign up with email</div>
+
+          <!-- Registration Number -->
+          <div class="form-group">
+            <label for="studentRegNo">Registration Number</label>
+            <input type="text" id="studentRegNo" name="regNo" required placeholder="e.g., ENG/2021/001" class="form-input">
+          </div>
+
           <!-- First Name & Last Name Row -->
           <div class="form-row">
             <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="firstName" required placeholder="John" class="form-input">
+              <label for="studentFirstName">First Name</label>
+              <input type="text" id="studentFirstName" name="firstName" required placeholder="John" class="form-input">
             </div>
             <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" required placeholder="Doe" class="form-input">
+              <label for="studentLastName">Last Name</label>
+              <input type="text" id="studentLastName" name="lastName" required placeholder="Doe" class="form-input">
             </div>
-          </div>
-
-          <!-- Email -->
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required placeholder="your.email@student.ac.ke" class="form-input">
           </div>
 
           <!-- Phone -->
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required placeholder="+254 712 345 678" class="form-input">
+            <label for="studentPhone">Phone Number</label>
+            <input type="tel" id="studentPhone" name="phone" required placeholder="+254 712 345 678" class="form-input">
+          </div>
+
+          <!-- Optional Phone -->
+          <div class="form-group">
+            <label for="studentPhone2">Optional Phone Number <span class="optional-text">(optional)</span></label>
+            <input type="tel" id="studentPhone2" name="phone2" placeholder="+254 700 000 000" class="form-input">
+          </div>
+
+          <!-- Year of Graduation -->
+          <div class="form-group">
+            <label for="studentGraduation">Year of Graduation</label>
+            <select id="studentGraduation" name="graduation" required class="form-input">
+              <option value="">Select year</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+            </select>
           </div>
 
           <!-- Password -->
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="studentPassword">Password</label>
             <div class="password-input">
-              <input type="password" id="password" name="password" required placeholder="••••••••" class="form-input">
-              <button type="button" class="password-toggle" aria-label="Toggle password visibility">👁️</button>
+              <input type="password" id="studentPassword" name="password" required placeholder="••••••••" class="form-input">
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="fas fa-eye"></i></button>
             </div>
           </div>
 
           <!-- Confirm Password -->
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••" class="form-input">
+            <label for="studentConfirmPassword">Confirm Password</label>
+            <input type="password" id="studentConfirmPassword" name="confirmPassword" required placeholder="••••••••" class="form-input">
           </div>
 
           <!-- Terms & Conditions -->
           <div class="form-group checkbox-group">
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">I agree to the <a href="#" class="link">Terms</a> and <a href="#" class="link">Privacy Policy</a></label>
+            <input type="checkbox" id="studentTerms" name="terms" required>
+            <label for="studentTerms">I agree to the <a href="#" class="link">Terms</a> and <a href="#" class="link">Privacy Policy</a></label>
           </div>
 
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary btn-lg premium-btn">
-            <span class="btn-text">Create My Account</span>
+            <span class="btn-text">Create Student Account</span>
+            <span class="btn-loader"></span>
+          </button>
+
+          <!-- Sign In Link -->
+          <p class="auth-footer">Already a member? <a href="login.html" class="link">Sign In here</a></p>
+        </form>
+
+        <!-- ASSOCIATE FORM -->
+        <form id="associateForm" class="auth-form premium-form">
+          <!-- Styled Google button with proper SVG icon -->
+          <button type="button" class="btn btn-google google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span>Continue with Google</span>
+          </button>
+
+          <div class="divider">Or sign up with email</div>
+
+          <!-- Email Address (instead of Reg No) -->
+          <div class="form-group">
+            <label for="associateEmail">Email Address</label>
+            <input type="email" id="associateEmail" name="email" required placeholder="your.email@company.com" class="form-input">
+          </div>
+
+          <!-- First Name & Last Name Row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="associateFirstName">First Name</label>
+              <input type="text" id="associateFirstName" name="firstName" required placeholder="John" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="associateLastName">Last Name</label>
+              <input type="text" id="associateLastName" name="lastName" required placeholder="Doe" class="form-input">
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="associatePhone">Phone Number</label>
+            <input type="tel" id="associatePhone" name="phone" required placeholder="+254 712 345 678" class="form-input">
+          </div>
+
+          <!-- Optional Phone -->
+          <div class="form-group">
+            <label for="associatePhone2">Optional Phone Number <span class="optional-text">(optional)</span></label>
+            <input type="tel" id="associatePhone2" name="phone2" placeholder="+254 700 000 000" class="form-input">
+          </div>
+
+          <!-- Year of Graduation -->
+          <div class="form-group">
+            <label for="associateGraduation">Year of Graduation</label>
+            <select id="associateGraduation" name="graduation" required class="form-input">
+              <option value="">Select year</option>
+              <option value="1990">1990</option>
+              <option value="1995">1995</option>
+              <option value="2000">2000</option>
+              <option value="2005">2005</option>
+              <option value="2010">2010</option>
+              <option value="2015">2015</option>
+              <option value="2020">2020</option>
+            </select>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="associatePassword">Password</label>
+            <div class="password-input">
+              <input type="password" id="associatePassword" name="password" required placeholder="••••••••" class="form-input">
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="associateConfirmPassword">Confirm Password</label>
+            <input type="password" id="associateConfirmPassword" name="confirmPassword" required placeholder="••••••••" class="form-input">
+          </div>
+
+          <!-- Terms & Conditions -->
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="associateTerms" name="terms" required>
+            <label for="associateTerms">I agree to the <a href="#" class="link">Terms</a> and <a href="#" class="link">Privacy Policy</a></label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-lg premium-btn">
+            <span class="btn-text">Create Associate Account</span>
             <span class="btn-loader"></span>
           </button>
 
@@ -175,7 +363,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Christian Union. One Lord, One Faith, One Baptism. <span class="faith-icon">✨</span></p>
+      <p>&copy; 2025 Christian Union. One Lord, One Faith, One Baptism. <span class="faith-icon"><i class="fas fa-sparkles"></i></span></p>
     </div>
   </footer>
 
