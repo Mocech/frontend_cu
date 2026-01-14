@@ -1,0 +1,456 @@
+/* Onboarding Page - Inherits all CSS variables from main.css */
+
+/* Container and Background */
+.onboarding-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    /* Updated background to rich purple with gradient for more visual impact */
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-accent-light) 50%,
+      var(--color-primary-dark) 100%
+    );
+    padding: var(--spacing-md);
+  }
+  
+  .onboarding-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Added animated gradient overlay with floating blob effects */
+    background: radial-gradient(circle at 20% 50%, rgba(255, 196, 1, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  /* Wrapper */
+  .onboarding-wrapper {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  /* Progress Section */
+  .progress-section {
+    text-align: center;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .progress-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-yellow) 0%, var(--color-yellow-light) 100%);
+    animation: fillProgress 0.8s ease-out;
+    /* Added glow effect to progress bar */
+    box-shadow: 0 0 10px rgba(255, 196, 1, 0.6);
+  }
+  
+  .progress-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    font-weight: 600;
+  }
+  
+  /* Card with Enhanced Glassmorphism and Floating Effect */
+  .onboarding-card {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    /* Enhanced shadow for floating/hanging effect with multiple layers */
+    box-shadow: 0 20px 60px rgba(63, 17, 78, 0.25), 0 40px 80px rgba(63, 17, 78, 0.15), 0 0 30px rgba(255, 196, 1, 0.1);
+    animation: cardAppear 0.7s ease-out 0.1s both, softFloat 4s ease-in-out infinite 0.5s;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Header */
+  .onboarding-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .header-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+    /* Added glow effect to icon */
+    filter: drop-shadow(0 0 8px rgba(255, 196, 1, 0.4));
+  }
+  
+  .onboarding-title {
+    font-size: var(--font-size-2xl);
+    /* Gradient text color for more visual appeal */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+  }
+  
+  .onboarding-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+  }
+  
+  .onboarding-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  /* Form Styles */
+  .onboarding-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .form-label {
+    font-size: var(--font-size-base);
+    /* increased font weight and size for better visibility */
+    font-weight: 700;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .form-input,
+  select {
+    padding: var(--spacing-md) var(--spacing-md);
+    /* thicker border with purple color for more prominence */
+    border: 2.5px solid var(--color-primary);
+    border-radius: var(--border-radius-lg);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    transition: all var(--transition-base);
+  }
+  
+  .form-input:focus,
+  select:focus {
+    outline: none;
+    /* golden yellow border on focus for visual feedback */
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 4px rgba(255, 196, 1, 0.15), inset 0 0 0 1px var(--color-primary);
+    background-color: var(--color-white);
+  }
+  
+  .form-input::placeholder {
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+  
+  .form-help {
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: 500;
+  }
+  
+  /* Radio Group */
+  .radio-group {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-sm);
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    transition: all var(--transition-base);
+    font-weight: 500;
+  }
+  
+  .radio-label input[type="radio"] {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    /* thicker border with purple color */
+    border: 2.5px solid var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    background-color: var(--color-white);
+    flex-shrink: 0;
+  }
+  
+  .radio-label input[type="radio"]:hover {
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 196, 1, 0.2);
+  }
+  
+  .radio-label input[type="radio"]:checked {
+    border-color: var(--color-yellow);
+    background: var(--color-primary);
+    box-shadow: inset 0 0 0 3px var(--color-white), 0 0 0 2px var(--color-yellow);
+  }
+  
+  /* Finish Button */
+  .btn-finish {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-light) 100%);
+    border: none;
+    border-radius: var(--border-radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-base);
+    /* Enhanced shadow with yellow glow effect */
+    box-shadow: 0 10px 30px rgba(63, 17, 78, 0.3), 0 0 20px rgba(255, 196, 1, 0.2);
+    min-height: 48px;
+  }
+  
+  .btn-finish:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(63, 17, 78, 0.4), 0 0 30px rgba(255, 196, 1, 0.3);
+  }
+  
+  .btn-finish:active {
+    transform: translateY(-1px);
+  }
+  
+  .btn-icon {
+    width: 20px;
+    height: 20px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Footer */
+  .onboarding-footer {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  /* Loading Overlay */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(63, 17, 78, 0.95) 0%, rgba(107, 45, 127, 0.95) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+  }
+  
+  .loading-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .loading-overlay p {
+    color: var(--color-white);
+    font-size: var(--font-size-base);
+    margin: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--color-yellow);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    /* Added glow effect to spinner */
+    box-shadow: 0 0 20px rgba(255, 196, 1, 0.5);
+  }
+  
+  /* Animations */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes cardAppear {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* New animation for the floating/hanging effect */
+  @keyframes softFloat {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes fillProgress {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* New animation for gradient background shift */
+  @keyframes gradientShift {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .onboarding-card {
+      padding: var(--spacing-lg);
+    }
+  
+    .onboarding-title {
+      font-size: var(--font-size-xl);
+    }
+  
+    .onboarding-subtitle {
+      font-size: var(--font-size-base);
+    }
+  
+    .header-icon {
+      font-size: 2rem;
+    }
+  
+    .radio-group {
+      gap: var(--spacing-sm);
+    }
+  
+    .btn-finish {
+      padding: var(--spacing-md) var(--spacing-lg);
+      font-size: var(--font-size-sm);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .onboarding-container {
+      padding: var(--spacing-sm);
+    }
+  
+    .onboarding-wrapper {
+      gap: var(--spacing-md);
+    }
+  
+    .onboarding-card {
+      padding: var(--spacing-md);
+    }
+  
+    .onboarding-title {
+      font-size: var(--font-size-lg);
+    }
+  
+    .onboarding-form {
+      gap: var(--spacing-sm);
+    }
+  
+    .radio-group {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+  
+    .header-icon {
+      font-size: 1.5rem;
+    }
+  }
+  

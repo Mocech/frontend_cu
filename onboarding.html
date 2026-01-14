@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Profile | Christian Union</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/onboarding.css">
+</head>
+<body>
+    <div class="onboarding-container">
+        <!-- Background gradient -->
+        <div class="onboarding-background"></div>
+
+        <!-- Main content -->
+        <div class="onboarding-wrapper">
+            <!-- Progress indicator -->
+            <div class="progress-section">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="progress-text">Step 2 of 2</p>
+            </div>
+
+            <!-- Card container with glassmorphism -->
+            <div class="onboarding-card">
+                <!-- Header -->
+                <div class="onboarding-header">
+                    <div class="header-icon">✨</div>
+                    <h1 class="onboarding-title">Almost there!</h1>
+                    <p class="onboarding-subtitle" id="userGreeting">Just a few more details!</p>
+                    <p class="onboarding-description">Help us get to know you better so we can tailor your CU experience.</p>
+                </div>
+
+                <!-- Form -->
+                <form class="onboarding-form" id="onboardingForm">
+                    <!-- Registration Number -->
+                    <div class="form-group">
+                        <label for="registrationNumber" class="form-label">Registration Number</label>
+                        <input 
+                            type="text" 
+                            id="registrationNumber" 
+                            name="registrationNumber"
+                            class="form-input"
+                            placeholder="e.g., SCT211-0000/2024"
+                            required
+                        >
+                        <small class="form-help">Format: XXXNNN-NNNN/YYYY</small>
+                    </div>
+
+                    <!-- Year of Graduation -->
+                    <div class="form-group">
+                        <label for="graduationYear" class="form-label">Year of Graduation</label>
+                        <select id="graduationYear" name="graduationYear" class="form-input" required>
+                            <option value="">Select your graduation year</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="male" required>
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="female" required>
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="other" required>
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-finish">
+                        <span>Let's Go!</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="5 12 19 12"></polyline>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Footer message -->
+                <p class="onboarding-footer">You can update these details anytime in your profile settings.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Setting up your profile...</p>
+    </div>
+
+    <script src="js/onboarding.js"></script>
+</body>
+</html>
