@@ -1,0 +1,301 @@
+/* Email Verification - Compact Professional Design */
+
+.verification-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white-secondary);
+  padding: 1rem;
+}
+
+.verification-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* Header - Compact */
+.verification-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.header-icon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.verification-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  margin: 0 0 0.25rem 0;
+  font-weight: 700;
+}
+
+.verification-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Email Display - Minimal */
+.email-display {
+  background: var(--color-white-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--color-border-light);
+}
+
+.email-address {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* Form - Tight spacing */
+.verification-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.3px;
+}
+
+.form-input {
+  padding: 0.65rem 0.75rem;
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  transition: all var(--transition-base);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 196, 1, 0.1);
+}
+
+.code-input {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  font-family: "Courier New", monospace;
+}
+
+/* Verify Button */
+.btn-verify {
+  padding: 0.7rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--transition-base);
+  width: 100%;
+}
+
+.btn-verify:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(63, 17, 78, 0.2);
+}
+
+.btn-verify:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-verify i {
+  font-size: 1rem;
+}
+
+/* Actions Section - Compact */
+.actions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* Resend Button */
+.btn-resend {
+  padding: 0.6rem 0.75rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: transparent;
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all var(--transition-base);
+  width: 100%;
+}
+
+.btn-resend:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(63, 17, 78, 0.15);
+}
+
+.btn-resend:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-resend i {
+  font-size: 0.875rem;
+}
+
+.countdown {
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+}
+
+/* Edit Registration Button */
+.btn-edit-reg {
+  padding: 0.6rem 0.75rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-white-secondary);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  transition: all var(--transition-base);
+}
+
+.btn-edit-reg:hover {
+  background: var(--color-border-light);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(63, 17, 78, 0.1);
+}
+
+.btn-edit-reg i {
+  font-size: 0.875rem;
+}
+
+/* Help text */
+.help-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  text-align: center;
+  margin: 0.75rem 0 0 0;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .verification-card {
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+
+  .verification-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .header-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .verification-container {
+    padding: 0.75rem;
+  }
+
+  .verification-card {
+    padding: 1rem;
+    border-radius: var(--border-radius-md);
+  }
+
+  .verification-title {
+    font-size: var(--font-size-base);
+  }
+
+  .verification-subtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .header-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .email-display {
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .email-address {
+    font-size: var(--font-size-xs);
+  }
+
+  .form-input {
+    padding: 0.6rem 0.65rem;
+    font-size: var(--font-size-sm);
+  }
+
+  .code-input {
+    font-size: var(--font-size-xl);
+  }
+
+  .btn-verify,
+  .btn-resend,
+  .btn-edit-reg {
+    padding: 0.55rem 0.65rem;
+    font-size: var(--font-size-xs);
+    min-height: 40px;
+  }
+
+  .help-text {
+    margin-top: 0.5rem;
+  }
+}

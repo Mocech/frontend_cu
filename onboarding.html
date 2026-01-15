@@ -9,27 +9,15 @@
 </head>
 <body>
     <div class="onboarding-container">
-        <!-- Background gradient -->
-        <div class="onboarding-background"></div>
-
         <!-- Main content -->
         <div class="onboarding-wrapper">
-            <!-- Progress indicator -->
-            <div class="progress-section">
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <p class="progress-text">Step 2 of 2</p>
-            </div>
-
-            <!-- Card container with glassmorphism -->
+            <!-- Card container -->
             <div class="onboarding-card">
                 <!-- Header -->
                 <div class="onboarding-header">
-                    <div class="header-icon">✨</div>
-                    <h1 class="onboarding-title">Almost there!</h1>
-                    <p class="onboarding-subtitle" id="userGreeting">Just a few more details!</p>
-                    <p class="onboarding-description">Help us get to know you better so we can tailor your CU experience.</p>
+                    <h1 class="onboarding-title">Welcome to CU!</h1>
+                    <p class="onboarding-subtitle">Almost there, <span id="userNameDisplay">Friend</span></p>
+                    <p class="onboarding-description">Just a couple more details to get you started</p>
                 </div>
 
                 <!-- Form -->
@@ -42,25 +30,37 @@
                             id="registrationNumber" 
                             name="registrationNumber"
                             class="form-input"
-                            placeholder="e.g., SCT211-0000/2024"
+                            placeholder="SCT211-0000/2024"
                             required
                         >
-                        <small class="form-help">Format: XXXNNN-NNNN/YYYY</small>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="phoneNumber" 
+                            name="phoneNumber"
+                            class="form-input"
+                            placeholder="+254 712 345 678"
+                            required
+                        >
                     </div>
 
                     <!-- Year of Graduation -->
                     <div class="form-group">
-                        <label for="graduationYear" class="form-label">Year of Graduation</label>
-                        <select id="graduationYear" name="graduationYear" class="form-input" required>
-                            <option value="">Select your graduation year</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                        </select>
+                        <label for="graduationYear" class="form-label">Graduation Year</label>
+                        <input 
+                            type="text" 
+                            id="graduationYear" 
+                            name="graduationYear"
+                            class="form-input"
+                            placeholder="2026"
+                            maxlength="4"
+                            inputmode="numeric"
+                            required
+                        >
                     </div>
 
                     <!-- Gender -->
@@ -83,17 +83,8 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="btn-finish">
-                        <span>Let's Go!</span>
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="5 12 19 12"></polyline>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button>
+                    <button type="submit" class="btn-finish">Complete Setup</button>
                 </form>
-
-                <!-- Footer message -->
-                <p class="onboarding-footer">You can update these details anytime in your profile settings.</p>
             </div>
         </div>
     </div>
