@@ -5,92 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verify Your Email - Christian Union</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/password-reset.css">
+  <link rel="stylesheet" href="css/verify-email-compact.css">
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="logo">
-        <span class="logo-icon">✝️</span>
-        <span class="logo-text">Christian Union</span>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-      </div>
-    </div>
-  </nav>
+  <!-- Removed navbar for compact design -->
 
   <!-- Main Content -->
-  <main class="reset-container">
-    <!-- Animated Background Blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+  <div class="compact-container">
+    <div class="compact-wrapper">
+      <div class="compact-card">
+        <!-- Header -->
+        <div class="compact-header">
+          <div class="header-icon">✉️</div>
+          <h1 class="compact-title">Verify Email</h1>
+          <p class="compact-subtitle">Check your inbox for the verification code</p>
+        </div>
 
-    <!-- Card Container -->
-    <div class="reset-card">
-      <!-- Animated Mail Icon -->
-      <div class="icon-wrapper">
-        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-      </div>
+        <!-- Info Box -->
+        <div class="info-box">
+          <span class="info-label">Code sent to:</span>
+          <span class="email-address" id="displayEmail">student@embuni.ac.ke</span>
+        </div>
 
-      <!-- Heading -->
-      <h1 class="reset-heading">Code Sent</h1>
-      <p class="reset-subheading">Check your inbox for the verification code</p>
+        <!-- OTP Inputs -->
+        <div class="otp-container">
+          <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 1">
+          <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 2">
+          <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 3">
+          <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 4">
+          <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 5">
+          <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 6">
+        </div>
 
-      <!-- Information Box -->
-      <div class="info-box">
-        <p class="info-label">Verification code sent to:</p>
-        <div class="email-display">
-          <span id="displayEmail" class="email-address">23421@student.embuni.ac.ke</span>
+        <!-- Verify Button -->
+        <button id="verifyCodeBtn" class="verify-button" disabled>Verify & Continue</button>
+
+        <!-- Resend Section -->
+        <div class="resend-section">
+          <button id="resendBtn" class="resend-button" disabled>Resend Code</button>
+          <p class="countdown-text">Resend in <span id="countdown">60</span>s</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Edit Button -->
+        <button id="editDetailsBtn" class="back-button">Edit Email Address</button>
+
+        <!-- Help -->
+        <div class="help-section">
+          <p class="help-text">Didn't receive it? Check spam or <a href="mailto:support@embuni.ac.ke">contact support</a></p>
         </div>
       </div>
-
-      <!-- OTP Input Section -->
-      <div class="otp-instruction">
-        <p>Enter the 6-digit code we sent to your student email to verify your account</p>
-      </div>
-
-      <div class="otp-container">
-        <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 1">
-        <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 2">
-        <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 3">
-        <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 4">
-        <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 5">
-        <input type="text" class="otp-input" inputmode="numeric" maxlength="1" placeholder="0" aria-label="OTP digit 6">
-      </div>
-
-      <!-- Verify Button -->
-      <button id="verifyCodeBtn" class="verify-button" disabled>
-        Verify & Continue
-      </button>
-
-      <!-- Resend Section -->
-      <div class="resend-section">
-        <button id="resendBtn" class="resend-button" disabled>
-          Resend Code
-        </button>
-        <p class="countdown-text">Resend available in <span id="countdown">60</span>s</p>
-      </div>
-
-      <!-- Divider -->
-      <div class="divider"></div>
-
-      <!-- Edit Details Button -->
-      <button id="editDetailsBtn" class="back-button">
-        Edit Admission Number
-      </button>
-
-      <!-- Help Section -->
-      <div class="help-section">
-        <p class="help-text">Didn't receive the code? Check your spam folder or contact <a href="mailto:support@embuni.ac.ke">support@embuni.ac.ke</a></p>
-      </div>
     </div>
-  </main>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <p>Verifying your email...</p>
+  </div>
 
   <script src="js/verify-email.js"></script>
 </body>
