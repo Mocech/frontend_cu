@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Management - Christian Union</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/leadership.css">
+</head>
+<body>
+    <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="logo.png" alt="CU Logo" class="nav-logo">
+        <span class="nav-title">University Of Embu<br>Christian Union</span>
+     
+      </div>
+      <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="ministries.html" class="nav-link">Ministries</a>
+        <a href="leadership.html" class="nav-link">Leadership</a>
+        <a href="events.html" class="nav-link">Events</a>
+        
+        
+          <!-- Mobile-only actions -->
+          <!-- Inside the nav-menu div, after the Events link -->
+<div class="mobile-only">
+  <a href="#signin" class="btn btn-outline">Sign In</a>
+</div>
+<div class="mobile-only">
+  <a href="#signup" class="btn btn-primary">Sign Up</a>
+</div>
+      </div>
+         <!-- Desktop Actions -->
+      <div class="nav-actions desktop-only">
+        <a href="#signin" class="btn btn-outline">Sign In</a>
+        <a href="#signup" class="btn btn-primary">Sign up</a>
+      </div>
+  
+    </div>
+  </nav>
+
+    <!-- Main Content -->
+    <main class="leadership-main">
+        <div class="container">
+            
+            <!-- Page Header + Mode Switcher (Single Cohesive Section) -->
+            <div class="page-header-section">
+                <!-- Compact Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Leadership Management</h1>
+                        <p class="page-subtitle">Manage leadership assignments and roles</p>
+                    </div>
+                    <div class="header-context">
+                        <span class="year-badge">2025 / 2026</span>
+                    </div>
+                </div>
+
+                <!-- Sub-Navigation (Mode Switcher) - Simplified -->
+                <div class="mode-switcher-container">
+                    <div class="mode-switcher-wrapper">
+                        <div class="mode-switcher">
+                            <button class="mode-button active" data-view="overview">
+                                <span class="mode-label">Overview</span>
+                            </button>
+                            <button class="mode-button" data-view="sub-committees">
+                                <span class="mode-label">Sub-Committees</span>
+                            </button>
+                            <button class="mode-button" data-view="executives">
+                                <span class="mode-label">Executives</span>
+                            </button>
+                            <button class="mode-button" data-view="associates">
+                                <span class="mode-label">Associates</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXECUTIVES VIEW (REDESIGNED - COMPACT LIST) -->
+            <div class="view-content" data-view="executives">
+                <div class="exec-section">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Executive Leadership</h2>
+                            <p class="view-subtitle">Manage and assign executive roles. Expand each role to assign or change members.</p>
+                        </div>
+                    </div>
+
+                    <!-- Compact Role List Container -->
+                    <div class="exec-role-list" id="execRoleList">
+                        <!-- Role Item 1: Chairperson - Assigned -->
+                        <div class="exec-role-item assigned" data-role="Chairperson" data-assigned="true" data-member="David Wilson">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Chairperson</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Administrative</span>
+                                        <span class="ministry-badge">Governance</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill assigned">Assigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                
+                                <!-- Initial State: Currently Assigned Display -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>David Wilson</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="David Wilson">
+                                            <span class="member-name">David Wilson</span>
+                                            <span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="Rachel King">
+                                            <span class="member-name">Rachel King</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Samuel Lee">
+                                            <span class="member-name">Samuel Lee</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 2: 1st Vice Chairperson - Assigned -->
+                        <div class="exec-role-item assigned" data-role="1st Vice Chairperson" data-assigned="true" data-member="Moses Mulwa">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">1st Vice Chairperson</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Operations</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill assigned">Assigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                
+                                <!-- Initial State: Currently Assigned Display -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>Moses Mulwa</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Moses Mulwa">
+                                            <span class="member-name">Moses Mulwa</span>
+                                            <span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="Grace Omondi">
+                                            <span class="member-name">Grace Omondi</span>
+                                            <span class="member-meta">Senior Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="James Kipchoge">
+                                            <span class="member-name">James Kipchoge</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 3: 2nd Vice Chairperson - Unassigned -->
+                        <div class="exec-role-item unassigned" data-role="2nd Vice Chairperson" data-assigned="false" data-member="">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">2nd Vice Chairperson</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Finance</span>
+                                        <span class="ministry-badge">Planning</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill unassigned">Unassigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                
+                                <!-- Initial State: No Member Assigned -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>No member assigned</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Victor Kipkemboi">
+                                            <span class="member-name">Victor Kipkemboi</span>
+                                            <span class="member-meta">Senior Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Andrew Chen">
+                                            <span class="member-name">Andrew Chen</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Marcus Johnson">
+                                            <span class="member-name">Marcus Johnson</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 4: Secretary - Assigned -->
+                        <div class="exec-role-item assigned" data-role="Secretary" data-assigned="true" data-member="Sarah Williams">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Secretary</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Communications</span>
+                                        <span class="ministry-badge">Records</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill assigned">Assigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                
+                                <!-- Initial State: Currently Assigned Display -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>Sarah Williams</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Sarah Williams">
+                                            <span class="member-name">Sarah Williams</span>
+                                            <span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="Deborah Kipchoge">
+                                            <span class="member-name">Deborah Kipchoge</span>
+                                            <span class="member-meta">Senior Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Elizabeth Mwangi">
+                                            <span class="member-name">Elizabeth Mwangi</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 5: Vice Secretary - Unassigned -->
+                        <div class="exec-role-item unassigned" data-role="Vice Secretary" data-assigned="false" data-member="">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Vice Secretary</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Administrative</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill unassigned">Unassigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                
+                                <!-- Initial State: No Member Assigned -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>No member assigned</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Patricia Garcia">
+                                            <span class="member-name">Patricia Garcia</span>
+                                            <span class="member-meta">Senior Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Robert Martinez">
+                                            <span class="member-name">Robert Martinez</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Jennifer Lopez">
+                                            <span class="member-name">Jennifer Lopez</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 6: Treasurer - Assigned -->
+                        <div class="exec-role-item assigned" data-role="Treasurer" data-assigned="true" data-member="Joseph Kariuki">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Treasurer</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Finance</span>
+                                        <span class="ministry-badge">Audit</span>
+                                        <span class="ministry-badge">Budget</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill assigned">Assigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                
+                                <!-- Initial State: Currently Assigned Display -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>Joseph Kariuki</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Joseph Kariuki">
+                                            <span class="member-name">Joseph Kariuki</span>
+                                            <span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="William Taylor">
+                                            <span class="member-name">William Taylor</span>
+                                            <span class="member-meta">Senior Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Jessica Anderson">
+                                            <span class="member-name">Jessica Anderson</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden Roles - Load More Section -->
+                        <div class="exec-hidden-roles" id="execHiddenRoles">
+                            <!-- Role Item 7: IT Coordinator - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="IT & Associates Coordinator" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">IT & Associates Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Technology</span>
+                                            <span class="ministry-badge">Support</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="assign">Assign member</button>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Christopher Adams">
+                                                <span class="member-name">Christopher Adams</span>
+                                                <span class="member-meta">Tech Expert</span>
+                                            </div>
+                                            <div class="member-option" data-member="Kevin Foster">
+                                                <span class="member-name">Kevin Foster</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Nathan Park">
+                                                <span class="member-name">Nathan Park</span>
+                                                <span class="member-meta">Associate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Item 8: Technical Coordinator - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="Technical Coordinator" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Technical Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Operations</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="assign">Assign member</button>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Daniel Mitchell">
+                                                <span class="member-name">Daniel Mitchell</span>
+                                                <span class="member-meta">Technician</span>
+                                            </div>
+                                            <div class="member-option" data-member="Ryan Sullivan">
+                                                <span class="member-name">Ryan Sullivan</span>
+                                                <span class="member-meta">Senior Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Brandon Cole">
+                                                <span class="member-name">Brandon Cole</span>
+                                                <span class="member-meta">Associate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Item 9: Music Coordinator - Assigned -->
+                            <div class="exec-role-item assigned" data-role="Music Coordinator" data-assigned="true" data-member="Beatrice Njoroge">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Music Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Worship</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill assigned">Assigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="change">Change assignment</button>
+                                    <div class="member-display">
+                                        <strong>Currently assigned:</strong> Beatrice Njoroge
+                                    </div>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Beatrice Njoroge">
+                                                <span class="member-name">Beatrice Njoroge</span>
+                                                <span class="member-meta">Currently Assigned</span>
+                                            </div>
+                                            <div class="member-option" data-member="Michelle Brown">
+                                                <span class="member-name">Michelle Brown</span>
+                                                <span class="member-meta">Senior Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Sophia Davis">
+                                                <span class="member-name">Sophia Davis</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Item 10: Missions and Evangelism Coordinator - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="Missions and Evangelism Coordinator" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Missions and Evangelism Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Outreach</span>
+                                            <span class="ministry-badge">Missions</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="assign">Assign member</button>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Thomas Maina">
+                                                <span class="member-name">Thomas Maina</span>
+                                                <span class="member-meta">Missionary</span>
+                                            </div>
+                                            <div class="member-option" data-member="Peter Okonkwo">
+                                                <span class="member-name">Peter Okonkwo</span>
+                                                <span class="member-meta">Senior Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Caleb Mwamburi">
+                                                <span class="member-name">Caleb Mwamburi</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Item 11: Discipleship Coordinator - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="Discipleship Coordinator" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Discipleship Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Spiritual Growth</span>
+                                            <span class="ministry-badge">Development</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="assign">Assign member</button>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Lydia Kamau">
+                                                <span class="member-name">Lydia Kamau</span>
+                                                <span class="member-meta">Mentor</span>
+                                            </div>
+                                            <div class="member-option" data-member="Rebecca Kipchoge">
+                                                <span class="member-name">Rebecca Kipchoge</span>
+                                                <span class="member-meta">Senior Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Hannah Mutua">
+                                                <span class="member-name">Hannah Mutua</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Item 12: Special Activities Coordinator - Assigned -->
+                            <div class="exec-role-item assigned" data-role="Special Activities Coordinator" data-assigned="true" data-member="Olivia Mwangi">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Special Activities Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Events</span>
+                                            <span class="ministry-badge">Community</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill assigned">Assigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="change">Change assignment</button>
+                                    <div class="member-display">
+                                        <strong>Currently assigned:</strong> Olivia Mwangi
+                                    </div>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Olivia Mwangi">
+                                                <span class="member-name">Olivia Mwangi</span>
+                                                <span class="member-meta">Currently Assigned</span>
+                                            </div>
+                                            <div class="member-option" data-member="Victoria Kipchoge">
+                                                <span class="member-name">Victoria Kipchoge</span>
+                                                <span class="member-meta">Senior Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Zainab Hassan">
+                                                <span class="member-name">Zainab Hassan</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Item 13: Assistant Coordinator (Placeholder) - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="Assistant Coordinator" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Assistant Coordinator</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">General Support</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <div class="expanded-text">
+                                        <p>Assign or change the member for this role</p>
+                                    </div>
+                                    <button class="role-action-button" data-action="assign">Assign member</button>
+                                    <div class="role-dropdown hidden">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Marcus Kipkemboi">
+                                                <span class="member-name">Marcus Kipkemboi</span>
+                                                <span class="member-meta">Associate</span>
+                                            </div>
+                                            <div class="member-option" data-member="David Kipchoge">
+                                                <span class="member-name">David Kipchoge</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                            <div class="member-option" data-member="Aaron Mwangi">
+                                                <span class="member-name">Aaron Mwangi</span>
+                                                <span class="member-meta">Associate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Load More Button Container -->
+                        <div class="load-more-container">
+                            <button class="load-more-button" id="loadMoreBtn">
+                                <span class="btn-text">Load More Roles</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+
+                   
+                </div>  
+            </div>
+
+            <!-- OVERVIEW VIEW -->
+            <div class="view-content active" data-view="overview">
+                <div class="view-header">
+                    <h2 class="view-title">Dashboard Overview</h2>
+                    <button class="btn btn-primary">+ Add New Member</button>
+                </div>
+
+<!-- Status Legend -->
+<div class="stats-legend">
+    <span class="legend-title">Status</span>
+    <div class="legend-items">
+        <div class="legend-item">
+            <div class="legend-dot complete"></div>
+            <span class="legend-label">Complete</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot incomplete"></div>
+            <span class="legend-label">In Progress</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot critical"></div>
+            <span class="legend-label">Critical</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot empty"></div>
+            <span class="legend-label">Empty</span>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Grid -->
+<div class="stats-grid">
+    <!-- Stat 1: Filled Positions - Incomplete (63%) -->
+    <div class="stat-card status-incomplete">
+        <div class="stat-header">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+            </div>
+            <div class="stat-status-dot"></div>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Filled Positions</div>
+            <div class="stat-value-wrapper">
+                <span class="stat-value">45</span>
+                <span class="stat-total">/ 72</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 2: Ministries Covered - Complete (75%) -->
+    <div class="stat-card status-complete">
+        <div class="stat-header">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                </svg>
+            </div>
+            <div class="stat-status-dot"></div>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Ministries Covered</div>
+            <div class="stat-value-wrapper">
+                <span class="stat-value">18</span>
+                <span class="stat-total">/ 24</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 3: Unassigned Roles - Critical -->
+    <div class="stat-card status-critical">
+        <div class="stat-header">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+            </div>
+            <div class="stat-status-dot"></div>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Unassigned Roles</div>
+            <div class="stat-value-wrapper">
+                <span class="stat-value">12</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 4: Executive Oversight - Complete (92%) -->
+    <div class="stat-card status-complete">
+        <div class="stat-header">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+            <div class="stat-status-dot"></div>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Executive Oversight</div>
+            <div class="stat-value-wrapper">
+                <span class="stat-value">22</span>
+                <span class="stat-total">/ 24</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 5: Associate Members - Incomplete (80%) -->
+    <div class="stat-card status-incomplete">
+        <div class="stat-header">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+            </div>
+            <div class="stat-status-dot"></div>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Associate Members</div>
+            <div class="stat-value-wrapper">
+                <span class="stat-value">8</span>
+                <span class="stat-total">/ 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-section">
+                    <h3 class="quick-actions-title">Quick Actions</h3>
+                    <div class="quick-actions-buttons">
+                        <button class="action-btn action-btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                            <span class="btn-text">Save All Assignments</span>
+                        </button>
+                        
+                        <button class="action-btn action-btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                                <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"></path>
+                                <path d="M9 9h6v6H9z"></path>
+                            </svg>
+                            <span class="btn-text">Clear Changes</span>
+                        </button>
+                        
+                        <button class="action-btn action-btn-tertiary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span class="btn-text">Download Report</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-COMMITTEES VIEW -->
+            <div class="view-content" data-view="sub-committees">
+                <div class="subcom-section">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Subcommittee Leadership Assignment</h2>
+                            <p class="view-subtitle">Search a ministry to assign all six subcommittee leaders.</p>
+                        </div>
+                    </div>
+
+                  <!-- Ministry Search Section -->
+                  <div class="ministry-search-container">
+                    <div class="search-box">
+                      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                      </svg>
+                      <input type="text" id="ministrySearch" class="ministry-search-input" placeholder="Search ministry..." aria-label="Search ministry">
+                    </div>
+                  </div>
+
+                    <!-- Search Results -->
+                    <div class="ministry-search-results" id="ministrySearchResults" style="display: none;">
+                        <!-- Results will be populated here -->
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div class="no-results-message" id="noResultsMessage" style="display: none;">
+                        <p>No ministries found. Try a different search.</p>
+                    </div>
+
+                    <!-- Ministry Header (shown when selected) -->
+                    <div class="ministry-header-section" id="ministryHeaderSection" style="display: none;">
+                        <div class="ministry-info">
+                            <h3 class="ministry-title" id="ministryTitle"></h3>
+                            <p class="ministry-stats" id="ministryStats"></p>
+                        </div>
+                        <button class="btn-back" id="backBtn" aria-label="Back to search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            Back
+                        </button>
+                    </div>
+
+                    <!-- Subcommittee Role Cards Grid -->
+                        <div class="subcom-role-grid" id="subcomRoleGrid" style="display: none;">
+                            <!-- Role cards will be populated here -->
+                        </div>
+                </div>
+            </div>
+
+            <!-- ASSOCIATES VIEW (REDESIGNED - COMPACT LIST) -->
+            <div class="view-content" data-view="associates">
+                <div class="exec-section">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Associate Leadership</h2>
+                            <p class="view-subtitle">Manage and assign associate roles. Expand each role to assign or change members.</p>
+                        </div>
+                    </div>
+
+                    <!-- Compact Role List Container -->
+                    <div class="exec-role-list" id="assocRoleList">
+                        <!-- Role Item 1: Senior Associate - Assigned -->
+                        <div class="exec-role-item assigned" data-role="Senior Associate" data-assigned="true" data-member="Emma Thompson">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Senior Associate</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Leadership</span>
+                                        <span class="ministry-badge">Mentoring</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill assigned">Assigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                
+                                <!-- Initial State: Currently Assigned Display -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>Emma Thompson</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Emma Thompson">
+                                            <span class="member-name">Emma Thompson</span>
+                                            <span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="Lucas Bennett">
+                                            <span class="member-name">Lucas Bennett</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Olivia Richards">
+                                            <span class="member-name">Olivia Richards</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 2: Junior Associate - Unassigned -->
+                        <div class="exec-role-item unassigned" data-role="Junior Associate" data-assigned="false" data-member="">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Junior Associate</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Development</span>
+                                        <span class="ministry-badge">Training</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill unassigned">Unassigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                
+                                <!-- Initial State: No Member Assigned -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>No member assigned</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Michael Foster">
+                                            <span class="member-name">Michael Foster</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Sophia Johnson">
+                                            <span class="member-name">Sophia Johnson</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                        <div class="member-option" data-member="Daniel Martinez">
+                                            <span class="member-name">Daniel Martinez</span>
+                                            <span class="member-meta">Candidate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 3: Associate Member - Assigned -->
+                        <div class="exec-role-item assigned" data-role="Associate Member" data-assigned="true" data-member="Grace Chen">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Associate Member</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Community</span>
+                                        <span class="ministry-badge">Support</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill assigned">Assigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                
+                                <!-- Initial State: Currently Assigned Display -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>Grace Chen</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Grace Chen">
+                                            <span class="member-name">Grace Chen</span>
+                                            <span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="Natalie Scott">
+                                            <span class="member-name">Natalie Scott</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Caroline Hayes">
+                                            <span class="member-name">Caroline Hayes</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role Item 4: Associate Coordinator - Unassigned -->
+                        <div class="exec-role-item unassigned" data-role="Associate Coordinator" data-assigned="false" data-member="">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Associate Coordinator</h3>
+                                    <div class="ministry-badges">
+                                        <span class="ministry-badge">Coordination</span>
+                                        <span class="ministry-badge">Operations</span>
+                                    </div>
+                                </div>
+                                <div class="role-status-pill unassigned">Unassigned</div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                
+                                <!-- Initial State: No Member Assigned -->
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display">
+                                        <strong>Currently assigned:</strong>
+                                        <span>No member assigned</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Active State: Search & Member Options -->
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Patrick Wilson">
+                                            <span class="member-name">Patrick Wilson</span>
+                                            <span class="member-meta">Senior Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Michelle Park">
+                                            <span class="member-name">Michelle Park</span>
+                                            <span class="member-meta">Active Member</span>
+                                        </div>
+                                        <div class="member-option" data-member="Kevin Davis">
+                                            <span class="member-name">Kevin Davis</span>
+                                            <span class="member-meta">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected State: Member Card with Change Selection -->
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                    
+                        <!-- Hidden Associate Roles - Load More Section -->
+                        <div class="exec-hidden-roles" id="assocHiddenRoles">
+                            <!-- Hidden Role Item 1: Associate Treasurer - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="Associate Treasurer" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Associate Treasurer</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Finance</span>
+                                            <span class="ministry-badge">Accounting</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <p class="expanded-text">Assign or change the member for this role</p>
+                                    <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                    <div class="role-dropdown" data-state="initial">
+                                        <div class="member-selected-display">
+                                            <strong>Currently assigned:</strong>
+                                            <span>No member assigned</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="active" style="display: none;">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Robert Thompson">
+                                                <span class="member-name">Robert Thompson</span>
+                                                <span class="member-meta">Accountant</span>
+                                            </div>
+                                            <div class="member-option" data-member="Jasmine Lee">
+                                                <span class="member-name">Jasmine Lee</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="selected" style="display: none;">
+                                        <div class="selected-member-section">
+                                            <label class="selected-member-label">Selected Member</label>
+                                            <div class="selected-member-card">
+                                                <span class="member-avatar">👤</span>
+                                                <div class="selected-member-info">
+                                                    <div class="selected-member-name"></div>
+                                                    <div class="selected-member-email"></div>
+                                                </div>
+                                            </div>
+                                            <button class="change-selection-btn">Change selection</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hidden Role Item 2: Associate Secretary - Assigned -->
+                            <div class="exec-role-item assigned" data-role="Associate Secretary" data-assigned="true" data-member="Jessica Martin">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Associate Secretary</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Administration</span>
+                                            <span class="ministry-badge">Documentation</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill assigned">Assigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <p class="expanded-text">Assign or change the member for this role</p>
+                                    <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                    <div class="role-dropdown" data-state="initial">
+                                        <div class="member-selected-display">
+                                            <strong>Currently assigned:</strong>
+                                            <span>Jessica Martin</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="active" style="display: none;">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Jessica Martin">
+                                                <span class="member-name">Jessica Martin</span>
+                                                <span class="member-meta">Currently Assigned</span>
+                                            </div>
+                                            <div class="member-option" data-member="Amanda Walker">
+                                                <span class="member-name">Amanda Walker</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="selected" style="display: none;">
+                                        <div class="selected-member-section">
+                                            <label class="selected-member-label">Selected Member</label>
+                                            <div class="selected-member-card">
+                                                <span class="member-avatar">👤</span>
+                                                <div class="selected-member-info">
+                                                    <div class="selected-member-name"></div>
+                                                    <div class="selected-member-email"></div>
+                                                </div>
+                                            </div>
+                                            <button class="change-selection-btn">Change selection</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hidden Role Item 3: Associate Director - Unassigned -->
+                            <div class="exec-role-item unassigned" data-role="Associate Director" data-assigned="false" data-member="">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Associate Director</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Leadership</span>
+                                            <span class="ministry-badge">Direction</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill unassigned">Unassigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <p class="expanded-text">Assign or change the member for this role</p>
+                                    <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                    <div class="role-dropdown" data-state="initial">
+                                        <div class="member-selected-display">
+                                            <strong>Currently assigned:</strong>
+                                            <span>No member assigned</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="active" style="display: none;">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Steven Cooper">
+                                                <span class="member-name">Steven Cooper</span>
+                                                <span class="member-meta">Leader</span>
+                                            </div>
+                                            <div class="member-option" data-member="Victoria Reynolds">
+                                                <span class="member-name">Victoria Reynolds</span>
+                                                <span class="member-meta">Senior Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="selected" style="display: none;">
+                                        <div class="selected-member-section">
+                                            <label class="selected-member-label">Selected Member</label>
+                                            <div class="selected-member-card">
+                                                <span class="member-avatar">👤</span>
+                                                <div class="selected-member-info">
+                                                    <div class="selected-member-name"></div>
+                                                    <div class="selected-member-email"></div>
+                                                </div>
+                                            </div>
+                                            <button class="change-selection-btn">Change selection</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hidden Role Item 4: Associate Representative - Assigned -->
+                            <div class="exec-role-item assigned" data-role="Associate Representative" data-assigned="true" data-member="Marcus Young">
+                                <div class="role-header">
+                                    <div class="role-title-section">
+                                        <h3 class="role-title">Associate Representative</h3>
+                                        <div class="ministry-badges">
+                                            <span class="ministry-badge">Representation</span>
+                                            <span class="ministry-badge">Advocacy</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-status-pill assigned">Assigned</div>
+                                    <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="role-expanded-content hidden">
+                                    <p class="expanded-text">Assign or change the member for this role</p>
+                                    <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                    <div class="role-dropdown" data-state="initial">
+                                        <div class="member-selected-display">
+                                            <strong>Currently assigned:</strong>
+                                            <span>Marcus Young</span>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="active" style="display: none;">
+                                        <div class="dropdown-search-wrapper">
+                                            <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
+                                        </div>
+                                        <div class="role-member-options">
+                                            <div class="member-option" data-member="Marcus Young">
+                                                <span class="member-name">Marcus Young</span>
+                                                <span class="member-meta">Currently Assigned</span>
+                                            </div>
+                                            <div class="member-option" data-member="Diana Cox">
+                                                <span class="member-name">Diana Cox</span>
+                                                <span class="member-meta">Active Member</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-dropdown" data-state="selected" style="display: none;">
+                                        <div class="selected-member-section">
+                                            <label class="selected-member-label">Selected Member</label>
+                                            <div class="selected-member-card">
+                                                <span class="member-avatar">👤</span>
+                                                <div class="selected-member-info">
+                                                    <div class="selected-member-name"></div>
+                                                    <div class="selected-member-email"></div>
+                                                </div>
+                                            </div>
+                                            <button class="change-selection-btn">Change selection</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                         <!-- Load More Button Container for Associates -->
+                    <div class="load-more-container">
+                        <button class="load-more-button" id="loadMoreBtnAssoc">
+                            <span class="btn-text">Load More Roles</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>  
+            </div>
+
+        </div>
+    </main>
+
+    
+  <!-- Footer -->
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <!-- Main Footer Content -->
+    <div class="footer-main">
+      <!-- Compact Brand -->
+      <div class="footer-brand">
+        <div class="brand-header">
+          <img src="logo.png" alt="CU Logo" class="footer-logo">
+          <div>
+            <h3>UoEm CU</h3>
+            <p>Transforming lives through Christ</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compact Navigation -->
+      <nav class="footer-nav">
+        <div class="nav-group">
+          <h4>Explore</h4>
+          <a href="#about">About</a>
+          <a href="#ministries">Ministries</a>
+          <a href="#events">Events</a>
+        </div>
+        
+        <div class="nav-group">
+          <h4>Connect</h4>
+          <a href="#join">Join Us</a>
+          <a href="#donate">Give</a>
+          <a href="mailto:info@uoemcu.ac.ke">Contact</a>
+        </div>
+      </nav>
+      
+      <!-- Social Links -->
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Minimal Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 UoEm CU</p>
+      <span class="separator">•</span>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+    <script src="js/main.js"></script>
+    <script src="js/leadership.js"></script>
+</body>
+</html>
