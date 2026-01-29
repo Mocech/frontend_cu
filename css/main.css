@@ -4,12 +4,12 @@
    CSS VARIABLES - GLOBAL DESIGN TOKENS
    ========================================== */
    :root {
-    /* Primary Colors */
-    --color-primary: #3f114e;
-    --color-primary-dark: #2d0c39;
-    --color-primary-darker: #2a0c35;
-    --color-accent: #5a2d6b;
-    --color-accent-light: #6b2d7f;
+      /* Primary Colors */
+      --color-primary: #3f114e;
+      --color-primary-dark: #2d0c39;
+      --color-primary-darker: #2a0c35;
+      --color-accent: #5a2d6b;
+      --color-accent-light: #6b2d7f;
   
     /* Add RGB values for rgba() functions */
     --color-primary-rgb: 63, 17, 78;

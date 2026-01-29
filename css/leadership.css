@@ -4043,12 +4043,10 @@
     display: flex;
     flex-direction: column;
     background: var(--color-white);
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 
-        0 1px 3px rgba(0, 0, 0, 0.08),
-        0 2px 6px rgba(63, 17, 78, 0.06);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid #e5e7eb;
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow: hidden;
     position: relative;
 }
@@ -4059,22 +4057,28 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-yellow) 100%);
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-yellow) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .exec-role-item:hover {
-    box-shadow: 
-        0 4px 12px rgba(63, 17, 78, 0.12),
-        0 8px 24px rgba(63, 17, 78, 0.08);
-    border-color: var(--color-primary);
-    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(63, 17, 78, 0.14);
+    border-color: #d1d5db;
+    transform: translateY(-3px);
 }
 
 .exec-role-item:hover::before {
     opacity: 1;
+}
+
+.exec-role-item.assigned {
+    border-color: rgba(16, 185, 129, 0.1);
+}
+
+.exec-role-item.unassigned {
+    border-color: rgba(245, 158, 11, 0.1);
 }
 
 /* Role Header - Card Top Section */
@@ -4083,20 +4087,23 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-md);
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-lg);
     cursor: pointer;
     transition: all var(--transition-base);
-    border-bottom: 1px solid var(--color-border-light);
+    border-bottom: 2px solid var(--color-border-light);
 }
 
 .exec-role-item:hover .role-header {
-    background-color: rgba(255, 196, 1, 0.04);
+    background: linear-gradient(180deg, rgba(255, 196, 1, 0.06) 0%, rgba(255, 196, 1, 0.02) 100%);
     border-bottom-color: var(--color-primary);
 }
 
 .role-title-section {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .role-title {
@@ -4160,6 +4167,72 @@
 .role-status-pill.unassigned {
     background-color: #fef3c7;
     color: #92400e;
+}
+
+/* Assigned Member Display - Professional Name Badge */
+.assigned-member-display {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.member-name-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    color: var(--color-white);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-lg);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(63, 17, 78, 0.15);
+    transition: all var(--transition-base);
+}
+
+.member-name-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(63, 17, 78, 0.25);
+}
+
+@media (max-width: 768px) {
+    .member-name-badge {
+        padding: 0.4rem 0.875rem;
+        font-size: 0.8125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-name-badge {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Unassigned Display */
+.unassigned-member-display {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.unassigned-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-lg);
+    white-space: nowrap;
+    border: 1.5px dashed #d1d5db;
+    transition: all var(--transition-base);
+}
+
+.unassigned-badge:hover {
+    background-color: #e5e7eb;
+    color: #4b5563;
 }
 
 /* Chevron Icon */
@@ -4576,6 +4649,135 @@
     transform: translateY(0px);
 }
 
+/* ==========================================
+   SELECTION BUTTONS GROUP
+   ========================================== */
+
+.selection-buttons-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.selection-buttons-group button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1.5px solid;
+    white-space: nowrap;
+    flex: 0 1 auto;
+}
+
+.selection-buttons-group .save-selection-btn {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    min-width: 70px;
+}
+
+.selection-buttons-group .save-selection-btn:hover {
+    background: #2d0a38;
+    border-color: #2d0a38;
+    box-shadow: 0 2px 8px rgba(63, 17, 78, 0.2);
+}
+
+.selection-buttons-group .save-selection-btn:active {
+    transform: scale(0.98);
+}
+
+.selection-buttons-group .save-and-next-btn {
+    background: linear-gradient(135deg, #5a2865 0%, #6b3d6f 50%, #b8935f 100%);
+    border-color: #5a2865;
+    color: white;
+    min-width: 95px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Subtle gradient accent on the right side */
+.selection-buttons-group .save-and-next-btn::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #ffc401 0%, #d4a000 100%);
+    opacity: 0.8;
+}
+
+.selection-buttons-group .save-and-next-btn:hover {
+    background: linear-gradient(135deg, #4a1f52 0%, #5a2d5c 50%, #a07d4a 100%);
+    border-color: #4a1f52;
+    box-shadow: 0 2px 8px rgba(63, 17, 78, 0.2);
+}
+
+.selection-buttons-group .save-and-next-btn:hover::after {
+    opacity: 1;
+}
+
+.selection-buttons-group .save-and-next-btn:active {
+    transform: scale(0.98);
+}
+
+.selection-buttons-group .change-selection-btn {
+    background: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    min-width: 80px;
+}
+
+.selection-buttons-group .change-selection-btn:hover {
+    background: rgba(63, 17, 78, 0.08);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(63, 17, 78, 0.15);
+}
+
+.selection-buttons-group .change-selection-btn:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   RESPONSIVE - BUTTON GROUP (Tablet & Below)
+   ========================================== */
+
+
+
+@media (max-width: 1024px) {
+    .selection-buttons-group {
+        gap: 0.5rem;
+    }
+
+    .selection-buttons-group button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8125rem;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .selection-buttons-group {
+        flex-direction: column;
+        gap: 0.625rem;
+    }
+
+    .selection-buttons-group button {
+        width: 100%;
+        padding: 0.625rem 1rem;
+        font-size: 0.875rem;
+    }
+}
 /* ==========================================
    ROLE ACTION BUTTON - STATES (Enabled/Disabled)
    ========================================== */
@@ -5296,8 +5498,430 @@
     .selected-member-email {
         font-size: 0.8rem;
     }
+}
+
+/* ==========================================
+   SUBCOMMITTEES - MINISTRY GRID & ROLES
+   ========================================== */
+
+.subcom-section {
+    padding: 0;
+}
+
+/* Ministry Search Wrapper */
+.ministry-search-wrapper {
+    margin-bottom: var(--spacing-xl);
+}
+
+.ministry-search-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0.75rem 1rem;
+    background: var(--color-white);
+    border: 2px solid var(--color-border-light);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-base);
+}
+
+.ministry-search-container:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(63, 17, 78, 0.1);
+}
+
+.ministry-search-container .search-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-primary);
+}
+
+.ministry-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background: transparent;
+    font-family: var(--font-sans);
+}
+
+.ministry-search-input::placeholder {
+    color: var(--color-text-light);
+}
+
+/* Ministries Grid Container - 3 columns */
+.ministries-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Ministry Item Card - Professional Design */
+.ministry-item {
+    background: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-white) 0%, rgba(63, 17, 78, 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.ministry-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255, 196, 1, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ministry-item:hover {
+    border-left-color: var(--color-yellow);
+    box-shadow: 0 16px 40px rgba(63, 17, 78, 0.12);
+    transform: translateY(-6px);
+}
+
+.ministry-item-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+}
+
+.ministry-item-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.ministry-item-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.ministry-item-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.ministry-item-btn:hover {
+    background: var(--color-yellow);
+    border-color: var(--color-yellow);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 196, 1, 0.3);
+}
+
+.ministry-item-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-base);
+}
+
+/* Selected Ministry View */
+.selected-ministry-view {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.ministry-roles-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-yellow-light);
+    flex-wrap: wrap;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.5rem 1rem;
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius-md);
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-back:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(63, 17, 78, 0.2);
+}
+
+.btn-back svg {
+    width: 18px;
+    height: 18px;
+}
+
+.ministry-roles-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+}
+
+/* Subcommittee Role Grid (3 columns) */
+.subcom-role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .ministries-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .subcom-role-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ministries-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .ministry-item {
+        padding: var(--spacing-md);
+    }
+
+    .ministry-item-title {
+        font-size: 1rem;
+    }
+
+    .ministry-item-btn {
+        padding: 0.6rem 0.875rem;
+        font-size: 0.8rem;
+    }
+
+    .ministry-roles-header {
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .btn-back {
+        flex-shrink: 0;
+    }
+
+    .ministry-roles-title {
+        font-size: 1.25rem;
+        flex: 1;
+    }
+
+    .subcom-role-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .subcom-role-list {
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+    .ministry-search-container {
+        padding: 0.65rem 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .ministry-search-container .search-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .ministry-search-input {
+        font-size: 0.95rem;
+    }
+
+    .ministries-grid-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .ministry-item {
+        padding: var(--spacing-md);
+    }
+
+    .ministry-item-title {
+        font-size: 0.95rem;
+    }
+
+    .ministry-item-desc {
+        font-size: 0.8rem;
+    }
+
+    .ministry-item-btn {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8rem;
+    }
+
+    .ministry-roles-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md);
+    }
+
+    .btn-back {
+        width: 100%;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .ministry-roles-title {
+        font-size: 1.15rem;
+        width: 100%;
+        text-align: center;
+        order: -1;
+    }
+
+    .subcom-role-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .subcom-role-list {
+        gap: var(--spacing-sm);
+    }
 
     .change-selection-btn {
         width: 100%;
         padding: 0.75rem 1rem;
     }
+}
+
+/* ==========================================
+   RESPONSIVE - ROLE HEADER & MEMBER DISPLAY
+   ========================================== */
+
+@media (max-width: 768px) {
+    .role-header {
+        padding: var(--spacing-md) var(--spacing-lg);
+        gap: var(--spacing-sm);
+    }
+
+    .role-title {
+        font-size: 0.9rem;
+    }
+
+    .assigned-member-display,
+    .unassigned-member-display {
+        flex-shrink: 0;
+    }
+
+    .member-name-badge,
+    .unassigned-badge {
+        font-size: 0.8125rem;
+        padding: 0.4rem 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .role-header {
+        flex-wrap: wrap;
+        padding: var(--spacing-md);
+        gap: var(--spacing-xs);
+    }
+
+    .role-title-section {
+        width: 100%;
+        order: 1;
+    }
+
+    .role-title {
+        font-size: 0.85rem;
+        margin-bottom: 0.375rem;
+    }
+
+    .ministry-badges {
+        gap: 0.375rem;
+    }
+
+    .ministry-badge {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.65rem;
+    }
+
+    .assigned-member-display,
+    .unassigned-member-display {
+        order: 2;
+        width: 100%;
+        margin-top: var(--spacing-xs);
+    }
+
+    .member-name-badge,
+    .unassigned-badge {
+        width: 100%;
+        font-size: 0.75rem;
+        padding: 0.375rem 0.75rem;
+        justify-content: center;
+    }
+
+    .role-chevron {
+        order: 3;
+        width: 18px;
+        height: 18px;
+    }
+}

@@ -356,19 +356,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all managers
     new ViewManager();
     new MinistrySearch();
+    new SubcommitteeManager();
     modalManager = new ModalManager();
     
     // Initialize quick actions
     initializeQuickActions();
 
-  // Initialize Load More Roles (handles all cards - visible and hidden)
-  new LoadMoreRoles('loadMoreBtn', 'execHiddenRoles');
+    // Initialize Load More Roles (handles all cards - visible and hidden)
+    new LoadMoreRoles('loadMoreBtn', 'execHiddenRoles');
   
-  // Initialize Load More Roles for Associates
-  new LoadMoreRoles('loadMoreBtnAssoc', 'assocHiddenRoles');
+    // Initialize Load More Roles for Associates
+    new LoadMoreRoles('loadMoreBtnAssoc', 'assocHiddenRoles');
   
-  // Initialize Compact Executives List (handles expand/collapse for role items)
-  new CompactExecutivesList();
+    // Initialize Compact Executives List (handles expand/collapse for role items)
+    new CompactExecutivesList();
 
     // Initialize Executive Cards (legacy)
     new ExecutiveCards();
@@ -481,6 +482,13 @@ class CompactExecutivesList {
         if (expandedContent) {
             expandedContent.classList.remove('hidden');
         }
+        
+        // Hide member name badge when expanding dropdown
+        const assignedMemberDisplay = item.querySelector('.assigned-member-display');
+        if (assignedMemberDisplay) {
+            assignedMemberDisplay.style.display = 'none';
+        }
+        
         this.expandedItem = item;
 
         // Scroll into view on mobile
@@ -496,33 +504,39 @@ class CompactExecutivesList {
             if (expandedContent) {
                 expandedContent.classList.add('hidden');
             }
+            
+            // Show member name badge again after collapsing (only for assigned roles)
+            const isAssigned = this.expandedItem.getAttribute('data-assigned') === 'true';
+            if (isAssigned) {
+                const assignedMemberDisplay = this.expandedItem.querySelector('.assigned-member-display');
+                if (assignedMemberDisplay) {
+                    assignedMemberDisplay.style.display = 'flex';
+                }
+            }
+            
             this.expandedItem = null;
         }
     }
 
-    handleActionClick(item, btn) {
-        // Hide the initial state dropdown and show the active state dropdown
-        const initialDropdown = item.querySelector('.role-dropdown[data-state="initial"]');
-        const activeDropdown = item.querySelector('.role-dropdown[data-state="active"]');
+handleActionClick(item, btn) {
+    // Hide the initial state dropdown and show the active state dropdown
+    const initialDropdown = item.querySelector('.role-dropdown[data-state="initial"]');
+    const activeDropdown = item.querySelector('.role-dropdown[data-state="active"]');
+    
+    if (initialDropdown && activeDropdown) {
+        initialDropdown.style.display = 'none';
+        activeDropdown.style.display = 'block';
         
-        if (initialDropdown && activeDropdown) {
-            initialDropdown.style.display = 'none';
-            activeDropdown.style.display = 'block';
-            
-            // Update button text based on assignment state
-            const isAssigned = item.getAttribute('data-assigned') === 'true';
-            btn.textContent = isAssigned ? 'Change Member' : 'Assign Member';
-            
-            // Disable the button until a member is selected
-            btn.disabled = true;
-            
-            // Auto-focus the search input
-            const searchInput = activeDropdown.querySelector('.role-member-search');
-            if (searchInput) {
-                setTimeout(() => searchInput.focus(), 100);
-            }
+        // Hide the action button completely instead of disabling it
+        btn.style.display = 'none';
+        
+        // Auto-focus the search input
+        const searchInput = activeDropdown.querySelector('.role-member-search');
+        if (searchInput) {
+            setTimeout(() => searchInput.focus(), 100);
         }
     }
+}
 
     selectMember(item, option) {
         const memberName = option.getAttribute('data-member');
@@ -537,7 +551,16 @@ class CompactExecutivesList {
         item.classList.remove('unassigned');
         item.classList.add('assigned');
 
-        // Update status pill
+        // Update member name display (new design - shows name instead of "Assigned" badge)
+        const memberDisplay = item.querySelector('.assigned-member-display');
+        if (memberDisplay) {
+            const memberBadge = memberDisplay.querySelector('.member-name-badge');
+            if (memberBadge) {
+                memberBadge.textContent = memberName;
+            }
+        }
+        
+        // Legacy: Update status pill if it exists (for backward compatibility)
         const statusPill = item.querySelector('.role-status-pill');
         if (statusPill) {
             statusPill.textContent = 'Assigned';
@@ -545,11 +568,11 @@ class CompactExecutivesList {
             statusPill.classList.add('assigned');
         }
 
-        // Update action button - enable it when member is selected
+        // Update action button - hide it when showing selected member preview
         const actionBtn = item.querySelector('.role-action-button');
         if (actionBtn) {
-            // Enable the button now that a member has been selected
-            actionBtn.disabled = false;
+            // Hide the action button when showing the selected member preview
+            actionBtn.style.display = 'none';
         }
 
         // Hide all dropdowns and show selected state
@@ -590,36 +613,35 @@ class CompactExecutivesList {
     }
 
     returnToSearch(item) {
-        // Show active dropdown again (search state) and hide selected state
-        const activeDropdown = item.querySelector('.role-dropdown[data-state="active"]');
-        const selectedDropdown = item.querySelector('.role-dropdown[data-state="selected"]');
-        const initialDropdown = item.querySelector('.role-dropdown[data-state="initial"]');
+    // Show active dropdown again (search state) and hide selected state
+    const activeDropdown = item.querySelector('.role-dropdown[data-state="active"]');
+    const selectedDropdown = item.querySelector('.role-dropdown[data-state="selected"]');
+    const initialDropdown = item.querySelector('.role-dropdown[data-state="initial"]');
+    
+    if (activeDropdown && selectedDropdown) {
+        selectedDropdown.style.display = 'none';
+        activeDropdown.style.display = 'block';
+        if (initialDropdown) initialDropdown.style.display = 'none';
         
-        if (activeDropdown && selectedDropdown) {
-            selectedDropdown.style.display = 'none';
-            activeDropdown.style.display = 'block';
-            if (initialDropdown) initialDropdown.style.display = 'none';
-            
-            // Disable the button again since we're back in search mode
-            const actionBtn = item.querySelector('.role-action-button');
-            if (actionBtn) {
-                actionBtn.disabled = true;
-            }
-            
-            // Clear the search input and reset member options visibility
-            const searchInput = activeDropdown.querySelector('.role-member-search');
-            if (searchInput) {
-                searchInput.value = '';
-                // Show all member options
-                const memberOptions = activeDropdown.querySelectorAll('.member-option');
-                memberOptions.forEach(option => {
-                    option.style.display = 'flex';
-                });
-                setTimeout(() => searchInput.focus(), 100);
-            }
+        // Keep the action button hidden since we're back in search mode
+        const actionBtn = item.querySelector('.role-action-button');
+        if (actionBtn) {
+            actionBtn.style.display = 'none';
+        }
+        
+        // Clear the search input and reset member options visibility
+        const searchInput = activeDropdown.querySelector('.role-member-search');
+        if (searchInput) {
+            searchInput.value = '';
+            // Show all member options
+            const memberOptions = activeDropdown.querySelectorAll('.member-option');
+            memberOptions.forEach(option => {
+                option.style.display = 'flex';
+            });
+            setTimeout(() => searchInput.focus(), 100);
         }
     }
-
+}
     filterMembers(item, query) {
         const memberOptions = item.querySelectorAll('.member-option');
         const lowerQuery = query.toLowerCase();
@@ -745,6 +767,7 @@ class LoadMoreRoles {
                         e.stopPropagation();
                         this.handleActionClick(item, actionBtn);
                     });
+                    
                 }
 
                 item.dataset.listenerAttached = 'true';
@@ -1152,399 +1175,235 @@ class ExecutiveCards {
 }
 
 // ==========================================
-// SUBCOMMITTEE MANAGEMENT CLASS
+// SUBCOMMITTEE MANAGER - Ministry Selector
 // ==========================================
 
 class SubcommitteeManager {
     constructor() {
-        this.ministries = [
-            { id: 1, name: 'Finance Ministry', roles: this.createSubcomRoles() },
-            { id: 2, name: 'Operations Ministry', roles: this.createSubcomRoles() },
-            { id: 3, name: 'Communications Ministry', roles: this.createSubcomRoles() },
-            { id: 4, name: 'Administration Ministry', roles: this.createSubcomRoles() },
-            { id: 5, name: 'Planning Ministry', roles: this.createSubcomRoles() },
-            { id: 6, name: 'Governance Ministry', roles: this.createSubcomRoles() }
-        ];
-
-        this.searchInput = document.getElementById('ministrySearch');
-        this.searchResults = document.getElementById('ministrySearchResults');
-        this.noResults = document.getElementById('noResultsMessage');
-        this.ministryHeader = document.getElementById('ministryHeaderSection');
-        this.roleGrid = document.getElementById('subcomRoleGrid');
-        this.ministryTitle = document.getElementById('ministryTitle');
-        this.ministryStats = document.getElementById('ministryStats');
-        this.backBtn = document.getElementById('backBtn');
+        this.ministrySearch = document.getElementById('ministrySearch');
+        this.ministriesGridContainer = document.getElementById('ministriesGridContainer');
+        this.selectedMinistryView = document.getElementById('selectedMinistryView');
+        this.selectedMinistryTitle = document.getElementById('selectedMinistryTitle');
+        this.subcomRoleGrids = document.querySelectorAll('[id="subcomRoleGrid"]');
+        this.backBtn = document.getElementById('backToMinistries');
         this.selectedMinistry = null;
-        this.expandedRole = null; // NEW: track expanded subcommittee role
-
 
         this.init();
     }
 
-    createSubcomRoles() {
-        return [
-            { name: 'Chairperson', assigned: false, member: '' },
-            { name: 'Vice Chairperson', assigned: false, member: '' },
-            { name: 'Secretary', assigned: false, member: '' },
-            { name: 'Special Member 1', assigned: false, member: '' },
-            { name: 'Special Member 2', assigned: false, member: '' },
-            { name: 'Special Member 3', assigned: false, member: '' }
-        ];
-    }
-
     init() {
-        if (this.searchInput) {
-            this.searchInput.addEventListener('input', (e) => this.handleSearch(e));
-        }
+        console.log('[v0] SubcommitteeManager initialized');
 
-        if (this.backBtn) {
-            this.backBtn.addEventListener('click', () => this.goBackToSearch());
-        }
-    }
-
-    goBackToSearch() {
-        this.selectedMinistry = null;
-        this.searchInput.value = '';
-        this.searchResults.style.display = 'none';
-        this.ministryHeader.style.display = 'none';
-        this.roleGrid.style.display = 'none';
-        this.noResults.style.display = 'none';
-    }
-
-    handleSearch(e) {
-        const query = e.target.value.toLowerCase().trim();
-
-        if (query.length === 0) {
-            this.searchResults.style.display = 'none';
-            this.noResults.style.display = 'none';
-            this.selectedContainer.style.display = 'none';
-            return;
-        }
-
-        const filtered = this.ministries.filter(m => 
-            m.name.toLowerCase().includes(query)
-        );
-
-        if (filtered.length === 0) {
-            this.searchResults.style.display = 'none';
-            this.noResults.style.display = 'block';
-        } else {
-            this.displayResults(filtered);
-            this.noResults.style.display = 'none';
-        }
-    }
-
-    displayResults(ministries) {
-        this.searchResults.innerHTML = '';
-        ministries.forEach(ministry => {
-            const assignedCount = ministry.roles.filter(r => r.assigned).length;
-            const card = document.createElement('div');
-            card.className = 'ministry-result-card';
-            card.innerHTML = `
-                <div class="ministry-result-header">
-                    <div>
-                        <h3 class="ministry-name">${ministry.name}</h3>
-                        <p class="ministry-assignments">
-                            Subcommittee: <span class="ministry-assignments-count">${assignedCount} / 6</span> assigned
-                        </p>
-                    </div>
-                    <svg class="ministry-toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
-            `;
-
-            card.addEventListener('click', () => this.selectMinistry(ministry, card));
-            this.searchResults.appendChild(card);
-        });
-        this.searchResults.style.display = 'flex';
-    }
-
-    selectMinistry(ministry, card) {
-        // Update card state
-        document.querySelectorAll('.ministry-result-card').forEach(c => {
-            c.classList.remove('selected');
-        });
-        card.classList.add('selected');
-
-        // Hide search results and show ministry header + roles
-        this.searchResults.style.display = 'none';
-        this.selectedMinistry = ministry;
-
-        // Update ministry header
-        this.ministryTitle.textContent = ministry.name;
-        const assignedCount = ministry.roles.filter(r => r.assigned).length;
-        this.ministryStats.innerHTML = `Subcommittee: <strong>${assignedCount} / 6 assigned</strong>`;
-
-        // Show header and role grid
-        this.ministryHeader.style.display = 'flex';
-        this.displayRoleCards(ministry);
-    }
-
-    displayRoleCards(ministry) {
-        this.roleGrid.innerHTML = '';
-        
-        ministry.roles.forEach((role, index) => {
-            const roleCard = this.createSubcomRoleCard(role, ministry, index);
-            this.roleGrid.appendChild(roleCard);
-        });
-
-        this.roleGrid.style.display = 'grid';
-    }
-
-    createSubcomRoleCard(role, ministry, index) {
-        const roleCard = document.createElement('div');
-        roleCard.className = `subcom-role-item ${role.assigned ? 'assigned' : 'unassigned'}`;
-        roleCard.setAttribute('data-role', role.name);
-        roleCard.setAttribute('data-assigned', role.assigned);
-        roleCard.setAttribute('data-ministry', ministry.id);
-        roleCard.setAttribute('data-member', role.member);
-
-        roleCard.innerHTML = `
-            <div class="subcom-role-header">
-                <div>
-                    <h4 class="subcom-role-title">${role.name}</h4>
-                    <div class="subcom-status-pill ${role.assigned ? 'assigned' : 'unassigned'}">
-                        ${role.assigned ? 'Assigned' : 'Unassigned'}
-                    </div>
-                </div>
-                <svg class="subcom-role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-
-            <div class="subcom-role-expanded">
-                <p class="subcom-expanded-text">Assign or change the member for this role</p>
-                <button class="role-action-button" data-action="select" data-button-state="initial">
-                    ${role.assigned ? 'Select Member' : 'Select New Member'}
-                </button>
-
-                <!-- Initial State -->
-                <div class="role-dropdown" data-state="initial">
-                    <div class="member-selected-display">
-                        <strong>Currently assigned:</strong>
-                        <span>${role.assigned ? role.member : 'No member assigned'}</span>
-                    </div>
-                </div>
-
-                <!-- Search State -->
-                <div class="role-dropdown" data-state="active" style="display: none;">
-                    <div class="dropdown-search-wrapper">
-                        <input type="text" class="role-member-search" placeholder="Search members..." aria-label="Search members">
-                    </div>
-                    <div class="role-member-options">
-                        <div class="member-option" data-member="Alice Johnson">
-                            <span class="member-name">Alice Johnson</span>
-                            <span class="member-meta">Senior Member</span>
-                        </div>
-                        <div class="member-option" data-member="Bob Smith">
-                            <span class="member-name">Bob Smith</span>
-                            <span class="member-meta">Active Member</span>
-                        </div>
-                        <div class="member-option" data-member="Carol Davis">
-                            <span class="member-name">Carol Davis</span>
-                            <span class="member-meta">Associate</span>
-                        </div>
-                        <div class="member-option" data-member="David Brown">
-                            <span class="member-name">David Brown</span>
-                            <span class="member-meta">Active Member</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Selected State -->
-                <div class="role-dropdown" data-state="selected" style="display: none;">
-                    <div class="selected-member-section">
-                        <label class="selected-member-label">Selected Member</label>
-                        <div class="selected-member-card">
-                            <span class="member-avatar">👤</span>
-                            <div class="selected-member-info">
-                                <div class="selected-member-name"></div>
-                                <div class="selected-member-email"></div>
-                            </div>
-                        </div>
-                        <button class="change-selection-btn">Change selection</button>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Attach event listeners
-        roleCard.addEventListener('click', (e) => {
-            if (!e.target.closest('button') && !e.target.closest('.role-dropdown') && !e.target.closest('input')) {
-               this.toggleRole(roleCard);
-
+        // Ministry item buttons
+        const ministryItems = this.ministriesGridContainer.querySelectorAll('.ministry-item');
+        ministryItems.forEach(item => {
+            const btn = item.querySelector('.ministry-item-btn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const ministry = item.getAttribute('data-ministry');
+                    this.selectMinistry(ministry);
+                });
             }
         });
 
-        const actionBtn = roleCard.querySelector('.role-action-button');
-        actionBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.handleActionClick(roleCard, actionBtn);
+        // Back button
+        if (this.backBtn) {
+            this.backBtn.addEventListener('click', () => {
+                this.backToMinistries();
+            });
+        }
+
+        // Search functionality
+        if (this.ministrySearch) {
+            this.ministrySearch.addEventListener('input', (e) => {
+                this.handleSearch(e.target.value);
+            });
+        }
+
+        // Initialize all role cards from HTML (for all ministries)
+        this.initializeAllRoleCards();
+    }
+
+    handleSearch(query) {
+        const searchTerm = query.toLowerCase();
+        const ministryItems = this.ministriesGridContainer.querySelectorAll('.ministry-item');
+
+        ministryItems.forEach(item => {
+            const name = item.getAttribute('data-ministry').toLowerCase();
+            item.style.display = name.includes(searchTerm) ? 'flex' : 'none';
+        });
+    }
+
+    selectMinistry(ministry) {
+        this.selectedMinistry = ministry;
+        this.selectedMinistryTitle.textContent = ministry;
+        
+        // Hide grid, show role cards
+        this.ministriesGridContainer.style.display = 'none';
+        this.selectedMinistryView.style.display = 'block';
+        
+        // Show the correct role grid for this ministry
+        this.showMinistryRoles(ministry);
+    }
+
+    showMinistryRoles(ministry) {
+        // Hide all role grids
+        this.subcomRoleGrids.forEach(grid => {
+            grid.style.display = 'none';
         });
 
-        // Attach member option listeners
-        const memberOptions = roleCard.querySelectorAll('.member-option');
-        memberOptions.forEach(option => {
-            option.addEventListener('click', (e) => {
+        // Show the grid matching this ministry
+        const gridToShow = Array.from(this.subcomRoleGrids).find(grid => 
+            grid.getAttribute('data-ministry') === ministry
+        );
+        
+        if (gridToShow) {
+            gridToShow.style.display = 'grid';
+        }
+    }
+
+    initializeAllRoleCards() {
+        // Initialize role cards for all visible ministry grids
+        this.subcomRoleGrids.forEach(grid => {
+            const roleCards = grid.querySelectorAll('.exec-role-item');
+            roleCards.forEach(card => {
+                this.attachRoleCardListeners(card);
+            });
+        });
+    }
+
+    attachRoleCardListeners(card) {
+        const header = card.querySelector('.role-header');
+        const expandedContent = card.querySelector('.role-expanded-content');
+        const actionBtn = card.querySelector('.role-action-button');
+
+        header.addEventListener('click', () => {
+            const isExpanding = !card.classList.contains('expanded');
+            card.classList.toggle('expanded');
+            expandedContent.classList.toggle('hidden');
+            
+            // Hide/show member name badge on expand/collapse
+            const isAssigned = card.getAttribute('data-assigned') === 'true';
+            if (isAssigned) {
+                const assignedMemberDisplay = card.querySelector('.assigned-member-display');
+                if (assignedMemberDisplay) {
+                    assignedMemberDisplay.style.display = isExpanding ? 'none' : 'flex';
+                }
+            }
+        });
+
+        if (actionBtn) {
+            actionBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                this.selectMember(roleCard, option, ministry, role);
+                const currentState = actionBtn.getAttribute('data-button-state');
+                if (currentState === 'initial') {
+                    this.transitionToActive(card);
+                }
+            });
+        }
+
+        const memberOptions = card.querySelectorAll('.member-option');
+        memberOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                this.selectMemberForRole(card, option.getAttribute('data-member'));
             });
         });
 
-        // Search filtering
-        const searchInput = roleCard.querySelector('.role-member-search');
+        const changeBtn = card.querySelector('.change-selection-btn');
+        if (changeBtn) {
+            changeBtn.addEventListener('click', () => {
+                this.transitionToActive(card);
+            });
+        }
+
+        const searchInput = card.querySelector('.role-member-search');
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => this.filterMembers(roleCard, e.target.value));
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const options = card.querySelectorAll('.member-option');
+                options.forEach(opt => {
+                    const name = opt.querySelector('.member-name').textContent.toLowerCase();
+                    opt.style.display = name.includes(query) ? 'block' : 'none';
+                });
+            });
         }
-
-        return roleCard;
     }
 
-    handleActionClick(roleCard, btn) {
-        const initialDropdown = roleCard.querySelector('.role-dropdown[data-state="initial"]');
-        const activeDropdown = roleCard.querySelector('.role-dropdown[data-state="active"]');
+    transitionToActive(card) {
+        const actionBtn = card.querySelector('.role-action-button');
+        const dropdowns = card.querySelectorAll('.role-dropdown');
 
-        if (initialDropdown && activeDropdown) {
-            initialDropdown.style.display = 'none';
+        dropdowns.forEach(dd => dd.style.display = 'none');
+
+        const activeDropdown = card.querySelector('[data-state="active"]');
+        if (activeDropdown) {
             activeDropdown.style.display = 'block';
-
-            const isAssigned = roleCard.getAttribute('data-assigned') === 'true';
-            btn.textContent = isAssigned ? 'Change Member' : 'Assign Member';
-            btn.disabled = true;
-
             const searchInput = activeDropdown.querySelector('.role-member-search');
-            if (searchInput) {
-                setTimeout(() => searchInput.focus(), 100);
-            }
-        }
-    }
-
-    selectMember(roleCard, option, ministry, role) {
-        const memberName = option.getAttribute('data-member');
-        const wasUnassigned = roleCard.getAttribute('data-assigned') === 'false';
-
-        // Update role data
-        roleCard.setAttribute('data-member', memberName);
-        roleCard.setAttribute('data-assigned', 'true');
-        roleCard.classList.remove('unassigned');
-        roleCard.classList.add('assigned');
-
-        // Update status pill
-        const statusPill = roleCard.querySelector('.subcom-status-pill');
-        if (statusPill) {
-            statusPill.textContent = 'Assigned';
-            statusPill.classList.remove('unassigned');
-            statusPill.classList.add('assigned');
+            if (searchInput) searchInput.focus();
         }
 
-        // Enable action button
-        const actionBtn = roleCard.querySelector('.role-action-button');
+        // Show the action button again when transitioning back to active
         if (actionBtn) {
-            actionBtn.disabled = false;
+            actionBtn.style.display = 'block';
         }
 
-        // Hide all dropdowns and show selected state
-        const initialDropdown = roleCard.querySelector('.role-dropdown[data-state="initial"]');
-        const activeDropdown = roleCard.querySelector('.role-dropdown[data-state="active"]');
-        const selectedDropdown = roleCard.querySelector('.role-dropdown[data-state="selected"]');
+        actionBtn.setAttribute('data-button-state', 'active');
+    }
 
-        if (initialDropdown) initialDropdown.style.display = 'none';
-        if (activeDropdown) activeDropdown.style.display = 'none';
+    selectMemberForRole(card, memberName) {
+        const actionBtn = card.querySelector('.role-action-button');
+        const dropdowns = card.querySelectorAll('.role-dropdown');
 
+        dropdowns.forEach(dd => dd.style.display = 'none');
+
+        const selectedDropdown = card.querySelector('[data-state="selected"]');
         if (selectedDropdown) {
-            const selectedNameEl = selectedDropdown.querySelector('.selected-member-name');
-            const selectedEmailEl = selectedDropdown.querySelector('.selected-member-email');
-
-            if (selectedNameEl) {
-                selectedNameEl.textContent = memberName;
-            }
-            if (selectedEmailEl) {
-                selectedEmailEl.textContent = memberName.toLowerCase().replace(' ', '.') + '@student.embuni.ac.ke';
-            }
-
             selectedDropdown.style.display = 'block';
-
-            const changeSelectionBtn = selectedDropdown.querySelector('.change-selection-btn');
-            if (changeSelectionBtn && !changeSelectionBtn.dataset.listenerAttached) {
-                changeSelectionBtn.dataset.listenerAttached = 'true';
-                changeSelectionBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.returnToSearch(roleCard);
-                });
+            const nameDiv = selectedDropdown.querySelector('.selected-member-name');
+            if (nameDiv) {
+                nameDiv.textContent = memberName;
             }
         }
 
-        // Update local role data
-        role.assigned = true;
-        role.member = memberName;
-
-        // Update ministry stats
-        if (this.selectedMinistry) {
-            const assignedCount = this.selectedMinistry.roles.filter(r => r.assigned).length;
-            this.ministryStats.innerHTML = `Subcommittee: <strong>${assignedCount} / 6 assigned</strong>`;
+        // Hide the action button when showing selected member preview
+        if (actionBtn) {
+            actionBtn.style.display = 'none';
         }
-    }
 
-    returnToSearch(roleCard) {
-        const activeDropdown = roleCard.querySelector('.role-dropdown[data-state="active"]');
-        const selectedDropdown = roleCard.querySelector('.role-dropdown[data-state="selected"]');
-        const initialDropdown = roleCard.querySelector('.role-dropdown[data-state="initial"]');
+        actionBtn.setAttribute('data-button-state', 'selected');
 
-        if (activeDropdown && selectedDropdown) {
-            selectedDropdown.style.display = 'none';
-            activeDropdown.style.display = 'block';
-            if (initialDropdown) initialDropdown.style.display = 'none';
-
-            const actionBtn = roleCard.querySelector('.role-action-button');
-            if (actionBtn) {
-                actionBtn.disabled = true;
+        // Update member name badge in header
+        const assignedMemberDisplay = card.querySelector('.assigned-member-display');
+        if (assignedMemberDisplay) {
+            const memberBadge = assignedMemberDisplay.querySelector('.member-name-badge');
+            if (memberBadge) {
+                memberBadge.textContent = memberName;
             }
-
-            const searchInput = activeDropdown.querySelector('.role-member-search');
-            if (searchInput) {
-                searchInput.value = '';
-                const memberOptions = activeDropdown.querySelectorAll('.member-option');
-                memberOptions.forEach(option => {
-                    option.style.display = 'flex';
-                });
-                setTimeout(() => searchInput.focus(), 100);
+        } else {
+            // If no assigned-member-display exists yet, create it (when converting from unassigned to assigned)
+            const roleHeader = card.querySelector('.role-header');
+            const unassignedDisplay = card.querySelector('.unassigned-member-display');
+            if (unassignedDisplay) {
+                unassignedDisplay.remove();
             }
+            const newDisplay = document.createElement('div');
+            newDisplay.className = 'assigned-member-display';
+            newDisplay.innerHTML = `<span class="member-name-badge">${memberName}</span>`;
+            roleHeader.insertBefore(newDisplay, roleHeader.querySelector('.role-chevron'));
         }
+
+        card.classList.remove('unassigned');
+        card.classList.add('assigned');
+
+        console.log(`[v0] Member "${memberName}" assigned to role "${card.getAttribute('data-role')}"`);
+        card.setAttribute('data-assigned', 'true');
+        card.setAttribute('data-member', memberName);
     }
 
-    filterMembers(roleCard, searchTerm) {
-        const activeDropdown = roleCard.querySelector('.role-dropdown[data-state="active"]');
-        if (!activeDropdown) return;
-
-        const memberOptions = activeDropdown.querySelectorAll('.member-option');
-        const term = searchTerm.toLowerCase();
-
-        memberOptions.forEach(option => {
-            const name = option.getAttribute('data-member').toLowerCase();
-            option.style.display = name.includes(term) ? 'flex' : 'none';
-        });
+    backToMinistries() {
+        this.ministriesGridContainer.style.display = 'grid';
+        this.selectedMinistryView.style.display = 'none';
+        this.ministrySearch.value = '';
+        this.selectedMinistry = null;
     }
-
-
-    // ==========================================
-// SINGLE EXPANDED ROLE CONTROL (NEW)
-// ==========================================
-
-toggleRole(roleCard) {
-    if (this.expandedRole === roleCard) {
-        roleCard.classList.remove('expanded');
-        this.expandedRole = null;
-    } else {
-        this.closeAllRoles();
-        roleCard.classList.add('expanded');
-        this.expandedRole = roleCard;
-    }
-}
-
-closeAllRoles() {
-    document.querySelectorAll('.subcom-role-item.expanded')
-        .forEach(card => card.classList.remove('expanded'));
-}
-
 }
