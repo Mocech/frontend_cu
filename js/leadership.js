@@ -1407,3 +1407,4 @@ class SubcommitteeManager {
         this.selectedMinistry = null;
     }
 }
+

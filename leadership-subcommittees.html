@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub-Committees - Leadership Management - Christian Union</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/leadership.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo.png" alt="CU Logo" class="nav-logo">
+                <span class="nav-title">University Of Embu<br>Christian Union</span>
+            </div>
+            <div class="nav-right">
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ministries.html" class="nav-link">Ministries</a>
+                <a href="leadership-overview.html" class="nav-link">Leadership</a>
+                <a href="events.html" class="nav-link">Events</a>
+                
+                <!-- Mobile-only actions -->
+                <div class="mobile-only">
+                    <a href="#signin" class="btn btn-outline">Sign In</a>
+                </div>
+                <div class="mobile-only">
+                    <a href="#signup" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            
+            <!-- Desktop Actions -->
+            <div class="nav-actions desktop-only">
+                <a href="#signin" class="btn btn-outline">Sign In</a>
+                <a href="#signup" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="leadership-main">
+        <div class="container">
+            
+            <!-- Page Header + Mode Switcher (Single Cohesive Section) -->
+            <div class="page-header-section">
+                <!-- Compact Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Leadership Management</h1>
+                        <p class="page-subtitle">Manage leadership assignments and roles</p>
+                    </div>
+                    <div class="header-context">
+                        <span class="year-badge">2025 / 2026</span>
+                    </div>
+                </div>
+
+                <!-- Sub-Navigation (Mode Switcher) - Now with Links -->
+                <div class="mode-switcher-container">
+                    <div class="mode-switcher-wrapper">
+                        <div class="mode-switcher">
+                            <a href="leadership-overview.html" class="mode-button">
+                                <span class="mode-label">Overview</span>
+                            </a>
+                            <a href="leadership-subcommittees.html" class="mode-button active">
+                                <span class="mode-label">Sub-Committees</span>
+                            </a>
+                            <a href="leadership-executives.html" class="mode-button">
+                                <span class="mode-label">Executives</span>
+                            </a>
+                            <a href="leadership-associates.html" class="mode-button">
+                                <span class="mode-label">Associates</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBCOMMITTEES VIEW -->
+            <div class="view-content active">
+                <div class="subcom-section">
+                    <!-- Header -->
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Subcommittee Leadership</h2>
+                            <p class="view-subtitle">Select a ministry to manage and assign subcommittee roles.</p>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="ministry-search-wrapper">
+                        <div class="ministry-search-container">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <input type="text" id="ministrySearch" class="ministry-search-input" placeholder="Search ministry..." aria-label="Search ministry">
+                        </div>
+                    </div>
+
+                    <!-- Ministries Grid Container -->
+                    <div class="ministries-grid-container" id="ministriesGridContainer">
+                        <div class="ministry-item" data-ministry="Women Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Women Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Women Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Men Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Men Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Men Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Youth Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Youth Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Youth Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Worship Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Worship Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Worship Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Outreach Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Outreach Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Outreach Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Technical Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Technical Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Technical Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Creative Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Creative Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Creative Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Prayer Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Prayer Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Prayer Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="ministry-item" data-ministry="Hospitality Ministry">
+                            <div class="ministry-item-header">
+                                <h4 class="ministry-item-title">Hospitality Ministry</h4>
+                            </div>
+                            <p class="ministry-item-desc">6 roles to assign</p>
+                            <button class="ministry-item-btn" aria-label="Select Hospitality Ministry">
+                                <span>View Roles</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Selected Ministry Roles Container (Hidden by Default) -->
+                    <div class="selected-ministry-view" id="selectedMinistryView" style="display: none;">
+                        <div class="ministry-roles-header">
+                            <button class="btn-back" id="backToMinistries" aria-label="Back to ministries">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                                Back
+                            </button>
+                            <h3 class="ministry-roles-title" id="selectedMinistryTitle"></h3>
+                        </div>
+
+                        <!-- Ministry Roles Grid (Will be populated by JavaScript) -->
+                        <div class="subcom-role-grid" id="subcomRoleGrid">
+                            <!-- Roles will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Compact Brand -->
+                <div class="footer-brand">
+                    <div class="brand-header">
+                        <img src="logo.png" alt="CU Logo" class="footer-logo">
+                        <div>
+                            <h3>UoEm CU</h3>
+                            <p>Transforming lives through Christ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compact Navigation -->
+                <nav class="footer-nav">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <a href="#about">About</a>
+                        <a href="#ministries">Ministries</a>
+                        <a href="#events">Events</a>
+                    </div>
+                    
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <a href="#join">Join Us</a>
+                        <a href="#donate">Give</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </nav>
+                
+                <!-- Social Links -->
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Minimal Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 UoEm CU</p>
+                <span class="separator">•</span>
+                <a href="#privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/leadership.js"></script>
+</body>
+</html>

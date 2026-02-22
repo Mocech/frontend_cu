@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview - Leadership Management - Christian Union</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/leadership.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo.png" alt="CU Logo" class="nav-logo">
+                <span class="nav-title">University Of Embu<br>Christian Union</span>
+            </div>
+            <div class="nav-right">
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ministries.html" class="nav-link">Ministries</a>
+                <a href="leadership-overview.html" class="nav-link">Leadership</a>
+                <a href="events.html" class="nav-link">Events</a>
+                
+                <!-- Mobile-only actions -->
+                <div class="mobile-only">
+                    <a href="#signin" class="btn btn-outline">Sign In</a>
+                </div>
+                <div class="mobile-only">
+                    <a href="#signup" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            
+            <!-- Desktop Actions -->
+            <div class="nav-actions desktop-only">
+                <a href="#signin" class="btn btn-outline">Sign In</a>
+                <a href="#signup" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="leadership-main">
+        <div class="container">
+            
+            <!-- Page Header + Mode Switcher (Single Cohesive Section) -->
+            <div class="page-header-section">
+                <!-- Compact Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Leadership Management</h1>
+                        <p class="page-subtitle">Manage leadership assignments and roles</p>
+                    </div>
+                    <div class="header-context">
+                        <span class="year-badge">2025 / 2026</span>
+                    </div>
+                </div>
+
+                <!-- Sub-Navigation (Mode Switcher) - Now with Links -->
+                <div class="mode-switcher-container">
+                    <div class="mode-switcher-wrapper">
+                        <div class="mode-switcher">
+                            <a href="leadership-overview.html" class="mode-button active">
+                                <span class="mode-label">Overview</span>
+                            </a>
+                            <a href="leadership-subcommittees.html" class="mode-button">
+                                <span class="mode-label">Sub-Committees</span>
+                            </a>
+                            <a href="leadership-exec.html" class="mode-button">
+                                <span class="mode-label">Executives</span>
+                            </a>
+                            <a href="leadership-associates.html" class="mode-button">
+                                <span class="mode-label">Associates</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OVERVIEW VIEW -->
+            <div class="view-content active">
+                <div class="view-header">
+                    <h2 class="view-title">Dashboard Overview</h2>
+                    <button class="btn btn-primary" id="btnAddMember">+ Add New Member</button>
+                </div>
+
+                <!-- Status Legend -->
+                <div class="stats-legend">
+                    <span class="legend-title">Status</span>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-dot complete"></div>
+                            <span class="legend-label">Complete</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot incomplete"></div>
+                            <span class="legend-label">In Progress</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot critical"></div>
+                            <span class="legend-label">Critical</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot empty"></div>
+                            <span class="legend-label">Empty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Grid -->
+                <div class="stats-grid">
+                    <!-- Stat 1: Filled Positions - Incomplete (63%) -->
+                    <div class="stat-card status-incomplete">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-status-dot"></div>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Filled Positions</div>
+                            <div class="stat-value-wrapper">
+                                <span class="stat-value">45</span>
+                                <span class="stat-total">/ 72</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 2: Ministries Covered - Complete (75%) -->
+                    <div class="stat-card status-complete">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-status-dot"></div>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Ministries Covered</div>
+                            <div class="stat-value-wrapper">
+                                <span class="stat-value">18</span>
+                                <span class="stat-total">/ 24</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 3: Unassigned Roles - Critical -->
+                    <div class="stat-card status-critical">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-status-dot"></div>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Unassigned Roles</div>
+                            <div class="stat-value-wrapper">
+                                <span class="stat-value">12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 4: Executive Oversight - Complete (92%) -->
+                    <div class="stat-card status-complete">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-status-dot"></div>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Executive Oversight</div>
+                            <div class="stat-value-wrapper">
+                                <span class="stat-value">22</span>
+                                <span class="stat-total">/ 24</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 5: Associate Members - Incomplete (80%) -->
+                    <div class="stat-card status-incomplete">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-status-dot"></div>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Associate Members</div>
+                            <div class="stat-value-wrapper">
+                                <span class="stat-value">8</span>
+                                <span class="stat-total">/ 10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-section">
+                    <h3 class="quick-actions-title">Quick Actions</h3>
+                    <div class="quick-actions-buttons">
+                        <button class="action-btn action-btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                            <span class="btn-text">Save All Assignments</span>
+                        </button>
+                        
+                        <button class="action-btn action-btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                                <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"></path>
+                                <path d="M9 9h6v6H9z"></path>
+                            </svg>
+                            <span class="btn-text">Clear Changes</span>
+                        </button>
+                        
+                        <button class="action-btn action-btn-tertiary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span class="btn-text">Download Report</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Compact Brand -->
+                <div class="footer-brand">
+                    <div class="brand-header">
+                        <img src="logo.png" alt="CU Logo" class="footer-logo">
+                        <div>
+                            <h3>UoEm CU</h3>
+                            <p>Transforming lives through Christ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compact Navigation -->
+                <nav class="footer-nav">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <a href="#about">About</a>
+                        <a href="#ministries">Ministries</a>
+                        <a href="#events">Events</a>
+                    </div>
+                    
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <a href="#join">Join Us</a>
+                        <a href="#donate">Give</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </nav>
+                
+                <!-- Social Links -->
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Minimal Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 UoEm CU</p>
+                <span class="separator">•</span>
+                <a href="#privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/leadership.js"></script>
+</body>
+</html>

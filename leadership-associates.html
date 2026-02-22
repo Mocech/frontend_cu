@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associates - Leadership Management - Christian Union</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/leadership.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo.png" alt="CU Logo" class="nav-logo">
+                <span class="nav-title">University Of Embu<br>Christian Union</span>
+            </div>
+            <div class="nav-right">
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ministries.html" class="nav-link">Ministries</a>
+                <a href="leadership-overview.html" class="nav-link">Leadership</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <div class="mobile-only"><a href="#signin" class="btn btn-outline">Sign In</a></div>
+                <div class="mobile-only"><a href="#signup" class="btn btn-primary">Sign Up</a></div>
+            </div>
+            <div class="nav-actions desktop-only">
+                <a href="#signin" class="btn btn-outline">Sign In</a>
+                <a href="#signup" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="leadership-main">
+        <div class="container">
+            <div class="page-header-section">
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Leadership Management</h1>
+                        <p class="page-subtitle">Manage leadership assignments and roles</p>
+                    </div>
+                    <div class="header-context"><span class="year-badge">2025 / 2026</span></div>
+                </div>
+                <div class="mode-switcher-container">
+                    <div class="mode-switcher-wrapper">
+                        <div class="mode-switcher">
+                            <a href="leadership-overview.html" class="mode-button"><span class="mode-label">Overview</span></a>
+                            <a href="leadership-subcommittees.html" class="mode-button"><span class="mode-label">Sub-Committees</span></a>
+                            <a href="leadership-exec.html" class="mode-button"><span class="mode-label">Executives</span></a>
+                            <a href="leadership-associates.html" class="mode-button active"><span class="mode-label">Associates</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASSOCIATES VIEW -->
+            <div class="view-content active">
+                <div class="assoc-section">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Associate Leadership</h2>
+                            <p class="view-subtitle">Manage and assign associate member roles. Expand each role to assign or change members.</p>
+                        </div>
+                    </div>
+
+                    <!-- Associate Role List -->
+                    <div class="exec-role-list" id="assocRoleList">
+                        
+                        <!-- Role: Associate Member 1 - Assigned -->
+                        <div class="exec-role-item assigned" data-role="Associate Member 1" data-assigned="true" data-member="Marcus Young">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Associate Member 1</h3>
+                                </div>
+                                <div class="assigned-member-display">
+                                    <span class="member-name-badge">Marcus Young</span>
+                                </div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select Member</button>
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display"><strong>Currently assigned:</strong><span>Marcus Young</span></div>
+                                </div>
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members...">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Marcus Young">
+                                            <span class="member-name">Marcus Young</span><span class="member-meta">Currently Assigned</span>
+                                        </div>
+                                        <div class="member-option" data-member="Diana Cox">
+                                            <span class="member-name">Diana Cox</span><span class="member-meta">Active Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role: Associate Member 2 - Unassigned -->
+                        <div class="exec-role-item unassigned" data-role="Associate Member 2" data-assigned="false" data-member="">
+                            <div class="role-header">
+                                <div class="role-title-section">
+                                    <h3 class="role-title">Associate Member 2</h3>
+                                </div>
+                                <div class="unassigned-member-display"><span class="unassigned-badge">Unassigned</span></div>
+                                <svg class="role-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="role-expanded-content hidden">
+                                <p class="expanded-text">Assign or change the member for this role</p>
+                                <button class="role-action-button" data-action="select" data-button-state="initial">Select New Member</button>
+                                <div class="role-dropdown" data-state="initial">
+                                    <div class="member-selected-display"><strong>Currently assigned:</strong><span>No member assigned</span></div>
+                                </div>
+                                <div class="role-dropdown" data-state="active" style="display: none;">
+                                    <div class="dropdown-search-wrapper">
+                                        <input type="text" class="role-member-search" placeholder="Search members...">
+                                    </div>
+                                    <div class="role-member-options">
+                                        <div class="member-option" data-member="Diana Cox">
+                                            <span class="member-name">Diana Cox</span><span class="member-meta">Active Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="role-dropdown" data-state="selected" style="display: none;">
+                                    <div class="selected-member-section">
+                                        <label class="selected-member-label">Selected Member</label>
+                                        <div class="selected-member-card">
+                                            <span class="member-avatar">👤</span>
+                                            <div class="selected-member-info">
+                                                <div class="selected-member-name"></div>
+                                                <div class="selected-member-email"></div>
+                                            </div>
+                                        </div>
+                                        <button class="change-selection-btn">Change selection</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Note: Add more associate roles following the same pattern -->
+                        
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container">
+                        <button class="load-more-button" id="loadMoreBtnAssoc">
+                            <span class="btn-text">Load More Roles</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="brand-header">
+                        <img src="logo.png" alt="CU Logo" class="footer-logo">
+                        <div><h3>UoEm CU</h3><p>Transforming lives through Christ</p></div>
+                    </div>
+                </div>
+                <nav class="footer-nav">
+                    <div class="nav-group"><h4>Explore</h4><a href="#about">About</a><a href="#ministries">Ministries</a><a href="#events">Events</a></div>
+                    <div class="nav-group"><h4>Connect</h4><a href="#join">Join Us</a><a href="#donate">Give</a><a href="#contact">Contact</a></div>
+                </nav>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 UoEm CU</p><span class="separator">•</span><a href="#privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/leadership.js"></script>
+</body>
+</html>
